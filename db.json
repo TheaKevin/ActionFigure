@@ -1,0 +1,67 @@
+{
+    "products": [
+        {
+            "id" : 1,
+            "nama" : "Action Figure Luffy",
+            "detail" : "Ini adalah action figure luffy asli dari jepang",
+            "harga" : 100000,
+            "stok": 100,
+            "gambar": "image.jpg"
+        },
+        {
+            "id" : 2,
+            "nama" : "Action Figure Naruto",
+            "detail" : "Ini adalah action figure naruto asli dari jepang",
+            "harga" : 175000,
+            "stok": 150,
+            "gambar": "image.jpg"
+        },
+        {
+            "id" : 3,
+            "nama" : "Action Figure Sasuke",
+            "detail" : "Ini adalah action figure sasuke asli dari jepang",
+            "harga" : 150000,
+            "stok": 110,
+            "gambar": "image.jpg"
+        },
+        {
+            "id" : 4,
+            "nama" : "Action Figure Anya",
+            "detail" : "Ini adalah action figure anya asli dari jepang",
+            "harga" : 200000,
+            "stok": 10,
+            "gambar": "image.jpg"
+        },
+        {
+            "id" : 5,
+            "nama" : "Action Figure Zoro",
+            "detail" : "Ini adalah action figure zoro asli dari jepang",
+            "harga" : 130000,
+            "stok": 50,
+            "gambar": "image.jpg"
+        },
+        {
+            "id" : 6,
+            "nama" : "Action Figure Yor",
+            "detail" : "Ini adalah action figure yor asli dari jepang",
+            "harga" : 190000,
+            "stok": 25,
+            "gambar": "image.jpg"
+        }
+    ],
+    "carts" : [
+        {
+            "id" : 1,
+            "jumlahBarang" : 2,
+            "totalHarga" : 300000,
+            "product" : {
+                "id" : 3,
+                "nama" : "Action Figure Sasuke",
+                "detail" : "Ini adalah action figure sasuke asli dari jepang",
+                "harga" : 150000,
+                "stok": 110,
+                "gambar": "image.jpg"
+            }
+        }
+    ]
+}
