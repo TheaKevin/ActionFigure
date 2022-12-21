@@ -6,7 +6,7 @@
             "detail" : "Ini adalah action figure luffy asli dari jepang",
             "harga" : 100000,
             "stok": 100,
-            "gambar": "image.jpg"
+            "gambar": "luffy.png"
         },
         {
             "id" : 2,
