@@ -14,7 +14,7 @@
       "detail": "Ini adalah action figure naruto asli dari jepang",
       "harga": 175000,
       "stok": 150,
-      "gambar": "image.jpg"
+      "gambar": "naruto.png"
     },
     {
       "id": 3,
@@ -22,15 +22,15 @@
       "detail": "Ini adalah action figure sasuke asli dari jepang",
       "harga": 150000,
       "stok": 110,
-      "gambar": "image.jpg"
+      "gambar": "sasuke.png"
     },
     {
       "id": 4,
-      "nama": "Action Figure Anya",
-      "detail": "Ini adalah action figure anya asli dari jepang",
+      "nama": "Action Figure Boruto",
+      "detail": "Ini adalah action figure boruto asli dari jepang",
       "harga": 200000,
       "stok": 10,
-      "gambar": "image.jpg"
+      "gambar": "boruto.png"
     },
     {
       "id": 5,
@@ -38,15 +38,15 @@
       "detail": "Ini adalah action figure zoro asli dari jepang",
       "harga": 130000,
       "stok": 50,
-      "gambar": "image.jpg"
+      "gambar": "zoro.png"
     },
     {
       "id": 6,
-      "nama": "Action Figure Yor",
-      "detail": "Ini adalah action figure yor asli dari jepang",
+      "nama": "Action Figure Goku Vegeta Super Saiyan",
+      "detail": "Ini adalah action figure goku vegeta mode super saiyan.",
       "harga": 190000,
       "stok": 25,
-      "gambar": "image.jpg"
+      "gambar": "gokuVegetaSuperSaiyan.png"
     }
   ],
   "carts": [
@@ -60,7 +60,7 @@
         "detail": "Ini adalah action figure sasuke asli dari jepang",
         "harga": 150000,
         "stok": 110,
-        "gambar": "image.jpg"
+        "gambar": "sasuke.png"
       }
     }
   ]

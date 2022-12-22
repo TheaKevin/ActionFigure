@@ -36,11 +36,13 @@ export default class ProductList extends Component {
               this.state.products.map(product =>
                 <div key={product.id} className="product-card col-lg-5">
                   <div className="product-thumbnail">
-                    <img src={Luffy}></img>
+                    <img src={require('../assets/'+product.gambar)} alt={product.gambar}></img>
                   </div>
-                  <div className="product-summary">
-                    <h3>{product.nama}</h3>
-                    <p className="product-description">{product.detail}</p>
+                  <div className="product-summary d-flex flex-column justify-content-between">
+                    <div>
+                      <h3>{product.nama}</h3>
+                      <p className="product-description">{product.detail}</p>
+                    </div>
                     <p className="product-price">Rp {convertToRupiahFormat(product.harga)}</p>
                   </div>
                 </div>

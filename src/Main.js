@@ -6,7 +6,7 @@ import {
   NavLink,
   HashRouter
 } from "react-router-dom";
-import ProductList from "./components/ProductList.";
+import ProductList from "./components/ProductList";
 import ShoppingCart from "./components/ShoppingCart";
 import { Nav } from "react-bootstrap"
 import Logo from "./assets/logo.png"
