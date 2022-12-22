@@ -11,7 +11,7 @@ export default class DetailProduk extends Component {
             detail: "",
             harga: 0,
             id: "",
-            gambar: require("./assets/luffy.png"),
+            gambar: require("../assets/luffy.png"),
             jumlahBarang: 0,
             subTotal: 0,
             lastCartID: 0
@@ -28,7 +28,7 @@ export default class DetailProduk extends Component {
                 detail: json.detail,
                 harga: json.harga,
                 id: json.id,
-                gambar: require("./assets/"+json.gambar),
+                gambar: require("../assets/"+json.gambar),
                 jumlahBarang: 1,
                 subTotal: json.harga
             });
