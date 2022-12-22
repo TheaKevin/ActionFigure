@@ -79,7 +79,7 @@ function Main() {
           <Routes>
             <Route path="/" element={ <ProductList setIdProduk={setIdProduk} /> }/>
             <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
-            <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk /> }/>
+            <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
           </Routes>
         </div>
       </div>
