@@ -10,7 +10,7 @@ export default class DetailProduk extends Component {
             nama: "",
             detail: "",
             harga: 0,
-            id: "",
+            id: props.idProduk,
             gambar: require("../assets/luffy.png"),
             jumlahBarang: 0,
             subTotal: 0,
@@ -19,7 +19,7 @@ export default class DetailProduk extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3001/products/1")
+        fetch("http://localhost:3001/products/"+this.state.id)
         .then((response) => response.json())
         .then((json) => {
             this.setState({
@@ -95,7 +95,7 @@ export default class DetailProduk extends Component {
 
     render() {
         return (
-            <div className='mx-5' style={{width: "65%"}}>
+            <div className='mx-5'>
                 <h1 className='mb-3'>Detail Produk</h1>
 
                 <div className='d-flex flex-row mb-5'>
