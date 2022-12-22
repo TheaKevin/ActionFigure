@@ -13,6 +13,7 @@ import Logo from "./assets/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList, faCartShopping, faEnvelope, faBagShopping, faUser } from '@fortawesome/free-solid-svg-icons'
 import { Routes } from "react-router-dom";
+import RequestProduct from "./components/RequestProduct";
 
 class Main extends Component {
   constructor(props) {
@@ -72,6 +73,7 @@ class Main extends Component {
             <Routes>
               <Route path="/" element={ <ProductList/> }/>
               <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
+              <Route path="/request-product" element={ <RequestProduct/> }/>
             </Routes>
           </div>
         </div>

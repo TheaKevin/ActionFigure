@@ -188,3 +188,9 @@ input.input-stock {
   border-bottom: 1px solid gray;
   border-top: none;
 }
+
+input#formProductDesc {
+  width: 200px;
+  display: inline-flex;
+  margin: 0 .5rem;
+}
