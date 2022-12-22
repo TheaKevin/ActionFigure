@@ -10,8 +10,8 @@ export default class DetailProduk extends Component {
             nama: "",
             detail: "",
             harga: 0,
-            id: "",
-            gambar: require("./assets/luffy.png"),
+            id: props.idProduk,
+            gambar: require("../assets/luffy.png"),
             jumlahBarang: 0,
             subTotal: 0,
             lastCartID: 0
@@ -19,7 +19,7 @@ export default class DetailProduk extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3001/products/1")
+        fetch("http://localhost:3001/products/"+this.state.id)
         .then((response) => response.json())
         .then((json) => {
             this.setState({
@@ -28,7 +28,7 @@ export default class DetailProduk extends Component {
                 detail: json.detail,
                 harga: json.harga,
                 id: json.id,
-                gambar: require("./assets/"+json.gambar),
+                gambar: require("../assets/"+json.gambar),
                 jumlahBarang: 1,
                 subTotal: json.harga
             });
@@ -95,19 +95,21 @@ export default class DetailProduk extends Component {
 
     render() {
         return (
-            <div className='mx-5' style={{width: "65%"}}>
+            <div className='mx-5'>
                 <h1 className='mb-3'>Detail Produk</h1>
 
                 <div className='d-flex flex-row mb-5'>
-                    <img className='me-4'
-                        src={this.state.gambar}
-                        alt={this.state.gambar}
-                        style={{
-                            width: "300px",
-                            height: "300px",
-                            backgroundColor: "#FFC107",
-                            borderRadius: "10px"
-                        }} />
+                    <div className='me-4 d-flex justify-content-center'
+                    style={{
+                        width: "300px",
+                        height: "300px",
+                        backgroundColor: "#FFC107",
+                        borderRadius: "10px"
+                    }}>
+                        <img src={this.state.gambar}
+                            alt={this.state.gambar}
+                            style={{height: "300px"}} />
+                    </div>
                     <div className='d-flex flex-column justify-content-between'>
                         <div>
                             <div className='mb-2' style={{
@@ -143,31 +145,34 @@ export default class DetailProduk extends Component {
                         width: "565px",
                         height: "131px"
                     }}>
-                        <Form.Group className='w-50 d-flex align-items-center' style={{color: "white"}}>
-                            <button
-                                type='button'
-                                className={"btn btn-outline-light w-25 mx-auto"}
-                                onClick={() => this.minus()}>
-                                -
-                            </button>
+                        <Form.Group className='w-50 d-flex flex-column justify-content-center' style={{color: "white"}}>
+                            <div className='mb-2'>Total Barang : </div>
+                            <div className='w-100 d-flex'>
+                                <button
+                                    type='button'
+                                    className={"btn btn-outline-light w-25 mx-auto"}
+                                    onClick={() => this.minus()}>
+                                    -
+                                </button>
 
-                            <Form.Control
-                                type="number"
-                                name='jumlahBarang'
-                                className='mx-3'
-                                min={1}
-                                max={this.state.stok}
-                                value={this.state.jumlahBarang}
-                                readOnly
-                                required
-                            />
+                                <Form.Control
+                                    type="number"
+                                    name='jumlahBarang'
+                                    className='mx-3'
+                                    min={1}
+                                    max={this.state.stok}
+                                    value={this.state.jumlahBarang}
+                                    readOnly
+                                    required
+                                />
 
-                            <button
-                                type='button'
-                                className={"btn btn-outline-light w-25 mx-auto"}
-                                onClick={() => this.plus()}>
-                                +
-                            </button>
+                                <button
+                                    type='button'
+                                    className={"btn btn-outline-light w-25 mx-auto"}
+                                    onClick={() => this.plus()}>
+                                    +
+                                </button>
+                            </div>
                         </Form.Group>
                         <Form.Group className='w-25 h-100 d-flex flex-column justify-content-evenly'>
                             <Button style={{

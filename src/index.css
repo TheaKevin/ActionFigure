@@ -92,12 +92,16 @@ body {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
   transition: all ease 0.5s;
   border-radius: 20px;
-  height: 500px;
+  height: 425px;
   padding: 0 !important;
+  color: black;
+  text-decoration: none;
 }
 
 .product-card:hover {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.35);
+  color: black;
+  text-decoration: none;
 }
 
 .product-card .product-thumbnail {
@@ -112,13 +116,14 @@ body {
 
 .product-thumbnail img {
   flex-shrink: 0;
-  width: 50%;
-  height: 50%;
+  height: 186px;
+  overflow: hidden;
 }
 
 .product-summary {
   padding: 1rem;
   padding-bottom: 0;
+  height: 239px;
 }
 
 .product-summary h3 {
