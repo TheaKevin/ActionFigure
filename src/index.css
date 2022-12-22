@@ -2,22 +2,21 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter' !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .nav {
+  position: sticky;
+  top: 0;
+  overflow-x: hidden;
   background-color: #467FD0;
-  width: 310px;
+  height: 100vh;
+  width: 350px;
+  z-index: 1;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  height: 100vh;
 }
 
 .menubar-brand {
@@ -57,7 +56,7 @@ code {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 310px;
+  width: 350px;
   border-bottom-right-radius: 10px;
 }
 
@@ -71,4 +70,113 @@ code {
 
 .nav .menubar-user .user-summary {
   padding-left: 1rem;
+}
+
+.content {
+  width: 100%;
+  z-index: 1;
+  padding: 1rem 3rem;
+  overflow-x: hidden;
+}
+
+.product-list {
+  display: flex;
+}
+
+.product-list div {
+  gap: 3rem;
+}
+
+.product-card {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  transition: all ease 0.5s;
+  border-radius: 20px;
+  height: fit-content;
+  padding: 0 !important;
+}
+
+.product-card:hover {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.product-card .product-thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #FFC107;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.product-thumbnail img {
+  flex-shrink: 0;
+  width: 50%;
+  height: 50%;
+}
+
+.product-summary {
+  padding: 1rem;
+  padding-bottom: 0;
+}
+
+.product-summary h3 {
+  font-size: 20px;
+}
+
+.product-summary .product-description {
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.product-summary .product-price {
+  font-weight: bolder;
+  font-size: 24px;
+}
+
+.chart-product {
+  background-color: #d9d9d9;
+  display: flex;
+}
+
+.chart-product .row {
+  border: 1px solid red !important;
+}
+
+.chart-product .chart-product-thumbnail {
+  background-color: #FFC107;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.chart-product .chart-product-thumbnail img {
+  flex-shrink: 0;
+  width: 50%;
+  height: 50%; 
+}
+
+.chart-product .chart-product-summary {
+  padding: 1rem;
+  max-width: fit-content;
+}
+
+.chart-product-action {
+  padding: 0 !important;
+  color: #fff;
+  background-color: #d9534f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-product-action svg {
+  font-size: 100px;
 }
