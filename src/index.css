@@ -94,10 +94,14 @@ body {
   border-radius: 20px;
   height: 425px;
   padding: 0 !important;
+  color: black;
+  text-decoration: none;
 }
 
 .product-card:hover {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.35);
+  color: black;
+  text-decoration: none;
 }
 
 .product-card .product-thumbnail {
