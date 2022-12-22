@@ -99,15 +99,17 @@ export default class DetailProduk extends Component {
                 <h1 className='mb-3'>Detail Produk</h1>
 
                 <div className='d-flex flex-row mb-5'>
-                    <img className='me-4'
-                        src={this.state.gambar}
-                        alt={this.state.gambar}
-                        style={{
-                            width: "300px",
-                            height: "300px",
-                            backgroundColor: "#FFC107",
-                            borderRadius: "10px"
-                        }} />
+                    <div className='me-4 d-flex justify-content-center'
+                    style={{
+                        width: "300px",
+                        height: "300px",
+                        backgroundColor: "#FFC107",
+                        borderRadius: "10px"
+                    }}>
+                        <img src={this.state.gambar}
+                            alt={this.state.gambar}
+                            style={{height: "300px"}} />
+                    </div>
                     <div className='d-flex flex-column justify-content-between'>
                         <div>
                             <div className='mb-2' style={{
@@ -143,31 +145,34 @@ export default class DetailProduk extends Component {
                         width: "565px",
                         height: "131px"
                     }}>
-                        <Form.Group className='w-50 d-flex align-items-center' style={{color: "white"}}>
-                            <button
-                                type='button'
-                                className={"btn btn-outline-light w-25 mx-auto"}
-                                onClick={() => this.minus()}>
-                                -
-                            </button>
+                        <Form.Group className='w-50 d-flex flex-column justify-content-center' style={{color: "white"}}>
+                            <div className='mb-2'>Total Barang : </div>
+                            <div className='w-100 d-flex'>
+                                <button
+                                    type='button'
+                                    className={"btn btn-outline-light w-25 mx-auto"}
+                                    onClick={() => this.minus()}>
+                                    -
+                                </button>
 
-                            <Form.Control
-                                type="number"
-                                name='jumlahBarang'
-                                className='mx-3'
-                                min={1}
-                                max={this.state.stok}
-                                value={this.state.jumlahBarang}
-                                readOnly
-                                required
-                            />
+                                <Form.Control
+                                    type="number"
+                                    name='jumlahBarang'
+                                    className='mx-3'
+                                    min={1}
+                                    max={this.state.stok}
+                                    value={this.state.jumlahBarang}
+                                    readOnly
+                                    required
+                                />
 
-                            <button
-                                type='button'
-                                className={"btn btn-outline-light w-25 mx-auto"}
-                                onClick={() => this.plus()}>
-                                +
-                            </button>
+                                <button
+                                    type='button'
+                                    className={"btn btn-outline-light w-25 mx-auto"}
+                                    onClick={() => this.plus()}>
+                                    +
+                                </button>
+                            </div>
                         </Form.Group>
                         <Form.Group className='w-25 h-100 d-flex flex-column justify-content-evenly'>
                             <Button style={{
