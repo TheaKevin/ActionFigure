@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button, Form } from 'react-bootstrap';
 
 export default class DetailProduk extends Component {
     constructor(props) {
@@ -10,7 +11,10 @@ export default class DetailProduk extends Component {
             detail: "",
             harga: 0,
             id: "",
-            gambar: require("./assets/luffy.png")
+            gambar: require("./assets/luffy.png"),
+            jumlahBarang: 0,
+            subTotal: 0,
+            lastCartID: 0
         };
     }
 
@@ -24,9 +28,69 @@ export default class DetailProduk extends Component {
                 detail: json.detail,
                 harga: json.harga,
                 id: json.id,
-                gambar: require("./assets/"+json.gambar)
+                gambar: require("./assets/"+json.gambar),
+                jumlahBarang: 1,
+                subTotal: json.harga
             });
         });
+
+        fetch("http://localhost:3001/carts?_sort=id&_order=desc&_limit=1")
+        .then((response) => response.json())
+        .then((json) => {
+            this.setState({
+                lastCartID: json.id + 1
+            });
+        });
+    }
+
+    plus = () => {
+        if (this.state.jumlahBarang < this.state.stok) {
+            this.setState({
+                jumlahBarang: this.state.jumlahBarang + 1,
+                subTotal: this.state.subTotal + this.state.harga
+            });
+        }
+    }
+
+    minus = () => {
+        if (this.state.jumlahBarang > 1) {
+            this.setState({
+                jumlahBarang: this.state.jumlahBarang - 1,
+                subTotal: this.state.subTotal - this.state.harga
+            });
+        }
+    }
+
+    submit = (e) => {
+        e.preventDefault();
+
+        this.setState({
+            stok: this.state.stok - this.state.jumlahBarang
+        });
+
+        fetch('http://localhost:3001/carts', {
+            method: 'POST',
+            body: JSON.stringify({
+                id: this.state.lastCartID,
+                jumlahBarang: this.state.jumlahBarang,
+                totalHarga: this.state.subTotal,
+                product: {
+                    id: this.state.id,
+                    nama: this.state.nama,
+                    detail: this.state.detail,
+                    harga: this.state.harga,
+                    stok: this.state.stok,
+                    gambar: this.state.gambar
+                }
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then((response) => response.json())
+        .then((json) => console.log(json))
+        .then(alert("Barang berhasil dimasukkan kedalam cart!"))
+        .catch((err) => console.log(err));
     }
 
     render() {
@@ -73,33 +137,58 @@ export default class DetailProduk extends Component {
                 </div>
 
                 <div className='d-flex flex-row justify-content-center'>
-                    <div className='d-flex flex-row justify-content-evenly' style={{
+                    <Form onSubmit={(e) => this.submit(e)} className='d-flex flex-row justify-content-evenly' style={{
                         backgroundColor: "#FFC107",
                         borderRadius: "10px",
                         width: "565px",
                         height: "131px"
                     }}>
-                        <div className='w-50 d-flex align-items-center'>Total Barang : - 1 + </div>
-                        <div className='w-25 h-100 d-flex flex-column justify-content-evenly'>
-                            <button style={{
-                                backgroundColor: "#467FD0",
-                                boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                                borderRadius: "20px",
-                                textAlign: "center",
-                                border: "none",
-                                color: "white"
-                            }}>+ Keranjang</button>
+                        <Form.Group className='w-50 d-flex align-items-center' style={{color: "white"}}>
+                            <button
+                                type='button'
+                                className={"btn btn-outline-light w-25 mx-auto"}
+                                onClick={() => this.minus()}>
+                                -
+                            </button>
 
-                            <button style={{
+                            <Form.Control
+                                type="number"
+                                name='jumlahBarang'
+                                className='mx-3'
+                                min={1}
+                                max={this.state.stok}
+                                value={this.state.jumlahBarang}
+                                readOnly
+                                required
+                            />
+
+                            <button
+                                type='button'
+                                className={"btn btn-outline-light w-25 mx-auto"}
+                                onClick={() => this.plus()}>
+                                +
+                            </button>
+                        </Form.Group>
+                        <Form.Group className='w-25 h-100 d-flex flex-column justify-content-evenly'>
+                            <Button style={{
                                 backgroundColor: "#467FD0",
                                 boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                                 borderRadius: "20px",
                                 textAlign: "center",
                                 border: "none",
                                 color: "white"
-                            }}>Beli Langsung</button>
-                        </div>
-                    </div>
+                            }} type='submit'>+ Keranjang</Button>
+
+                            <Button style={{
+                                backgroundColor: "#467FD0",
+                                boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                                borderRadius: "20px",
+                                textAlign: "center",
+                                border: "none",
+                                color: "white"
+                            }} type='submit'>Beli Langsung</Button>
+                        </Form.Group>
+                    </Form>
                 </div>
             </div>
         )
