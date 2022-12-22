@@ -106,3 +106,7 @@ h5{
     align-items: center;
 }
   
+.daftarProduk-arrow img{
+    cursor: pointer;
+}
+  

@@ -4,7 +4,6 @@ import actionFigureDummy from "../assets/luffy.png"
 import Arrow from "../assets/arrow.png"
 import JNE from "../assets/JNE.png"
 import Voucher from "../assets/Voucher.png"
-import MenuBar from './menubar.component'
 
 
 export default class Checkout extends Component {
