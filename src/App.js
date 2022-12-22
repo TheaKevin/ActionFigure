@@ -1,11 +1,15 @@
-import './App.css';
+import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MenuBar from './components/menubar.component';
+import { ProductList } from './components/ProductList.';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
 
 function App() {
   return (
     <div className="App">
       <MenuBar/>
+      <ProductList/>
     </div>
   );
 }
