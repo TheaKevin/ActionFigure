@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, useState } from "react"
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {
@@ -15,6 +15,12 @@ import { faList, faCartShopping, faEnvelope, faBagShopping, faUser } from '@fort
 import { Routes } from "react-router-dom";
 
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeMenu: "produk"
+    };
+  }
   render() {
     return (
       <HashRouter>
@@ -26,10 +32,30 @@ class Main extends Component {
                 <h2>Action Figure</h2>
               </div>
               <div className="menubar-list">
-                  <Nav.Link exact href="#/"><FontAwesomeIcon icon={faList}/>Produk</Nav.Link>
-                  <Nav.Link href="#/shopping-cart"><FontAwesomeIcon icon={faCartShopping}/>Keranjang Belanja</Nav.Link>
-                  <Nav.Link href="#/request-product"><FontAwesomeIcon icon={faEnvelope}/>Request Produk</Nav.Link>
-                  <Nav.Link href="#/order"><FontAwesomeIcon icon={faBagShopping}/>Pemesanan</Nav.Link>
+                  <Nav.Link 
+                    exact href="#/" 
+                    onClick={() => this.setState({ activeMenu: "produk" })} 
+                    className={this.state.activeMenu == "produk" ? "nav-active": ""}>
+                      <FontAwesomeIcon icon={faList}/>Produk
+                  </Nav.Link>
+                  <Nav.Link 
+                    href="#/shopping-cart" 
+                    onClick={() => this.setState({ activeMenu: "keranjang" })}
+                    className={this.state.activeMenu == "keranjang" ? "nav-active": ""}>
+                      <FontAwesomeIcon icon={faCartShopping}/>Keranjang Belanja
+                  </Nav.Link>
+                  <Nav.Link 
+                    href="#/request-product"
+                    onClick={() => this.setState({ activeMenu: "request" })}
+                    className={this.state.activeMenu == "request" ? "nav-active": ""}>
+                      <FontAwesomeIcon icon={faEnvelope}/>Request Produk
+                  </Nav.Link>
+                  <Nav.Link 
+                    href="#/order"
+                    onClick={() => this.setState({ activeMenu: "pemesanan" })}
+                    className={this.state.activeMenu == "pemesanan" ? "nav-active": ""}>
+                      <FontAwesomeIcon icon={faBagShopping}/>Pemesanan
+                  </Nav.Link>
               </div>
               <div className="menubar-user">
                 <div className="d-flex">
