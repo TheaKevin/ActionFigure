@@ -4,10 +4,50 @@ import actionFigureDummy from "../assets/luffy.png"
 import Arrow from "../assets/arrow.png"
 import JNE from "../assets/JNE.png"
 import Voucher from "../assets/Voucher.png"
-
+import Popup from 'reactjs-popup';
+import ModalPengiriman from './ModalPengiriman'
+import ModalVoucher from './ModalVoucher'
 
 export default class Checkout extends Component {
-  render() {
+  constructor(props){
+    super(props);
+    this.state = {
+      popupOpened: false,
+      pengiriman: "JNE Reguler",
+      imgPengiriman: JNE,
+      inthargaPengiriman: 27000,
+      inthargaProduk: 600000,
+      intTotalHarga: 0,
+      voucher: "MERDEKA10K",
+      intHargaVoucher: 10000
+    }
+  }
+
+  setPopupOpened = (status) => {
+      this.setState({
+        popupOpened: status
+      })
+  }
+
+  setPengiriman = (pengiriman,img,harga) => {
+    this.setState({
+      pengiriman: pengiriman,
+      imgPengiriman: img,
+      inthargaPengiriman: harga
+    })
+    this.setPopupOpened(false)
+  }
+
+  setVoucher = (voucher,harga) => {
+    this.setState({
+      voucher: voucher,
+      intHargaVoucher: harga
+    })
+  }
+
+  render(){
+    console.log(this.state.popupOpened)
+    this.state.intTotalHarga = this.state.inthargaProduk + this.state.inthargaPengiriman - this.state.intHargaVoucher 
     return (
       <div>
       <h2>Detail Pembelian</h2>
@@ -29,7 +69,7 @@ export default class Checkout extends Component {
                     </div>
                     <div className="col-lg-6 daftarProduk-desc">
                       <p className="daftarProduk-descProd-margin">Action Figure Luffy</p>
-                      <p className="daftarProduk-descProd-margin">Rp. 100.000</p>
+                      <p className="daftarProduk-descProd-margin">Rp. 100,000</p>
                     </div>
                     <div className="col-lg-3 daftarProduk-qty">
                       <p>x6</p>
@@ -43,16 +83,23 @@ export default class Checkout extends Component {
                 <div className="daftarProduk">
                   <div className="row justify-content-center">
                     <div className="col-lg-3 daftarProduk-thumbnail">
-                      <img src={JNE}></img>
+                      <img src={this.state.imgPengiriman}></img>
                     </div>
                     <div className="col-lg-3 daftarProduk-desc">
-                      <p>JNE Reguler</p>
+                      <p>{this.state.pengiriman}</p>
                     </div>
                     <div className="col-lg-5 daftarProduk-desc">
-                      <p className="daftarProduk-desc-margin">Rp. 27.000</p>
+                      <p className="daftarProduk-desc-margin">Rp. {this.state.inthargaPengiriman.toLocaleString()}</p>
                     </div>
                     <div className="col-lg-1 daftarProduk-arrow">
-                      <img src={Arrow}></img>
+                      <Popup 
+                        trigger={<img src={Arrow}></img>} 
+                        position="right center" 
+                        opened={this.state.popupOpened} 
+                        onPopupClosed={() => this.setPopupOpened(false)}
+                      >
+                        <ModalPengiriman setPengiriman = {this.setPengiriman}/>
+                      </Popup>
                     </div>
                   </div>
                 </div>
@@ -66,13 +113,15 @@ export default class Checkout extends Component {
                       <img src={Voucher}></img>
                     </div>
                     <div className="col-lg-3 daftarProduk-desc">
-                      <p>MERDEKA10K</p>
+                      <p>{this.state.voucher}</p>
                     </div>
                     <div className="col-lg-5 daftarProduk-desc">
-                      <p className="daftarProduk-desc-margin">- Rp. 10.000</p>
+                      <p className="daftarProduk-desc-margin">- Rp {this.state.intHargaVoucher.toLocaleString()}</p>
                     </div>
                     <div className="col-lg-1 daftarProduk-arrow">
-                      <img src={Arrow}></img>
+                      <Popup trigger={<img src={Arrow}></img>} position="right center">
+                        <ModalVoucher setVoucher = {this.setVoucher}/>
+                      </Popup>
                     </div>
                   </div>
                 </div>
@@ -86,19 +135,19 @@ export default class Checkout extends Component {
                 <table>
                 <tr>
                   <td><p>Total Produk</p></td>
-                  <td><p>Rp. 600.000</p></td>
+                  <td><p>Rp. 600,000</p></td>
                 </tr>
                 <tr>
                   <td><p>Biaya Pengiriman</p></td>
-                  <td><p>Rp. 27.000</p></td>
+                  <td><p>Rp. {this.state.inthargaPengiriman.toLocaleString()}</p></td>
                 </tr>
                 <tr>
                   <td><p>Voucher</p></td>
-                  <td><p>-Rp. 10.000</p></td>
+                  <td><p>- Rp {this.state.intHargaVoucher.toLocaleString()}</p></td>
                 </tr>
                 <tr>
                   <td><b><p>Total Harga</p></b></td>
-                  <td><b><p>Rp. 617.000</p></b></td>
+                  <td><b><p>Rp. {this.state.intTotalHarga.toLocaleString()}</p></b></td>
                 </tr>
                 </table>
                 <button className='buttonCheckout'>Beli</button>
