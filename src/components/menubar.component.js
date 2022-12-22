@@ -3,6 +3,7 @@ import { Nav } from "react-bootstrap"
 import Logo from "../assets/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList, faCartShopping, faEnvelope, faBagShopping, faUser } from '@fortawesome/free-solid-svg-icons'
+import { NavLink } from "react-router-dom";
 
 export default class MenuBar extends Component {
   render() {
@@ -13,10 +14,18 @@ export default class MenuBar extends Component {
           <h2>Action Figure</h2>
         </div>
         <div className="menubar-list">
-          <Nav.Link href="javascript:alert('not yet implemented')"><FontAwesomeIcon icon={faList}/>Produk</Nav.Link>
-          <Nav.Link href="javascript:alert('not yet implemented')"><FontAwesomeIcon icon={faCartShopping}/>Keranjang Belanja</Nav.Link>
-          <Nav.Link href="javascript:alert('not yet implemented')"><FontAwesomeIcon icon={faEnvelope}/>Request Produk</Nav.Link>
-          <Nav.Link href="javascript:alert('not yet implemented')"><FontAwesomeIcon icon={faBagShopping}/>Pemesanan</Nav.Link>
+          <NavLink to="/">
+            <Nav.Link><FontAwesomeIcon icon={faList}/>Produk</Nav.Link>
+          </NavLink>
+          <NavLink to="/shopping-cart">
+            <Nav.Link><FontAwesomeIcon icon={faCartShopping}/>Keranjang Belanja</Nav.Link>
+          </NavLink>
+          <NavLink to="/request-product">
+            <Nav.Link><FontAwesomeIcon icon={faEnvelope}/>Request Produk</Nav.Link>
+          </NavLink>
+          <NavLink to="/my-order">
+            <Nav.Link><FontAwesomeIcon icon={faBagShopping}/>Pemesanan</Nav.Link>
+          </NavLink>
         </div>
         <div className="menubar-user">
           <div className="d-flex">
