@@ -13,6 +13,7 @@ import Logo from "./assets/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList, faCartShopping, faEnvelope, faBagShopping, faUser } from '@fortawesome/free-solid-svg-icons'
 import { Routes } from "react-router-dom";
+import Checkout from "./components/checkout.component";
 
 class Main extends Component {
   constructor(props) {
@@ -56,6 +57,7 @@ class Main extends Component {
                     className={this.state.activeMenu == "pemesanan" ? "nav-active": ""}>
                       <FontAwesomeIcon icon={faBagShopping}/>Pemesanan
                   </Nav.Link>
+                  <Nav.Link href="#/checkout"><FontAwesomeIcon icon={faBagShopping}/>Checkout - deleted soon</Nav.Link>
               </div>
               <div className="menubar-user">
                 <div className="d-flex">
@@ -72,6 +74,7 @@ class Main extends Component {
             <Routes>
               <Route path="/" element={ <ProductList/> }/>
               <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
+              <Route path="/checkout" element={ <Checkout/> }/>
             </Routes>
           </div>
         </div>

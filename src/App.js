@@ -7,6 +7,8 @@ import React from 'react';
 import DetailProduk from './DetailProduk';
 
 function App() {
+
+
   return (
     <div className="App d-flex flex-row">
       <MenuBar/>
