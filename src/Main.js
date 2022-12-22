@@ -13,7 +13,7 @@ import Logo from "./assets/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList, faCartShopping, faEnvelope, faBagShopping, faUser } from '@fortawesome/free-solid-svg-icons'
 import { Routes } from "react-router-dom";
-import Checkout from "./components/checkout.component";
+import Checkout from "./components/Checkout";
 
 class Main extends Component {
   constructor(props) {
