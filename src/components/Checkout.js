@@ -6,6 +6,7 @@ import Voucher from "../assets/Voucher.png"
 import Popup from 'reactjs-popup';
 import ModalPengiriman from './ModalPengiriman'
 import ModalVoucher from './ModalVoucher'
+import axios from 'axios'
 
 export default class Checkout extends Component {
   constructor(props){
@@ -15,14 +16,37 @@ export default class Checkout extends Component {
       pengiriman: "JNE Reguler",
       imgPengiriman: JNE,
       inthargaPengiriman: 27000,
-      inthargaProduk: 600000,
+      inthargaProduk: 0,
       voucher: "MERDEKA10K",
       intHargaVoucher: 10000,
-      intTotalHarga: 617000
+      intTotalHarga: 0,
+      carts: []
     }
   }
 
-   changePagetoPilihPembayaran = () => {
+  componentDidMount() {
+    this.getCartData()
+  }
+
+  getCartData = () => {
+    axios.get(`http://localhost:3001/carts`)
+    .then(res => {
+      const carts = res.data;
+      this.setState({ carts });
+
+      let totalHargaProduk = 0
+      for(let i = 0; i < carts.length; i++){
+        totalHargaProduk += (carts[i].jumlahBarang * carts[i].product.harga)
+      };
+
+      this.setState({
+        inthargaProduk: totalHargaProduk,
+        intTotalHarga: totalHargaProduk - this.state.intHargaVoucher + this.state.inthargaPengiriman
+      })
+    })
+  }
+
+  changePagetoPilihPembayaran = () => {
     window.location.href = "#/pilih-pembayaran/";
   }
 
@@ -66,23 +90,26 @@ export default class Checkout extends Component {
                 <hr></hr>
 
                 <h5>Daftar Produk</h5>
-                <div className="daftarProduk">
-                  <div className="row justify-content-center">
-                    <div className="col-lg-3 daftarProduk-thumbnailProd">
-                      <img src={actionFigureDummy} alt="actionFigureDummy"></img>
+                {
+                  this.state.carts.map( cart => 
+                    <div key={cart.id} className="daftarProduk my-3">
+                      <div className="row justify-content-center">
+                        <div className="col-lg-3 daftarProduk-thumbnailProd">
+                          <img src={require('../assets/'+cart.product.gambar)} alt={cart.product.gambar}></img>
+                        </div>
+                        <div className="col-lg-6 daftarProduk-desc">
+                          <p className="daftarProduk-descProd-margin">{cart.product.nama}</p>
+                          <p className="daftarProduk-descProd-margin">Rp. {convertToRupiahFormat(cart.product.harga)}</p>
+                        </div>
+                        <div className="col-lg-3 daftarProduk-qty">
+                          <p>x{cart.jumlahBarang}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-lg-6 daftarProduk-desc">
-                      <p className="daftarProduk-descProd-margin">Action Figure Luffy</p>
-                      <p className="daftarProduk-descProd-margin">Rp. 100,000</p>
-                    </div>
-                    <div className="col-lg-3 daftarProduk-qty">
-                      <p>x6</p>
-                    </div>
-                  </div>
-                </div>
-                <br></br>
+                  )
+                }
                 <hr></hr> 
-                   
+                
                 <h5>Pengiriman</h5>
                 <div className="daftarProduk">
                   <div className="row justify-content-center">
@@ -93,7 +120,7 @@ export default class Checkout extends Component {
                       <p>{this.state.pengiriman}</p>
                     </div>
                     <div className="col-lg-5 daftarProduk-desc">
-                      <p className="daftarProduk-desc-margin">Rp. {this.state.inthargaPengiriman.toLocaleString()}</p>
+                      <p className="daftarProduk-desc-margin">Rp. {convertToRupiahFormat(this.state.inthargaPengiriman)}</p>
                     </div>
                     <div className="col-lg-1 daftarProduk-arrow">
                       <Popup 
@@ -107,7 +134,6 @@ export default class Checkout extends Component {
                     </div>
                   </div>
                 </div>
-                <br></br>
                 <hr></hr>
 
                 <h5 >Voucher</h5>
@@ -120,7 +146,7 @@ export default class Checkout extends Component {
                       <p>{this.state.voucher}</p>
                     </div>
                     <div className="col-lg-5 daftarProduk-desc">
-                      <p className="daftarProduk-desc-margin">- Rp {this.state.intHargaVoucher.toLocaleString()}</p>
+                      <p className="daftarProduk-desc-margin">- Rp {convertToRupiahFormat(this.state.intHargaVoucher)}</p>
                     </div>
                     <div className="col-lg-1 daftarProduk-arrow">
                       <Popup trigger={<img src={Arrow} alt="Arrow"></img>} position="right center">
@@ -129,7 +155,6 @@ export default class Checkout extends Component {
                     </div>
                   </div>
                 </div>
-                <br></br>
                 <hr></hr>
             </div>
         </div>
@@ -139,19 +164,19 @@ export default class Checkout extends Component {
                 <table>
                 <tr>
                   <td><p>Total Produk</p></td>
-                  <td><p>Rp. 600,000</p></td>
+                  <td><p>Rp. {convertToRupiahFormat(this.state.inthargaProduk)}</p></td>
                 </tr>
                 <tr>
                   <td><p>Biaya Pengiriman</p></td>
-                  <td><p>Rp. {this.state.inthargaPengiriman.toLocaleString()}</p></td>
+                  <td><p>Rp. {convertToRupiahFormat(this.state.inthargaPengiriman)}</p></td>
                 </tr>
                 <tr>
                   <td><p>Voucher</p></td>
-                  <td><p>- Rp {this.state.intHargaVoucher.toLocaleString()}</p></td>
+                  <td><p>- Rp {convertToRupiahFormat(this.state.intHargaVoucher)}</p></td>
                 </tr>
                 <tr>
                   <td><b><p>Total Harga</p></b></td>
-                  <td><b><p>Rp. {this.state.intTotalHarga.toLocaleString()}</p></b></td>
+                  <td><b><p>Rp. {convertToRupiahFormat(this.state.intTotalHarga)}</p></b></td>
                 </tr>
                 </table>
                 <button className='buttonCheckout' onClick={() => this.changePagetoPilihPembayaran()}>Beli</button>
@@ -161,4 +186,8 @@ export default class Checkout extends Component {
       </div>
     )
   }
+}
+
+const convertToRupiahFormat = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }

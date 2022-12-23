@@ -12,6 +12,7 @@ export default class DetailProduk extends Component {
             harga: 0,
             id: props.idProduk,
             gambar: require("../assets/luffy.png"),
+            gambarProductForAddCart: "",
             jumlahBarang: 0,
             lastCartID: 0
         };
@@ -28,6 +29,7 @@ export default class DetailProduk extends Component {
                 harga: json.harga,
                 id: json.id,
                 gambar: require("../assets/"+json.gambar),
+                gambarProductForAddCart: json.gambar,
                 jumlahBarang: 1
             });
         });
@@ -75,7 +77,7 @@ export default class DetailProduk extends Component {
                     detail: this.state.detail,
                     harga: this.state.harga,
                     stok: this.state.stok,
-                    gambar: this.state.gambar
+                    gambar: this.state.gambarProductForAddCart
                 }
             }),
             headers: {

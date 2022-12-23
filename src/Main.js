@@ -20,6 +20,7 @@ import DetailProduk from "./components/DetailProduk";
 import Checkout from "./components/Checkout";
 import PilihPembayaran from "./components/PilihPembayaran";
 import { Login } from "./components/Login";
+import Pembayaran from "./components/Pembayaran";
 
 function Main() {
   // constructor(props) {
@@ -32,6 +33,8 @@ function Main() {
 
   const [activeMenu, setActiveMenu] = useState("produk")
   const [idProduk, setIdProduk] = useState(0)
+  const [img, setImg] = useState(0)
+  const [noRekening, setNoRekening] = useState(0)
 
   return (
     <HashRouter>
@@ -89,6 +92,8 @@ function Main() {
             <Route path="/checkout" element={ <Checkout/> }/>
             <Route path="/pilih-pembayaran" element={ <PilihPembayaran/> }/>
             <Route path="/login" element={ <Login/> }/>
+            <Route path="/pilih-pembayaran" element={ <PilihPembayaran setImg={setImg} setNoRekening={setNoRekening}/> }/>
+            <Route path={"/pembayaran/"+img+"/"+noRekening} element={ <Pembayaran img={img} noRekening={noRekening}/> }/>
           </Routes>
         </div>
       </div>
