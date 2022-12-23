@@ -85,6 +85,42 @@
         "stok": 150,
         "gambar": "naruto.png"
       }
+    },
+    {
+      "id": 4,
+      "jumlahBarang": 1,
+      "product": {
+        "id": 4,
+        "nama": "Action Figure Boruto",
+        "detail": "Ini adalah action figure boruto asli dari jepang",
+        "harga": 200000,
+        "stok": 10,
+        "gambar": "boruto.png"
+      }
+    },
+    {
+      "id": 5,
+      "jumlahBarang": 1,
+      "product": {
+        "id": 5,
+        "nama": "Action Figure Zoro",
+        "detail": "Ini adalah action figure zoro asli dari jepang",
+        "harga": 130000,
+        "stok": 50,
+        "gambar": "zoro.png"
+      }
+    },
+    {
+      "id": 6,
+      "jumlahBarang": 1,
+      "product": {
+        "id": 6,
+        "nama": "Action Figure Goku Vegeta Super Saiyan",
+        "detail": "Ini adalah action figure goku vegeta mode super saiyan.",
+        "harga": 190000,
+        "stok": 25,
+        "gambar": "gokuVegetaSuperSaiyan.png"
+      }
     }
   ]
 }

@@ -60,17 +60,19 @@ class ShoppingCart extends Component {
   render() {
     return (
       <>
-        <h2>Shopping Cart</h2>
-        <InputGroup className="mb-5">
-          <Form.Control
-            placeholder="Enter name of product"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-          />
-          <Button variant="outline-secondary" id="button-addon2">
-            Find
-          </Button>
-        </InputGroup>
+        <div className="search-product">
+          <h2>Shopping Cart</h2>
+          <InputGroup className="mb-5">
+            <Form.Control
+              placeholder="Enter name of product"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+            />
+            <Button variant="outline-secondary" id="button-addon2">
+              Find
+            </Button>
+          </InputGroup>
+        </div>
         <div className="row justify-content-between align-items-center gap-5">
         {
           this.state.carts.map(cart =>
