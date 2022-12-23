@@ -52,7 +52,7 @@
   "carts": [
     {
       "id": 1,
-      "jumlahBarang": 2,
+      "jumlahBarang": 3,
       "product": {
         "id": 3,
         "nama": "Action Figure Sasuke",
