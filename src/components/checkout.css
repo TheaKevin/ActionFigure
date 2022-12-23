@@ -19,13 +19,6 @@ h5{
     border: 10px;
 }
 
-.checkoutContent {
-    border-radius: 10px;
-    margin: auto;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 15px;
-  }
-
 .checkoutContainerTotal{
     flex: 3;
     border: 10px;
@@ -141,4 +134,21 @@ h5{
 .daftarProduk .daftarProduk-popUpdesc .input {
     width: 200px;
     justify-content: center;
+}
+  
+.daftarProduk .daftarProduk-descCustomWidth1 {
+    padding: 1rem;
+    width: 200px;
+}
+  
+.daftarProduk .daftarProduk-descCustomWidth2 {
+    padding: 1rem;
+    width: 180px;
+}
+  
+.daftarProduk .daftarProduk-thumbnailCustomWidth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
 }
