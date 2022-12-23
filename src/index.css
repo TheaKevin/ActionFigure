@@ -100,9 +100,21 @@ body {
   cursor: pointer;
 }
 
+@media screen and (max-width: 575px){
+  .product-card {
+    height: 38vh;
+  }
+  .product-card .product-thumbnail {
+    height: 16vh !important;
+  }
+  .product-thumbnail img {
+    height: 14vh !important;
+  }
+}
+
 @media screen and (min-width: 576px) and (max-width: 767px){
   .product-card {
-    height: 48vh;
+    height: 40vh;
   }
   .product-card .product-thumbnail {
     height: 20vh !important;
@@ -139,7 +151,7 @@ body {
 
 @media screen and (min-width: 1200px) and (max-width: 1399px){
   .product-card {
-    height: 36vh;
+    height: 45vh;
   }
   .product-card .product-thumbnail {
     height: 18vh !important;
@@ -273,4 +285,90 @@ input#formProductDesc {
   background-color: #fff;
   padding: 1rem 0;
   width: 100%;
+  z-index: 99;
+}
+
+.custom-control-label {
+  font-weight: 400;
+}
+
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+}
+.forgot-password a {
+  color: #167bff;
+}
+
+.or {
+  overflow: hidden;
+  text-align: center;
+  color: #000;
+}
+
+.or:before,
+.or:after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.or:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.or:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+/* adasdsdasdasda */
+.login-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-container form {
+  padding-top: 1rem;
+  width: 25vw;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input {
+  padding: 10px;
+  width: 100%;
+  max-width: inherit;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid black;
+}
+
+.placeholder {
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  padding: 0px 5px;
+  color: black;
+  opacity: 1 !important;
+  transition: 0.3s;
+  pointer-events: none;
+  background-color: #fff !important;
+}
+
+.input:focus + .placeholder {
+  top: -10px;
+  color: black;
+  background-color: #fff;
 }

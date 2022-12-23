@@ -46,17 +46,19 @@ class ShoppingCart extends Component {
   render() {
     return (
       <>
-        <h2>Shopping Cart</h2>
-        <InputGroup className="mb-5">
-          <Form.Control
-            placeholder="Enter name of product"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-          />
-          <Button variant="outline-secondary" id="button-addon2">
-            Find
-          </Button>
-        </InputGroup>
+        <div className="search-product">
+          <h2>Shopping Cart</h2>
+          <InputGroup className="mb-5">
+            <Form.Control
+              placeholder="Enter name of product"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+            />
+            <Button variant="outline-secondary" id="button-addon2">
+              Find
+            </Button>
+          </InputGroup>
+        </div>
         <div className="row justify-content-between align-items-center gap-5">
         {
               this.state.carts.map(cart =>
@@ -72,7 +74,8 @@ class ShoppingCart extends Component {
                         <Button onClick={() => this.deleteCart(cart.id)} variant="outline-danger" className="me-3"><FontAwesomeIcon icon={faTrash}/></Button>
                         <Button variant="outline-secondary" onClick={() => this.updateCart(cart.id, cart.jumlahBarang-1)}>-</Button>
                         <Form.Control
-                          value={cart.jumlahBarang + " pcs"}
+                          type="number"
+                          value={cart.jumlahBarang}
                           aria-label="Recipient's username with two button addons"
                           className="input-stock"
                           readOnly

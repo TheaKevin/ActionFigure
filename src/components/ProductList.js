@@ -28,7 +28,7 @@ function ProductList({setIdProduk}) {
   return (
     <div>
       <div className="search-product">
-      <h2>Product List</h2>
+        <h2>Product List</h2>
         <InputGroup>
           <Form.Control
             placeholder="Find your desired product here"

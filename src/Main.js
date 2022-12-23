@@ -19,6 +19,7 @@ import RequestProduct from "./components/RequestProduct";
 import DetailProduk from "./components/DetailProduk";
 import Checkout from "./components/Checkout";
 import PilihPembayaran from "./components/PilihPembayaran";
+import { Login } from "./components/Login";
 
 function Main() {
   // constructor(props) {
@@ -87,6 +88,7 @@ function Main() {
             <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
             <Route path="/checkout" element={ <Checkout/> }/>
             <Route path="/pilih-pembayaran" element={ <PilihPembayaran/> }/>
+            <Route path="/login" element={ <Login/> }/>
           </Routes>
         </div>
       </div>
