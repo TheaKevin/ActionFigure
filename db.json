@@ -53,7 +53,6 @@
     {
       "id": 1,
       "jumlahBarang": 2,
-      "totalHarga": 300000,
       "product": {
         "id": 3,
         "nama": "Action Figure Sasuke",

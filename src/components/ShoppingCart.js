@@ -11,12 +11,38 @@ class ShoppingCart extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/carts`)
-      .then(res => {
-        const carts = res.data;
-        this.setState({ carts });
-      })
+    this.getCartData()
   }
+
+  updateCart = (id, jumlahBarang) => {
+    if (jumlahBarang > 0) {
+      axios.patch(`http://localhost:3001/carts/`+id, {
+        jumlahBarang: jumlahBarang
+      })
+      .then(
+        this.getCartData()
+      )
+    }else{
+      alert("Jumlah barang yang dibeli tidak boleh kurang dari 1!")
+    }
+  }
+
+  getCartData = () => {
+    axios.get(`http://localhost:3001/carts`)
+    .then(res => {
+      const carts = res.data;
+      this.setState({ carts });
+    })
+  }
+
+  deleteCart = (id) => {
+    axios.delete(`http://localhost:3001/carts/`+id)
+    .then(alert("Barang berhasil dihapus dari keranjang belanja!"))
+    .then(
+      this.getCartData()
+    )
+  }
+
   render() {
     return (
       <>
@@ -37,22 +63,23 @@ class ShoppingCart extends Component {
                 <div key={cart.id} className="col-lg-12 chart-product">
                   <div className="row gap-3">
                     <div className="col-lg-4 chart-product-thumbnail">
-                      <img src={Luffy}></img>
+                      <img src={require('../assets/'+cart.product.gambar)}></img>
                     </div>
                     <div className="col-lg-7 chart-product-summary">
                       <h2 className="mb-3">{cart.product.nama}</h2>
                       <p className="product-description">{cart.product.detail}</p>
                       <InputGroup className="mb-3">
-                        <Button variant="outline-danger" className="me-3"><FontAwesomeIcon icon={faTrash}/></Button>
-                        <Button variant="outline-secondary">-</Button>
+                        <Button onClick={() => this.deleteCart(cart.id)} variant="outline-danger" className="me-3"><FontAwesomeIcon icon={faTrash}/></Button>
+                        <Button variant="outline-secondary" onClick={() => this.updateCart(cart.id, cart.jumlahBarang-1)}>-</Button>
                         <Form.Control
-                          placeholder={cart.jumlahBarang + " pcs"}
+                          value={cart.jumlahBarang + " pcs"}
                           aria-label="Recipient's username with two button addons"
                           className="input-stock"
+                          readOnly
                         />
-                        <Button variant="outline-success">+</Button>
+                        <Button variant="outline-success" onClick={() => this.updateCart(cart.id, cart.jumlahBarang+1)}>+</Button>
                       </InputGroup>
-                      <p className="product-price">{"Total: Rp " + convertToRupiahFormat(cart.product.harga) + " x " + cart.jumlahBarang + " = Rp " + convertToRupiahFormat(cart.totalHarga)}</p>
+                      <p className="product-price">{"Total: Rp " + convertToRupiahFormat(cart.product.harga) + " x " + cart.jumlahBarang + " = Rp " + convertToRupiahFormat(cart.product.harga * cart.jumlahBarang)}</p>
 
                     </div>
                   </div>
