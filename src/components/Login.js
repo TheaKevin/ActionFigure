@@ -1,4 +1,23 @@
+import { useNavigate } from "react-router-dom";
+
 export const Login = () => {
+  const navigate = useNavigate()
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget)
+    const wronguseralert = document.getElementById('wrongusername')
+
+    if (formData.get("email") == "user" && formData.get("password") == "user") {
+      localStorage.setItem("info", "true")
+      localStorage.setItem("email", formData.get("email"))
+      window.location.href = "/"
+    }
+
+    else {
+      wronguseralert.classList.remove("d-none");
+    }
+  }
   return (
     <>
       <div className="text-center">
@@ -6,7 +25,10 @@ export const Login = () => {
         <h3>Action Figure</h3>
       </div>
       <div className="login-container">
-        <form>
+        <form onSubmit={handleLogin}>
+            <div id="wrongusername" class="alert alert-danger d-none" role="alert">
+              Incorrect username or password.
+            </div>
             <div class="input-group mb-3">
               <input type="text" class="input" name="email"/>
               <label class="placeholder">Email</label>    
@@ -34,7 +56,7 @@ export const Login = () => {
             <p className="forgot-password text-right">
               Forgot <a href="#">password?</a>
             </p>
-            <button type="submit" className="btn btn-primary" onClick={() => window.location.href = "/#/"}>
+            <button type="submit" className="btn btn-primary">
               Masuk
             </button>
           </div>
