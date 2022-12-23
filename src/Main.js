@@ -44,6 +44,7 @@ function Main() {
   const handleLogOut = () => {
     localStorage.removeItem("info")
     localStorage.removeItem("email")
+    setChange(!change)
     window.location.href = "/"
   }
 
@@ -53,13 +54,12 @@ function Main() {
     } else {
       setLogin(false);
     }
-  })
+  }, [change])
 
-  console.log(isLoggedIn)
   return (
     <HashRouter>
       <div className="d-none">
-        {isLoggedIn == false ? window.location.href = '#/login' : window.location.href = '#/'}
+        {isLoggedIn == false ? window.location.href = '#/login' : null}
       </div>
       <div className="d-flex justify-content-center">
         <div>
@@ -113,11 +113,9 @@ function Main() {
           <Routes>
             <Route path="/" element={ <ProductList setIdProduk={setIdProduk} /> }/>
             <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
-            <Route path="/request-product" element={ <RequestProduct/> }/>
             <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
             <Route path="/checkout" element={ <Checkout/> }/>
-            <Route path="/pilih-pembayaran" element={ <PilihPembayaran/> }/>
-            <Route path="/login" element={ <Login/> }/>
+            <Route path="/login" element={ <Login change={change} setChange={setChange} /> }/>
             <Route path="/pilih-pembayaran" element={ <PilihPembayaran setImg={setImg} setNoRekening={setNoRekening}/> }/>
             <Route path={"/pembayaran/"+img+"/"+noRekening} element={ <Pembayaran img={img} noRekening={noRekening}/> }/>
             <Route path="/request-product" element={ <RequestProduct/> }/>

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export const Login = () => {
+export const Login = (props) => {
   const navigate = useNavigate()
   const handleLogin = (e) => {
     e.preventDefault();
@@ -11,6 +11,7 @@ export const Login = () => {
     if (formData.get("email") == "user" && formData.get("password") == "user") {
       localStorage.setItem("info", "true")
       localStorage.setItem("email", formData.get("email"))
+      props.setChange(!props.change)
       window.location.href = "/"
     }
 
