@@ -48,11 +48,9 @@ h5{
 }
 
 .buttonTerapkan{
-    width: 150px;
     background-color: #467FD0;
     border-color: #467FD0;
     color: #ffffff;
-    padding: 10px 5;
     font-size: 18px;
     border-radius: 16px;
     cursor: pointer;
@@ -61,12 +59,18 @@ h5{
 .daftarProduk {
     display: flex;
 }
+
+.daftarProduk .row{
+    width: 100%;
+}
   
 .daftarProduk .daftarProduk-thumbnailProd {
     background-color: #FFC107;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 144px;
+    height: 112px;
 }
   
 .daftarProduk .daftarProduk-thumbnailProd img {
@@ -97,7 +101,7 @@ h5{
 }
   
 .daftarProduk-descProd-margin {
-    margin-right: 3px;
+    margin-right: 10px;
     margin-left:30px;
 }
   
@@ -123,32 +127,26 @@ h5{
     border-style: solid;
     border-width: thin;
     cursor: pointer;
-}
-  
-.daftarProduk .daftarProduk-popUpdesc {
-    padding: 1rem;
-    width: 210px;
-}
-  
-  
-.daftarProduk .daftarProduk-popUpdesc .input {
-    width: 200px;
-    justify-content: center;
+    width: 450px;
 }
   
 .daftarProduk .daftarProduk-descCustomWidth1 {
-    padding: 1rem;
-    width: 200px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+}
+  
+.daftarProduk .daftarProduk-descCustomWidth1 input {
+    width: 90%;
 }
   
 .daftarProduk .daftarProduk-descCustomWidth2 {
-    padding: 1rem;
-    width: 180px;
+    padding-top: 1rem;
 }
   
 .daftarProduk .daftarProduk-thumbnailCustomWidth {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
+    padding-left: 1rem;
 }

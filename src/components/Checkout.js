@@ -93,15 +93,15 @@ export default class Checkout extends Component {
                 {
                   this.state.carts.map( cart => 
                     <div key={cart.id} className="daftarProduk my-3">
-                      <div className="row justify-content-center">
-                        <div className="col-lg-3 daftarProduk-thumbnailProd">
+                      <div className="row">
+                        <div className="col-lg-5 daftarProduk-thumbnailProd">
                           <img src={require('../assets/'+cart.product.gambar)} alt={cart.product.gambar}></img>
                         </div>
-                        <div className="col-lg-6 daftarProduk-desc">
+                        <div className="col-lg-5 daftarProduk-desc">
                           <p className="daftarProduk-descProd-margin">{cart.product.nama}</p>
                           <p className="daftarProduk-descProd-margin">Rp. {convertToRupiahFormat(cart.product.harga)}</p>
                         </div>
-                        <div className="col-lg-3 daftarProduk-qty">
+                        <div className="col-lg-2 daftarProduk-qty">
                           <p>x{cart.jumlahBarang}</p>
                         </div>
                       </div>
@@ -112,7 +112,7 @@ export default class Checkout extends Component {
                 
                 <h5>Pengiriman</h5>
                 <div className="daftarProduk">
-                  <div className="row justify-content-center">
+                  <div className="row">
                     <div className="col-lg-3 daftarProduk-thumbnail">
                       <img src={this.state.imgPengiriman} alt="Pengiriman"></img>
                     </div>
@@ -138,7 +138,7 @@ export default class Checkout extends Component {
 
                 <h5 >Voucher</h5>
                 <div className="daftarProduk">
-                  <div className="row justify-content-center">
+                  <div className="row">
                     <div className="col-lg-3 daftarProduk-thumbnail">
                       <img src={Voucher} alt="Voucher"></img>
                     </div>
