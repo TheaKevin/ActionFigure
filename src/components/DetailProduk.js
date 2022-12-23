@@ -13,7 +13,6 @@ export default class DetailProduk extends Component {
             id: props.idProduk,
             gambar: require("../assets/luffy.png"),
             jumlahBarang: 0,
-            subTotal: 0,
             lastCartID: 0
         };
     }
@@ -29,8 +28,7 @@ export default class DetailProduk extends Component {
                 harga: json.harga,
                 id: json.id,
                 gambar: require("../assets/"+json.gambar),
-                jumlahBarang: 1,
-                subTotal: json.harga
+                jumlahBarang: 1
             });
         });
 
@@ -46,8 +44,7 @@ export default class DetailProduk extends Component {
     plus = () => {
         if (this.state.jumlahBarang < this.state.stok) {
             this.setState({
-                jumlahBarang: this.state.jumlahBarang + 1,
-                subTotal: this.state.subTotal + this.state.harga
+                jumlahBarang: this.state.jumlahBarang + 1
             });
         }
     }
@@ -55,8 +52,7 @@ export default class DetailProduk extends Component {
     minus = () => {
         if (this.state.jumlahBarang > 1) {
             this.setState({
-                jumlahBarang: this.state.jumlahBarang - 1,
-                subTotal: this.state.subTotal - this.state.harga
+                jumlahBarang: this.state.jumlahBarang - 1
             });
         }
     }
@@ -73,7 +69,6 @@ export default class DetailProduk extends Component {
             body: JSON.stringify({
                 id: this.state.lastCartID,
                 jumlahBarang: this.state.jumlahBarang,
-                totalHarga: this.state.subTotal,
                 product: {
                     id: this.state.id,
                     nama: this.state.nama,
