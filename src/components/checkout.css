@@ -142,3 +142,20 @@ h5{
     width: 200px;
     justify-content: center;
 }
+  
+.daftarProduk .daftarProduk-descCustomWidth1 {
+    padding: 1rem;
+    width: 200px;
+}
+  
+.daftarProduk .daftarProduk-descCustomWidth2 {
+    padding: 1rem;
+    width: 180px;
+}
+  
+.daftarProduk .daftarProduk-thumbnailCustomWidth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
