@@ -12,13 +12,13 @@ export default class ModalPengiriman extends Component {
     <div className="daftarProduk" onClick={()=> setPengiriman("JNE Reguler",JNE,27000)}>
         <div className="popUp">
             <div className="row justify-content-center">
-                <div className="col-lg-2 daftarProduk-thumbnail">
+                <div className="col-lg-2 daftarProduk-thumbnailCustomWidth">
                     <img src={JNE}></img>
                 </div>
-                <div className="col-lg-5 daftarProduk-desc">
+                <div className="col-lg-5 daftarProduk-descCustomWidth1">
                     <p>JNE Reguler</p>
                 </div>
-                <div className="col-lg-4 daftarProduk-desc">
+                <div className="col-lg-4 daftarProduk-descCustomWidth2">
                     <p>Rp. 27.000</p>
                 </div>
             </div>
@@ -28,13 +28,13 @@ export default class ModalPengiriman extends Component {
     <div className="daftarProduk" onClick={()=>setPengiriman("SiCepat REG",SiCepat,30000)}>
         <div className="popUp">
             <div className="row justify-content-center">
-                <div className="col-lg-2 daftarProduk-thumbnail">
+                <div className="col-lg-2 daftarProduk-thumbnailCustomWidth">
                     <img src={SiCepat}></img>
                 </div>
-                <div className="col-lg-5 daftarProduk-desc">
+                <div className="col-lg-5 daftarProduk-descCustomWidth1">
                     <p>SiCepat REG</p>
                 </div>
-                <div className="col-lg-4 daftarProduk-desc">
+                <div className="col-lg-4 daftarProduk-descCustomWidth2">
                     <p >Rp. 30.000</p>
                 </div>
             </div>
@@ -44,13 +44,13 @@ export default class ModalPengiriman extends Component {
     <div className="daftarProduk" onClick={()=>setPengiriman("JNT Reguler",JNT,32000)}>
         <div className="popUp">
             <div className="row justify-content-center">
-                <div className="col-lg-2 daftarProduk-thumbnail">
+                <div className="col-lg-2 daftarProduk-thumbnailCustomWidth">
                     <img src={JNT}></img>
                 </div>
-                <div className="col-lg-5 daftarProduk-desc">
+                <div className="col-lg-5 daftarProduk-descCustomWidth1">
                     <p>JNT Reguler</p>
                 </div>
-                <div className="col-lg-4 daftarProduk-desc">
+                <div className="col-lg-4 daftarProduk-descCustomWidth2">
                     <p >Rp. 32.000</p>
                 </div>
             </div>
