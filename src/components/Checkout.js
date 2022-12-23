@@ -22,8 +22,8 @@ export default class Checkout extends Component {
     }
   }
 
-   changePagetoPilihPembayaran = () => {
-    window.location.href = "#/pilih-pembayaran/";
+  changePagetoPilihPembayaran = () => {
+    window.location.href = "#/pilih-pembayaran";
   }
 
   setPopupOpened = (status) => {
