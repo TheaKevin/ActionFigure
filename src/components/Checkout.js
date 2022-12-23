@@ -6,6 +6,7 @@ import Voucher from "../assets/Voucher.png"
 import Popup from 'reactjs-popup';
 import ModalPengiriman from './ModalPengiriman'
 import ModalVoucher from './ModalVoucher'
+import axios from 'axios'
 
 export default class Checkout extends Component {
   constructor(props){
@@ -18,11 +19,24 @@ export default class Checkout extends Component {
       inthargaProduk: 600000,
       voucher: "MERDEKA10K",
       intHargaVoucher: 10000,
-      intTotalHarga: 617000
+      intTotalHarga: 617000,
+      carts: []
     }
   }
 
-   changePagetoPilihPembayaran = () => {
+  componentDidMount() {
+    this.getCartData()
+  }
+
+  getCartData = () => {
+    axios.get(`http://localhost:3001/carts`)
+    .then(res => {
+      const carts = res.data;
+      this.setState({ carts });
+    })
+  }
+
+  changePagetoPilihPembayaran = () => {
     window.location.href = "#/pilih-pembayaran/";
   }
 
@@ -66,23 +80,26 @@ export default class Checkout extends Component {
                 <hr></hr>
 
                 <h5>Daftar Produk</h5>
-                <div className="daftarProduk">
-                  <div className="row justify-content-center">
-                    <div className="col-lg-3 daftarProduk-thumbnailProd">
-                      <img src={actionFigureDummy} alt="actionFigureDummy"></img>
+                {
+                  this.state.carts.map( cart => 
+                    <div key={cart.id} className="daftarProduk my-3">
+                      <div className="row justify-content-center">
+                        <div className="col-lg-3 daftarProduk-thumbnailProd">
+                          <img src={require('../assets/'+cart.product.gambar)} alt={cart.product.gambar}></img>
+                        </div>
+                        <div className="col-lg-6 daftarProduk-desc">
+                          <p className="daftarProduk-descProd-margin">{cart.product.nama}</p>
+                          <p className="daftarProduk-descProd-margin">Rp. {convertToRupiahFormat(cart.product.harga)}</p>
+                        </div>
+                        <div className="col-lg-3 daftarProduk-qty">
+                          <p>x{cart.jumlahBarang}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-lg-6 daftarProduk-desc">
-                      <p className="daftarProduk-descProd-margin">Action Figure Luffy</p>
-                      <p className="daftarProduk-descProd-margin">Rp. 100,000</p>
-                    </div>
-                    <div className="col-lg-3 daftarProduk-qty">
-                      <p>x6</p>
-                    </div>
-                  </div>
-                </div>
-                <br></br>
+                  )
+                }
                 <hr></hr> 
-                   
+                
                 <h5>Pengiriman</h5>
                 <div className="daftarProduk">
                   <div className="row justify-content-center">
@@ -107,7 +124,6 @@ export default class Checkout extends Component {
                     </div>
                   </div>
                 </div>
-                <br></br>
                 <hr></hr>
 
                 <h5 >Voucher</h5>
@@ -129,7 +145,6 @@ export default class Checkout extends Component {
                     </div>
                   </div>
                 </div>
-                <br></br>
                 <hr></hr>
             </div>
         </div>
@@ -161,4 +176,8 @@ export default class Checkout extends Component {
       </div>
     )
   }
+}
+
+const convertToRupiahFormat = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }

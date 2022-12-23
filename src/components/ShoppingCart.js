@@ -63,7 +63,7 @@ class ShoppingCart extends Component {
                 <div key={cart.id} className="col-lg-12 chart-product">
                   <div className="row gap-3">
                     <div className="col-lg-4 chart-product-thumbnail">
-                      <img src={require('../assets/'+cart.product.gambar)}></img>
+                      <img src={require('../assets/'+cart.product.gambar)} alt={cart.product.gambar}></img>
                     </div>
                     <div className="col-lg-7 chart-product-summary">
                       <h2 className="mb-3">{cart.product.nama}</h2>
