@@ -2,6 +2,8 @@ import React, { Component, useEffect, useState } from "react"
 import Luffy from "../assets/luffy.png"
 import axios from 'axios'
 import { InputGroup, Form, Button } from "react-bootstrap"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 function ProductList({setIdProduk}) {
   const [products, setProducts] = useState([])
@@ -25,31 +27,33 @@ function ProductList({setIdProduk}) {
 
   return (
     <div>
-      <h2>Product List</h2>
-      <InputGroup className="mb-5">
-        <Form.Control
-          placeholder="Enter name of product"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <Button variant="outline-secondary" id="button-addon2">
-          Find
-        </Button>
-      </InputGroup>
+      <div className="search-product">
+        <h2>Product List</h2>
+        <InputGroup>
+          <Form.Control
+            placeholder="Find your desired product here"
+            aria-label="Find your desired product here"
+            aria-describedby="basic-addon2"
+          />
+          <Button variant="outline-secondary" id="button-addon2">
+          <FontAwesomeIcon icon={faMagnifyingGlass}/>
+          </Button>
+        </InputGroup>
+      </div>
       <div className="product-list">
         <div className="row justify-content-center">
           {
             products.map(product =>
-              <a onClick={() => changePage(product.id)} key={product.id} className="product-card col-lg-5">
+              <a onClick={() => changePage(product.id)} key={product.id} className="product-card col-xl-3 col-lg-4 col-sm-12 col-md-8">
                 <div className="product-thumbnail">
                   <img src={require('../assets/'+product.gambar)} alt={product.gambar}></img>
                 </div>
-                <div className="product-summary d-flex flex-column justify-content-between">
+                <div className="product-summary">
                   <div>
                     <h3>{product.nama}</h3>
+                    <p className="product-price"> Rp {convertToRupiahFormat(product.harga)}</p>
                     <p className="product-description">{product.detail}</p>
                   </div>
-                  <p className="product-price">Rp {convertToRupiahFormat(product.harga)}</p>
                 </div>
               </a>
             )

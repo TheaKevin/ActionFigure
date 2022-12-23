@@ -77,7 +77,6 @@ body {
   width: 100%;
   z-index: 1;
   padding: 1rem 3rem;
-  overflow-x: hidden;
 }
 
 .product-list {
@@ -85,17 +84,89 @@ body {
 }
 
 .product-list div {
-  gap: 3rem;
+  gap: 3.5rem;
 }
 
 .product-card {
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.01), 0 4px 4px rgba(0, 0, 0, 0.02),
+    0 8px 8px rgba(0, 0, 0, 0.03), 0 18px 18px rgba(0, 0, 0, 0.04),
+    0 28px 28px rgba(0, 0, 0, 0.05), 0 38px 38px rgba(0, 0, 0, 0.06);
   transition: all ease 0.5s;
-  border-radius: 20px;
-  height: 425px;
+  border-radius: 8px;
+  height: 50vh;
   padding: 0 !important;
   color: black;
   text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 575px){
+  .product-card {
+    height: 38vh;
+  }
+  .product-card .product-thumbnail {
+    height: 16vh !important;
+  }
+  .product-thumbnail img {
+    height: 14vh !important;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px){
+  .product-card {
+    height: 40vh;
+  }
+  .product-card .product-thumbnail {
+    height: 20vh !important;
+  }
+  .product-thumbnail img {
+    height: 18vh !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px){
+  .product-card {
+    height: 32vh;
+  }
+  .product-card .product-thumbnail {
+    height: 14vh !important;
+  }
+  .product-thumbnail img {
+    height: 12vh !important;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px){
+  .product-card {
+    height: 35vh;
+  }
+  .product-card .product-thumbnail {
+    height: 16vh !important;
+  }
+  .product-thumbnail img {
+    height: 14vh !important;
+  }
+
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399px){
+  .product-card {
+    height: 45vh;
+  }
+  .product-card .product-thumbnail {
+    height: 18vh !important;
+  }
+  .product-thumbnail img {
+    height: 16vh !important;
+  }
+
+}
+
+@media screen and (min-width: 1400px) {
+  .product-card {
+    height: 41vh;
+  }
+
 }
 
 .product-card:hover {
@@ -110,28 +181,36 @@ body {
   align-items: center;
   overflow: hidden;
   background-color: #FFC107;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  height: 23vh;
 }
 
 .product-thumbnail img {
   flex-shrink: 0;
-  height: 186px;
+  height: 20vh;
   overflow: hidden;
 }
 
 .product-summary {
   padding: 1rem;
   padding-bottom: 0;
-  height: 239px;
 }
 
 .product-summary h3 {
-  font-size: 20px;
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .product-description {
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 300;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -142,8 +221,8 @@ body {
 }
 
 .product-price {
-  font-weight: bolder;
-  font-size: 24px;
+  font-weight: 800;
+  font-size: 21px;
 }
 
 .chart-product {
@@ -198,4 +277,98 @@ input#formProductDesc {
   width: 200px;
   display: inline-flex;
   margin: 0 .5rem;
+}
+
+.search-product {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 1rem 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.custom-control-label {
+  font-weight: 400;
+}
+
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+}
+.forgot-password a {
+  color: #167bff;
+}
+
+.or {
+  overflow: hidden;
+  text-align: center;
+  color: #000;
+}
+
+.or:before,
+.or:after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.or:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.or:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+/* adasdsdasdasda */
+.login-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-container form {
+  padding-top: 1rem;
+  width: 25vw;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input {
+  padding: 10px;
+  width: 100%;
+  max-width: inherit;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid black;
+}
+
+.placeholder {
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  padding: 0px 5px;
+  color: black;
+  opacity: 1 !important;
+  transition: 0.3s;
+  pointer-events: none;
+  background-color: #fff !important;
+}
+
+.input:focus + .placeholder {
+  top: -10px;
+  color: black;
+  background-color: #fff;
 }

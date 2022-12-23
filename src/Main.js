@@ -19,6 +19,7 @@ import RequestProduct from "./components/RequestProduct";
 import DetailProduk from "./components/DetailProduk";
 import Checkout from "./components/Checkout";
 import PilihPembayaran from "./components/PilihPembayaran";
+import { Login } from "./components/Login";
 import Pembayaran from "./components/Pembayaran";
 
 function Main() {
@@ -86,8 +87,11 @@ function Main() {
           <Routes>
             <Route path="/" element={ <ProductList setIdProduk={setIdProduk} /> }/>
             <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
+            <Route path="/request-product" element={ <RequestProduct/> }/>
             <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
             <Route path="/checkout" element={ <Checkout/> }/>
+            <Route path="/pilih-pembayaran" element={ <PilihPembayaran/> }/>
+            <Route path="/login" element={ <Login/> }/>
             <Route path="/pilih-pembayaran" element={ <PilihPembayaran setImg={setImg} setNoRekening={setNoRekening}/> }/>
             <Route path={"/pembayaran/"+img+"/"+noRekening} element={ <Pembayaran img={img} noRekening={noRekening}/> }/>
           </Routes>
