@@ -13,7 +13,7 @@ export default class ModalPengiriman extends Component {
         <div className="popUp">
             <div className="row justify-content-center">
                 <div className="col-lg-2 daftarProduk-thumbnailCustomWidth">
-                    <img src={JNE}></img>
+                    <img src={JNE} alt="JNE"></img>
                 </div>
                 <div className="col-lg-5 daftarProduk-descCustomWidth1">
                     <p>JNE Reguler</p>
@@ -29,7 +29,7 @@ export default class ModalPengiriman extends Component {
         <div className="popUp">
             <div className="row justify-content-center">
                 <div className="col-lg-2 daftarProduk-thumbnailCustomWidth">
-                    <img src={SiCepat}></img>
+                    <img src={SiCepat} alt="SiCepat"></img>
                 </div>
                 <div className="col-lg-5 daftarProduk-descCustomWidth1">
                     <p>SiCepat REG</p>
@@ -45,7 +45,7 @@ export default class ModalPengiriman extends Component {
         <div className="popUp">
             <div className="row justify-content-center">
                 <div className="col-lg-2 daftarProduk-thumbnailCustomWidth">
-                    <img src={JNT}></img>
+                    <img src={JNT} alt="JNT"></img>
                 </div>
                 <div className="col-lg-5 daftarProduk-descCustomWidth1">
                     <p>JNT Reguler</p>

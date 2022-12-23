@@ -18,6 +18,7 @@ import { Routes } from "react-router-dom";
 import RequestProduct from "./components/RequestProduct";
 import DetailProduk from "./components/DetailProduk";
 import Checkout from "./components/Checkout";
+import PilihPembayaran from "./components/PilihPembayaran";
 
 function Main() {
   // constructor(props) {
@@ -84,6 +85,7 @@ function Main() {
             <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
             <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
             <Route path="/checkout" element={ <Checkout/> }/>
+            <Route path="/pilih-pembayaran" element={ <PilihPembayaran/> }/>
           </Routes>
         </div>
       </div>
