@@ -24,7 +24,7 @@ function ProductList({setIdProduk}) {
   }
 
   return (
-    <div>
+    <div style={{paddingBottom:"1rem"}}>
       <h2>Product List</h2>
       <InputGroup className="mb-5">
         <Form.Control

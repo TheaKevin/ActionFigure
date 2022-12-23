@@ -14,7 +14,7 @@ const changePagetoPembayaran = (img,noRekening) => {
    }
 
     return (
-        <div>
+        <div style={{paddingBottom:"1rem"}}>
             <h2>Pilih Pembayaran</h2>
             <br></br>
     
