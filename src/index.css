@@ -76,7 +76,7 @@ body {
 .content {
   width: 100%;
   z-index: 1;
-  padding: 1rem 3rem;
+  padding: 1rem 3rem 0;
 }
 
 .product-list {
@@ -277,6 +277,14 @@ input#formProductDesc {
   width: 200px;
   display: inline-flex;
   margin: 0 .5rem;
+}
+
+.totalHargaCart{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
 }
 
 .search-product {

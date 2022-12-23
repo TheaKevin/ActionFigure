@@ -77,7 +77,7 @@ export default class Checkout extends Component {
   render(){
     console.log(this.state.popupOpened)
     return (
-      <div>
+      <div style={{paddingBottom:"1rem"}}>
       <h2>Detail Pembelian</h2>
       <br></br>
       <div className='checkout'>

@@ -13,7 +13,7 @@ constructor(props){
 }
 
 render() {
-    return (<div>
+    return (<div style={{paddingBottom:"1rem"}}>
         <h2>Pembayaran</h2>
         <br></br>
         <div className='onePage'>

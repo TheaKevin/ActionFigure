@@ -26,7 +26,7 @@ function ProductList({setIdProduk}) {
   }
 
   return (
-    <div>
+    <div style={{paddingBottom:"1rem"}}>
       <div className="search-product">
         <h2>Product List</h2>
         <InputGroup>
