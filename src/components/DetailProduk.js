@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap';
 
@@ -59,13 +60,64 @@ export default class DetailProduk extends Component {
         }
     }
 
-    submit = (e) => {
-        e.preventDefault();
-
+    beliLangsung = () => {
         this.setState({
             stok: this.state.stok - this.state.jumlahBarang
         });
 
+        fetch('http://localhost:3001/autoCheckout/1', {
+            method: 'PUT',
+            body: JSON.stringify({
+                id: 1,
+                jumlahBarang: this.state.jumlahBarang,
+                product: {
+                    id: this.state.id,
+                    nama: this.state.nama,
+                    detail: this.state.detail,
+                    harga: this.state.harga,
+                    stok: this.state.stok,
+                    gambar: this.state.gambarProductForAddCart
+                }
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then((response) => response.json())
+        .then(() => {
+            window.location.href = "#/AutoCheckout";
+        })
+        .catch((err) => console.log(err));
+    }
+
+    submit = (e) => {
+        e.preventDefault();
+
+        this.validasiCarts();
+    }
+
+    validasiCarts = () => {
+        let idCarts = 0;
+        let jumlahBarang = 0;
+
+        fetch('http://localhost:3001/carts?product.id='+this.state.id)
+        .then((response) => response.json())
+        .then((json) => {
+            if(json.length != 0){
+                idCarts = json[0].id
+                jumlahBarang = json[0].jumlahBarang
+            }
+        })
+        .then( () => {
+            if(idCarts === 0) {
+                this.postCarts();
+            } else {
+                this.patchCarts(idCarts, jumlahBarang);
+            }
+        });
+    }
+
+    postCarts = () => {
         fetch('http://localhost:3001/carts', {
             method: 'POST',
             body: JSON.stringify({
@@ -84,8 +136,14 @@ export default class DetailProduk extends Component {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
-        .then((response) => response.json())
-        .then((json) => console.log(json))
+        .then(alert("Barang berhasil dimasukkan kedalam cart!"))
+        .catch((err) => console.log(err));
+    }
+
+    patchCarts = (idCarts, jumlahBarang) => {
+        axios.patch(`http://localhost:3001/carts/`+idCarts, {
+            jumlahBarang: jumlahBarang+this.state.jumlahBarang
+        })
         .then(alert("Barang berhasil dimasukkan kedalam cart!"))
         .catch((err) => console.log(err));
     }
@@ -188,7 +246,8 @@ export default class DetailProduk extends Component {
                                 textAlign: "center",
                                 border: "none",
                                 color: "white"
-                            }} type='submit'>Beli Langsung</Button>
+                            }} type='button'
+                            onClick={() => this.beliLangsung()}>Beli Langsung</Button>
                         </Form.Group>
                     </Form>
                 </div>
