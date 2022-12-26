@@ -66,7 +66,7 @@ function Main() {
     return (
       <>
         <HashRouter>
-          <div className="d-flex justify-content-center">
+          <div className="d-flex">
             <div>
               <Nav className="flex-column">
                 <div className="d-flex align-items-center menubar-brand">
@@ -75,7 +75,7 @@ function Main() {
                 </div>
                 <div className="menubar-list">
                     <Nav.Link 
-                      exact href="#/" 
+                      href="#/" 
                       onClick={() => setActiveMenu("produk")} 
                       className={activeMenu == "produk" ? "nav-active": ""}>
                         <FontAwesomeIcon icon={faList}/>Produk
