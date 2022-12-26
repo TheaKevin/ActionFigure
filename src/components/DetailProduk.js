@@ -92,7 +92,7 @@ export default class DetailProduk extends Component {
 
     render() {
         return (
-            <div className='mx-5'>
+            <div className='mx-5' style={{paddingBottom:"1rem"}}>
                 <h1 className='mb-3'>Detail Produk</h1>
 
                 <div className='d-flex flex-row mb-5'>

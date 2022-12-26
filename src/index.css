@@ -282,6 +282,14 @@ input#formProductDesc {
   margin: 0 .5rem;
 }
 
+.totalHargaCart{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+}
+
 .search-product {
   position: sticky;
   top: 0;

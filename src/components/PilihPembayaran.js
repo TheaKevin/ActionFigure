@@ -7,14 +7,14 @@ import BCA from '../assets/BCA.png'
 
 function PilihPembayaran({setImg,setNoRekening})  {
 
-const changePagetoPembayaran = (img,noRekening) => {
-    setImg(img);
-    setNoRekening(noRekening);
-     window.location.href = "#/pembayaran/"+img+"/"+noRekening;
-   }
+    const changePagetoPembayaran = (img,noRekening) => {
+        setImg(img);
+        setNoRekening(noRekening);
+        window.location.href = "#/pembayaran/"+img+"/"+noRekening;
+    }
 
     return (
-        <div>
+        <div style={{paddingBottom:"1rem"}}>
             <h2>Pilih Pembayaran</h2>
             <br></br>
     
