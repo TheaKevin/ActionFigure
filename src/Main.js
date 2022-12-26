@@ -74,7 +74,7 @@ function Main() {
                 </div>
                 <div className="menubar-list">
                     <Nav.Link 
-                      exact href="#/" 
+                      href="#/" 
                       onClick={() => setActiveMenu("produk")} 
                       className={activeMenu == "produk" ? "nav-active": ""}>
                         <FontAwesomeIcon icon={faList}/>Produk
