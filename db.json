@@ -87,54 +87,31 @@
         "stok": 100,
         "gambar": "luffy.png"
       }
-    },
+    }
+  ],
+  "checkouts": [
     {
-      "id": 3,
-      "jumlahBarang": 4,
-      "product": {
-        "id": 2,
-        "nama": "Action Figure Naruto",
-        "detail": "Ini adalah action figure naruto asli dari jepang",
-        "harga": 175000,
-        "stok": 150,
-        "gambar": "naruto.png"
-      }
-    },
-    {
-      "id": 4,
-      "jumlahBarang": 1,
-      "product": {
-        "id": 4,
-        "nama": "Action Figure Boruto",
-        "detail": "Ini adalah action figure boruto asli dari jepang",
-        "harga": 200000,
-        "stok": 10,
-        "gambar": "boruto.png"
-      }
-    },
-    {
-      "id": 5,
-      "jumlahBarang": 1,
-      "product": {
-        "id": 5,
-        "nama": "Action Figure Zoro",
-        "detail": "Ini adalah action figure zoro asli dari jepang",
-        "harga": 130000,
-        "stok": 50,
-        "gambar": "zoro.png"
-      }
-    },
-    {
-      "id": 6,
-      "jumlahBarang": 1,
-      "product": {
-        "id": 6,
-        "nama": "Action Figure Goku Vegeta Super Saiyan",
-        "detail": "Ini adalah action figure goku vegeta mode super saiyan.",
-        "harga": 190000,
-        "stok": 25,
-        "gambar": "gokuVegetaSuperSaiyan.png"
-      }
+      "id": 1,
+      "cart": [
+        {
+          "id": 2,
+          "jumlahBarang": 4,
+          "product": {
+            "id": 1,
+            "nama": "Action Figure Luffy",
+            "detail": "Action figure dari salah satu anime yang paling banyak ditonton saat ini yaitu one piece yang berkualitas tinggi. Feature : Karakter Anime One Piece dengan Style Masing-masing, Material High Quality Pvc, Padat, Lentur, Anti pecah. Finishing yang sempurna membuat pajangan ini seperti asli. Lekukan Pajangan terlihat seperti asli dan tidak polos/rata, Anti kusam dan kotor karena bahan kilat sehingga debu tidak gampang nempel.",
+            "harga": 100000,
+            "stok": 100,
+            "gambar": "luffy.png"
+          }
+        }
+      ],
+      "totalProduk": 400000,
+      "biayaKirim": 27000,
+      "totalBarang": 4,
+      "voucher": 10000,
+      "finalTotal": 417000,
+      "status": "pending pembayaran"
     }
   ]
 }

@@ -33,6 +33,7 @@ import Pembayaran from "./components/Pembayaran";
 function Main() {
   const [activeMenu, setActiveMenu] = useState("produk")
   const [idProduk, setIdProduk] = useState(0)
+  const [idCheckout, setIdCheckout] = useState(0)
   const [img, setImg] = useState(0)
   const [noRekening, setNoRekening] = useState(0)
   const [isLoggedIn, setLogin] = useState()
@@ -113,11 +114,11 @@ function Main() {
             <Route path="/" element={ <ProductList setIdProduk={setIdProduk} /> }/>
             <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
             <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
-            <Route path="/checkout" element={ <Checkout/> }/>
+            <Route path="/checkout" element={ <Checkout setIdCheckout={setIdCheckout}/> }/>
             <Route path="/AutoCheckout" element={ <AutoCheckout /> }/>
             <Route path="/login" element={ <Login /> }/>
-            <Route path="/pilih-pembayaran" element={ <PilihPembayaran setImg={setImg} setNoRekening={setNoRekening}/> }/>
-            <Route path={"/pembayaran/"+img+"/"+noRekening} element={ <Pembayaran img={img} noRekening={noRekening}/> }/>
+            <Route path={"/pilih-pembayaran/"+idCheckout} element={ <PilihPembayaran idCheckout={idCheckout} setImg={setImg} setNoRekening={setNoRekening}/> }/>
+            <Route path={"/pembayaran/"+ idCheckout} element={ <Pembayaran idCheckout={idCheckout} img={img} noRekening={noRekening}/> }/>
             <Route path="/request-product" element={ <RequestProduct/> }/>
           </Routes>
         </div>
