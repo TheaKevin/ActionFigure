@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import actionFigureDummy from "../assets/luffy.png"
 import Arrow from "../assets/arrow.png"
 import JNE from "../assets/JNE.png"
 import Voucher from "../assets/Voucher.png"
@@ -19,10 +20,7 @@ export default class Checkout extends Component {
       voucher: "MERDEKA10K",
       intHargaVoucher: 10000,
       intTotalHarga: 0,
-      intTotalBarang: 0,
-      carts: [],
-      checkoutProducts: [],
-      lastCheckoutId: 0,
+      autoCheckout: []
     }
   }
 
@@ -31,31 +29,25 @@ export default class Checkout extends Component {
   }
 
   getCartData = () => {
-    axios.get(`http://localhost:3001/carts`)
+    axios.get(`http://localhost:3001/autoCheckout`)
     .then(res => {
-      const carts = res.data;
-      const checkoutProducts = res.data;
-      this.setState({ carts });
-      this.setState({ checkoutProducts });
-           
-      let totalHargaProduk = 0
-      let totalBarang = 0
+      const autoCheckout = res.data;
+      this.setState({ autoCheckout });
 
-      for(let i = 0; i < carts.length; i++){
-        totalHargaProduk += (carts[i].jumlahBarang * carts[i].product.harga)
-        totalBarang += carts[i].jumlahBarang
+      let totalHargaProduk = 0
+      for(let i = 0; i < autoCheckout.length; i++){
+        totalHargaProduk += (autoCheckout[i].jumlahBarang * autoCheckout[i].product.harga)
       };
 
       this.setState({
         inthargaProduk: totalHargaProduk,
-        intTotalHarga: totalHargaProduk - this.state.intHargaVoucher + this.state.inthargaPengiriman,
-        intTotalBarang: totalBarang
+        intTotalHarga: totalHargaProduk - this.state.intHargaVoucher + this.state.inthargaPengiriman
       })
     })
   }
 
   changePagetoPilihPembayaran = () => {
-    this.handleSubmitCheckout();
+    window.location.href = "#/pilih-pembayaran/";
   }
 
   setPopupOpened = (status) => {
@@ -81,37 +73,6 @@ export default class Checkout extends Component {
       intTotalHarga: this.state.inthargaProduk + this.state.inthargaPengiriman - harga
     })
   }
-  
-  // get latest checkout id
-  handleSubmitCheckout = () => {
-    fetch("http://localhost:3001/checkouts?_sort=id&_order=desc&_limit=1")
-      .then((response) => response.json())
-      .then((json) => {
-          this.setState({
-              lastCheckoutId: json[0].id + 1
-          });
-      });
-      
-    axios.post('http://localhost:3001/checkouts', {
-      id: this.state.lastCheckoutId,
-      cart: this.state.checkoutProducts,
-      totalProduk: this.state.inthargaProduk,
-      biayaKirim: this.state.inthargaPengiriman,
-      totalBarang: this.state.intTotalBarang,
-      voucher: this.state.intHargaVoucher,
-      finalTotal: this.state.intTotalHarga,
-      status: "pending pembayaran"
-    })
-    .then(function (response) {
-    })
-    .then(()=>{
-          this.props.setIdCheckout(this.state.lastCheckoutId);
-          window.location.href = "#/pilih-pembayaran/"+this.state.lastCheckoutId;
-    })
-    .catch(function (error) {
-      alert("Request failed!")
-    });
-  }
 
   render(){
     console.log(this.state.popupOpened)
@@ -130,18 +91,18 @@ export default class Checkout extends Component {
 
                 <h5>Daftar Produk</h5>
                 {
-                  this.state.carts.map( cart => 
-                    <div key={cart.id} className="daftarProduk my-3">
+                  this.state.autoCheckout.map( autocheckout => 
+                    <div key={autocheckout.id} className="daftarProduk my-3">
                       <div className="row">
                         <div className="col-lg-5 daftarProduk-thumbnailProd">
-                          <img src={require('../assets/'+cart.product.gambar)} alt={cart.product.gambar}></img>
+                          <img src={require('../assets/'+autocheckout.product.gambar)} alt={autocheckout.product.gambar}></img>
                         </div>
                         <div className="col-lg-5 daftarProduk-desc">
-                          <p className="daftarProduk-descProd-margin">{cart.product.nama}</p>
-                          <p className="daftarProduk-descProd-margin">Rp. {convertToRupiahFormat(cart.product.harga)}</p>
+                          <p className="daftarProduk-descProd-margin">{autocheckout.product.nama}</p>
+                          <p className="daftarProduk-descProd-margin">Rp. {convertToRupiahFormat(autocheckout.product.harga)}</p>
                         </div>
                         <div className="col-lg-2 daftarProduk-qty">
-                          <p>x{cart.jumlahBarang}</p>
+                          <p>x{autocheckout.jumlahBarang}</p>
                         </div>
                       </div>
                     </div>

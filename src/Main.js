@@ -23,6 +23,7 @@ import { Routes } from "react-router-dom";
 import RequestProduct from "./components/RequestProduct";
 import DetailProduk from "./components/DetailProduk";
 import Checkout from "./components/Checkout";
+import AutoCheckout from "./components/AutoCheckout";
 import PilihPembayaran from "./components/PilihPembayaran";
 import { Login } from "./components/Login";
 import Pembayaran from "./components/Pembayaran";
@@ -30,6 +31,7 @@ import Pembayaran from "./components/Pembayaran";
 function Main() {
   const [activeMenu, setActiveMenu] = useState("produk")
   const [idProduk, setIdProduk] = useState(0)
+  const [idCheckout, setIdCheckout] = useState(0)
   const [img, setImg] = useState(0)
   const [noRekening, setNoRekening] = useState(0)
   const [isLoggedIn, setLogin] = useState()
