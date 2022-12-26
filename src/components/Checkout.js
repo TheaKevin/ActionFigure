@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import actionFigureDummy from "../assets/luffy.png"
 import Arrow from "../assets/arrow.png"
 import JNE from "../assets/JNE.png"
 import Voucher from "../assets/Voucher.png"
@@ -20,7 +19,10 @@ export default class Checkout extends Component {
       voucher: "MERDEKA10K",
       intHargaVoucher: 10000,
       intTotalHarga: 0,
-      carts: []
+      intTotalBarang: 0,
+      carts: [],
+      checkoutProducts: [],
+      lastCheckoutId: 0,
     }
   }
 
@@ -32,22 +34,28 @@ export default class Checkout extends Component {
     axios.get(`http://localhost:3001/carts`)
     .then(res => {
       const carts = res.data;
+      const checkoutProducts = res.data;
       this.setState({ carts });
-
+      this.setState({ checkoutProducts });
+           
       let totalHargaProduk = 0
+      let totalBarang = 0
+
       for(let i = 0; i < carts.length; i++){
         totalHargaProduk += (carts[i].jumlahBarang * carts[i].product.harga)
+        totalBarang += carts[i].jumlahBarang
       };
 
       this.setState({
         inthargaProduk: totalHargaProduk,
-        intTotalHarga: totalHargaProduk - this.state.intHargaVoucher + this.state.inthargaPengiriman
+        intTotalHarga: totalHargaProduk - this.state.intHargaVoucher + this.state.inthargaPengiriman,
+        intTotalBarang: totalBarang
       })
     })
   }
 
   changePagetoPilihPembayaran = () => {
-    window.location.href = "#/pilih-pembayaran/";
+    this.handleSubmitCheckout();
   }
 
   setPopupOpened = (status) => {
@@ -72,6 +80,37 @@ export default class Checkout extends Component {
       intHargaVoucher: harga,
       intTotalHarga: this.state.inthargaProduk + this.state.inthargaPengiriman - harga
     })
+  }
+  
+  // get latest checkout id
+  handleSubmitCheckout = () => {
+    fetch("http://localhost:3001/checkouts?_sort=id&_order=desc&_limit=1")
+      .then((response) => response.json())
+      .then((json) => {
+          this.setState({
+              lastCheckoutId: json[0].id + 1
+          });
+      });
+      
+    axios.post('http://localhost:3001/checkouts', {
+      id: this.state.lastCheckoutId,
+      cart: this.state.checkoutProducts,
+      totalProduk: this.state.inthargaProduk,
+      biayaKirim: this.state.inthargaPengiriman,
+      totalBarang: this.state.intTotalBarang,
+      voucher: this.state.intHargaVoucher,
+      finalTotal: this.state.intTotalHarga,
+      status: "pending pembayaran"
+    })
+    .then(function (response) {
+    })
+    .then(()=>{
+          this.props.setIdCheckout(this.state.lastCheckoutId);
+          window.location.href = "#/pilih-pembayaran/"+this.state.lastCheckoutId;
+    })
+    .catch(function (error) {
+      alert("Request failed!")
+    });
   }
 
   render(){

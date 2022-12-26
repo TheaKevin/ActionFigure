@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './pembayaran.css'
-import BSIM from '../assets/BSIM.png'
+import axios from 'axios'
 
 export default class Pembayaran extends Component {
 constructor(props){
@@ -8,9 +8,29 @@ constructor(props){
     this.state = {
         img: props.img,
         noRekening: props.noRekening,
-        totalBayar: props.totalBayar
+        idCheckout: props.idCheckout,
+        totalBayar: 0
     }
 }
+
+componentDidMount() {
+    fetch("http://localhost:3001/checkouts/"+this.state.idCheckout)
+    .then((response) => response.json())
+    .then((json) => {
+        this.setState({
+            totalBayar: json.finalTotal
+        });
+    });
+}
+
+updateStatusCheckout = (id, status) => {
+    axios.patch(`http://localhost:3001/checkouts/`+id, {
+        status: status
+      })
+      .then(function (response) {
+        alert("Pesanan telah diupdate!")
+      })
+  }
 
 render() {
     return (<div style={{paddingBottom:"1rem"}}>
@@ -29,7 +49,7 @@ render() {
                     <div>
                         <h5>{this.state.noRekening}</h5>
                         <p>a/n Action Figure</p>
-                        <b><p>Total Pembayaran: Rp. {this.state.totalBayar}</p></b>
+                        <b><p>Total Pembayaran: Rp. {convertToRupiahFormat(this.state.totalBayar)}</p></b>
                     </div>
                 </div>
                 
@@ -41,7 +61,7 @@ render() {
                     <div>
                         <p>Anda sudah melakukan pembayaran?</p>
                         <p>Silahkan unggah bukti pembayaran anda!</p>
-                        <button className='buttonUpload'>Unggah</button>
+                        <button className='buttonUpload' onClick={() => this.updateStatusCheckout(this.state.idCheckout,"Pesanan sedang menunggu konfirmasi oleh penjual")}>Unggah</button>
                     </div>
                 </div>
             </div>
@@ -50,4 +70,8 @@ render() {
     )
   }
 }
+
+const convertToRupiahFormat = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
 
