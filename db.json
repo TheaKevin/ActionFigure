@@ -54,28 +54,16 @@
       "id": 1,
       "jumlahBarang": 1,
       "product": {
-        "id": 1,
-        "nama": "Action Figure Luffy",
-        "detail": "Action figure dari salah satu anime yang paling banyak ditonton saat ini yaitu one piece yang berkualitas tinggi. Feature : Karakter Anime One Piece dengan Style Masing-masing, Material High Quality Pvc, Padat, Lentur, Anti pecah. Finishing yang sempurna membuat pajangan ini seperti asli. Lekukan Pajangan terlihat seperti asli dan tidak polos/rata, Anti kusam dan kotor karena bahan kilat sehingga debu tidak gampang nempel.",
-        "harga": 100000,
-        "stok": 100,
-        "gambar": "luffy.png"
+        "id": 2,
+        "nama": "Action Figure Naruto",
+        "detail": "Ini adalah action figure naruto asli dari jepang",
+        "harga": 175000,
+        "stok": 150,
+        "gambar": "naruto.png"
       }
     }
   ],
   "carts": [
-    {
-      "id": 1,
-      "jumlahBarang": 5,
-      "product": {
-        "id": 3,
-        "nama": "Action Figure Sasuke",
-        "detail": "Ini adalah action figure sasuke asli dari jepang",
-        "harga": 150000,
-        "stok": 110,
-        "gambar": "sasuke.png"
-      }
-    },
     {
       "id": 2,
       "jumlahBarang": 2,
