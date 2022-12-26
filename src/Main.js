@@ -98,9 +98,6 @@ function Main() {
                         <FontAwesomeIcon icon={faBagShopping}/>Pemesanan
                     </Nav.Link>
                     <Nav.Link 
-                      href="#/checkout">
-                        <FontAwesomeIcon icon={faBagShopping}/>Checkout - deleted soon</Nav.Link>
-                    <Nav.Link 
                       onClick={() => handleShow()}>
                         <FontAwesomeIcon icon={faRightFromBracket}/>Log out
                     </Nav.Link>
@@ -120,9 +117,10 @@ function Main() {
                 <Route path="/" element={ <ProductList setIdProduk={setIdProduk} /> }/>
                 <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
                 <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
-                <Route path="/checkout" element={ <Checkout/> }/>
-                <Route path="/pilih-pembayaran" element={ <PilihPembayaran setImg={setImg} setNoRekening={setNoRekening}/> }/>
-                <Route path={"/pembayaran/"+img+"/"+noRekening} element={ <Pembayaran img={img} noRekening={noRekening}/> }/>
+                <Route path="/checkout" element={ <Checkout setIdCheckout={setIdCheckout}/> }/>
+                <Route path="/AutoCheckout" element={ <AutoCheckout setIdCheckout={setIdCheckout}/> }/>
+                <Route path={"/pilih-pembayaran/"+idCheckout} element={ <PilihPembayaran idCheckout={idCheckout} setImg={setImg} setNoRekening={setNoRekening}/> }/>
+                <Route path={"/pembayaran/"+ idCheckout} element={ <Pembayaran idCheckout={idCheckout} img={img} noRekening={noRekening}/> }/>
                 <Route path="/request-product" element={ <RequestProduct/> }/>
                 <Route path="*" element={<Navigate to ="/" />}/>
               </Routes>
