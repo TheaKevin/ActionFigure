@@ -65,7 +65,7 @@ function Main() {
     return (
       <>
         <HashRouter>
-          <div className="d-flex justify-content-center">
+          <div className="d-flex">
             <div>
               <Nav className="flex-column">
                 <div className="d-flex align-items-center menubar-brand">
