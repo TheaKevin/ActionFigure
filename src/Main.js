@@ -55,7 +55,6 @@ function Main() {
     }
   })
 
-  console.log(isLoggedIn)
   return (
     <HashRouter>
       <div className="d-none">
@@ -109,14 +108,13 @@ function Main() {
             </div>
           </Nav>
         </div>
-        <div className="content">
+        <div className="content" style={isLoggedIn ? {padding: "1rem 3rem"} : {}}>
           <Routes>
             <Route path="/" element={ <ProductList setIdProduk={setIdProduk} /> }/>
             <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
             <Route path="/request-product" element={ <RequestProduct/> }/>
             <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
             <Route path="/checkout" element={ <Checkout/> }/>
-            <Route path="/pilih-pembayaran" element={ <PilihPembayaran/> }/>
             <Route path="/login" element={ <Login/> }/>
             <Route path="/pilih-pembayaran" element={ <PilihPembayaran setImg={setImg} setNoRekening={setNoRekening}/> }/>
             <Route path={"/pembayaran/"+img+"/"+noRekening} element={ <Pembayaran img={img} noRekening={noRekening}/> }/>
