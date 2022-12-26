@@ -35,7 +35,6 @@ function Main() {
   const [img, setImg] = useState(0)
   const [noRekening, setNoRekening] = useState(0)
   const [isLoggedIn, setLogin] = useState()
-  const [change, setChange] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false)
   const handleShow = () => {
@@ -44,7 +43,6 @@ function Main() {
   const handleLogOut = () => {
     localStorage.removeItem("info")
     localStorage.removeItem("email")
-    setChange(!change)
     window.location.href = "/"
   }
 
@@ -54,7 +52,7 @@ function Main() {
     } else {
       setLogin(false);
     }
-  }, [change])
+  })
 
   return (
     <HashRouter>
@@ -109,13 +107,13 @@ function Main() {
             </div>
           </Nav>
         </div>
-        <div className="content">
+        <div className="content" style={isLoggedIn ? {padding: "1rem 3rem"} : {}}>
           <Routes>
             <Route path="/" element={ <ProductList setIdProduk={setIdProduk} /> }/>
             <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
             <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
             <Route path="/checkout" element={ <Checkout/> }/>
-            <Route path="/login" element={ <Login change={change} setChange={setChange} /> }/>
+            <Route path="/login" element={ <Login /> }/>
             <Route path="/pilih-pembayaran" element={ <PilihPembayaran setImg={setImg} setNoRekening={setNoRekening}/> }/>
             <Route path={"/pembayaran/"+img+"/"+noRekening} element={ <Pembayaran img={img} noRekening={noRekening}/> }/>
             <Route path="/request-product" element={ <RequestProduct/> }/>
