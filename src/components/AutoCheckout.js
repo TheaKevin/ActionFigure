@@ -1,0 +1,193 @@
+import React, { Component } from 'react'
+import actionFigureDummy from "../assets/luffy.png"
+import Arrow from "../assets/arrow.png"
+import JNE from "../assets/JNE.png"
+import Voucher from "../assets/Voucher.png"
+import Popup from 'reactjs-popup';
+import ModalPengiriman from './ModalPengiriman'
+import ModalVoucher from './ModalVoucher'
+import axios from 'axios'
+
+export default class Checkout extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      popupOpened: false,
+      pengiriman: "JNE Reguler",
+      imgPengiriman: JNE,
+      inthargaPengiriman: 27000,
+      inthargaProduk: 0,
+      voucher: "MERDEKA10K",
+      intHargaVoucher: 10000,
+      intTotalHarga: 0,
+      autoCheckout: []
+    }
+  }
+
+  componentDidMount() {
+    this.getCartData()
+  }
+
+  getCartData = () => {
+    axios.get(`http://localhost:3001/autoCheckout`)
+    .then(res => {
+      const autoCheckout = res.data;
+      this.setState({ autoCheckout });
+
+      let totalHargaProduk = 0
+      for(let i = 0; i < autoCheckout.length; i++){
+        totalHargaProduk += (autoCheckout[i].jumlahBarang * autoCheckout[i].product.harga)
+      };
+
+      this.setState({
+        inthargaProduk: totalHargaProduk,
+        intTotalHarga: totalHargaProduk - this.state.intHargaVoucher + this.state.inthargaPengiriman
+      })
+    })
+  }
+
+  changePagetoPilihPembayaran = () => {
+    window.location.href = "#/pilih-pembayaran/";
+  }
+
+  setPopupOpened = (status) => {
+      this.setState({
+        popupOpened: status
+      })
+  }
+
+  setPengiriman = (pengiriman,img,harga) => {
+    this.setState({
+      pengiriman: pengiriman,
+      imgPengiriman: img,
+      inthargaPengiriman: harga,
+      intTotalHarga: this.state.inthargaProduk + harga - this.state.intHargaVoucher
+    })
+    this.setPopupOpened(false)
+  }
+
+  setVoucher = (voucher,harga) => {
+    this.setState({
+      voucher: voucher,
+      intHargaVoucher: harga,
+      intTotalHarga: this.state.inthargaProduk + this.state.inthargaPengiriman - harga
+    })
+  }
+
+  render(){
+    console.log(this.state.popupOpened)
+    return (
+      <div style={{paddingBottom:"1rem"}}>
+      <h2>Detail Pembelian</h2>
+      <br></br>
+      <div className='checkout'>
+        <div className='checkoutContainer'>
+            <div>
+                <h5>Alamat Pengiriman</h5>
+                <p>Jane Doe | (+62) 888-8888-8888</p>
+                <p>Jl Merdeka 1 No.7, Serpong Utara</p>
+                <p>Tangerang Selatan, Banten</p>
+                <hr></hr>
+
+                <h5>Daftar Produk</h5>
+                {
+                  this.state.autoCheckout.map( autocheckout => 
+                    <div key={autocheckout.id} className="daftarProduk my-3">
+                      <div className="row">
+                        <div className="col-lg-5 daftarProduk-thumbnailProd">
+                          <img src={require('../assets/'+autocheckout.product.gambar)} alt={autocheckout.product.gambar}></img>
+                        </div>
+                        <div className="col-lg-5 daftarProduk-desc">
+                          <p className="daftarProduk-descProd-margin">{autocheckout.product.nama}</p>
+                          <p className="daftarProduk-descProd-margin">Rp. {convertToRupiahFormat(autocheckout.product.harga)}</p>
+                        </div>
+                        <div className="col-lg-2 daftarProduk-qty">
+                          <p>x{autocheckout.jumlahBarang}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }
+                <hr></hr> 
+                
+                <h5>Pengiriman</h5>
+                <div className="daftarProduk">
+                  <div className="row">
+                    <div className="col-lg-3 daftarProduk-thumbnail">
+                      <img src={this.state.imgPengiriman} alt="Pengiriman"></img>
+                    </div>
+                    <div className="col-lg-3 daftarProduk-desc">
+                      <p>{this.state.pengiriman}</p>
+                    </div>
+                    <div className="col-lg-5 daftarProduk-desc">
+                      <p className="daftarProduk-desc-margin">Rp. {convertToRupiahFormat(this.state.inthargaPengiriman)}</p>
+                    </div>
+                    <div className="col-lg-1 daftarProduk-arrow">
+                      <Popup 
+                        trigger={<img src={Arrow} alt="Arrow"></img>} 
+                        position="right center" 
+                        opened={this.state.popupOpened} 
+                        onPopupClosed={() => this.setPopupOpened(false)}
+                      >
+                        <ModalPengiriman setPengiriman = {this.setPengiriman}/>
+                      </Popup>
+                    </div>
+                  </div>
+                </div>
+                <hr></hr>
+
+                <h5 >Voucher</h5>
+                <div className="daftarProduk">
+                  <div className="row">
+                    <div className="col-lg-3 daftarProduk-thumbnail">
+                      <img src={Voucher} alt="Voucher"></img>
+                    </div>
+                    <div className="col-lg-3 daftarProduk-desc">
+                      <p>{this.state.voucher}</p>
+                    </div>
+                    <div className="col-lg-5 daftarProduk-desc">
+                      <p className="daftarProduk-desc-margin">- Rp {convertToRupiahFormat(this.state.intHargaVoucher)}</p>
+                    </div>
+                    <div className="col-lg-1 daftarProduk-arrow">
+                      <Popup trigger={<img src={Arrow} alt="Arrow"></img>} position="right center">
+                        <ModalVoucher setVoucher = {this.setVoucher}/>
+                      </Popup>
+                    </div>
+                  </div>
+                </div>
+                <hr></hr>
+            </div>
+        </div>
+        <div className='checkoutContainerTotal'>
+            <div className='checkoutContentTotal'>
+                <h1  className="titleHeaderTotal">Total</h1>
+                <table>
+                <tr>
+                  <td><p>Total Produk</p></td>
+                  <td><p>Rp. {convertToRupiahFormat(this.state.inthargaProduk)}</p></td>
+                </tr>
+                <tr>
+                  <td><p>Biaya Pengiriman</p></td>
+                  <td><p>Rp. {convertToRupiahFormat(this.state.inthargaPengiriman)}</p></td>
+                </tr>
+                <tr>
+                  <td><p>Voucher</p></td>
+                  <td><p>- Rp {convertToRupiahFormat(this.state.intHargaVoucher)}</p></td>
+                </tr>
+                <tr>
+                  <td><b><p>Total Harga</p></b></td>
+                  <td><b><p>Rp. {convertToRupiahFormat(this.state.intTotalHarga)}</p></b></td>
+                </tr>
+                </table>
+                <button className='buttonCheckout' onClick={() => this.changePagetoPilihPembayaran()}>Beli</button>
+            </div>
+        </div>
+      </div>
+      </div>
+    )
+  }
+}
+
+const convertToRupiahFormat = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}

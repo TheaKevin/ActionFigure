@@ -25,6 +25,7 @@ import { Routes } from "react-router-dom";
 import RequestProduct from "./components/RequestProduct";
 import DetailProduk from "./components/DetailProduk";
 import Checkout from "./components/Checkout";
+import AutoCheckout from "./components/AutoCheckout";
 import PilihPembayaran from "./components/PilihPembayaran";
 import { Login } from "./components/Login";
 import Pembayaran from "./components/Pembayaran";
@@ -36,7 +37,6 @@ function Main() {
   const [img, setImg] = useState(0)
   const [noRekening, setNoRekening] = useState(0)
   const [isLoggedIn, setLogin] = useState()
-  const [change, setChange] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false)
   const handleShow = () => {
@@ -45,7 +45,6 @@ function Main() {
   const handleLogOut = () => {
     localStorage.removeItem("info")
     localStorage.removeItem("email")
-    setChange(!change)
     window.location.href = "/"
   }
 
@@ -55,7 +54,7 @@ function Main() {
     } else {
       setLogin(false);
     }
-  }, [change])
+  })
 
   return (
     <HashRouter>
@@ -110,13 +109,14 @@ function Main() {
             </div>
           </Nav>
         </div>
-        <div className="content">
+        <div className="content" style={isLoggedIn ? {padding: "1rem 3rem"} : {}}>
           <Routes>
             <Route path="/" element={ <ProductList setIdProduk={setIdProduk} /> }/>
             <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
             <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
             <Route path="/checkout" element={ <Checkout setIdCheckout={setIdCheckout}/> }/>
-            <Route path="/login" element={ <Login change={change} setChange={setChange} /> }/>
+            <Route path="/AutoCheckout" element={ <AutoCheckout /> }/>
+            <Route path="/login" element={ <Login /> }/>
             <Route path={"/pilih-pembayaran/"+idCheckout} element={ <PilihPembayaran idCheckout={idCheckout} setImg={setImg} setNoRekening={setNoRekening}/> }/>
             <Route path={"/pembayaran/"+ idCheckout} element={ <Pembayaran idCheckout={idCheckout} img={img} noRekening={noRekening}/> }/>
             <Route path="/request-product" element={ <RequestProduct/> }/>
