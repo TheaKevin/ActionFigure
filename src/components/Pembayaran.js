@@ -23,12 +23,13 @@ componentDidMount() {
     });
 }
 
-updateStatusCheckout = (id, status) => {
+updateStatusCheckout = (id) => {
     axios.patch(`http://localhost:3001/checkouts/`+id, {
-        status: status
+        status: "Bukti pembayaran diterima. Pembayaran sedang menunggu verifikasi oleh penjual",
+        statusSummary: "Verifikasi Pembayaran"
       })
       .then(function (response) {
-        alert("Pesanan telah diupdate!")
+        alert("Bukti pembayaran diterima!")
       })
   }
 
@@ -61,7 +62,7 @@ render() {
                     <div>
                         <p>Anda sudah melakukan pembayaran?</p>
                         <p>Silahkan unggah bukti pembayaran anda!</p>
-                        <button className='buttonUpload' onClick={() => this.updateStatusCheckout(this.state.idCheckout,"Pesanan sedang menunggu konfirmasi oleh penjual")}>Unggah</button>
+                        <button className='buttonUpload' onClick={() => this.updateStatusCheckout(this.state.idCheckout)}>Unggah</button>
                     </div>
                 </div>
             </div>

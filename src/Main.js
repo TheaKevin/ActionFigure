@@ -27,6 +27,7 @@ import AutoCheckout from "./components/AutoCheckout";
 import PilihPembayaran from "./components/PilihPembayaran";
 import { Login } from "./components/Login";
 import Pembayaran from "./components/Pembayaran";
+import StatusPemesanan from "./components/StatusPemesanan";
 
 function Main() {
   const [activeMenu, setActiveMenu] = useState("produk")
@@ -92,7 +93,7 @@ function Main() {
                         <FontAwesomeIcon icon={faEnvelope}/>Request Produk
                     </Nav.Link>
                     <Nav.Link 
-                      href="#/order"
+                      href="#/status-pemesanan"
                       onClick={() => setActiveMenu("pemesanan")}
                       className={activeMenu == "pemesanan" ? "nav-active": ""}>
                         <FontAwesomeIcon icon={faBagShopping}/>Pemesanan
@@ -122,6 +123,7 @@ function Main() {
                 <Route path={"/pilih-pembayaran/"+idCheckout} element={ <PilihPembayaran idCheckout={idCheckout} setImg={setImg} setNoRekening={setNoRekening}/> }/>
                 <Route path={"/pembayaran/"+ idCheckout} element={ <Pembayaran idCheckout={idCheckout} img={img} noRekening={noRekening}/> }/>
                 <Route path="/request-product" element={ <RequestProduct/> }/>
+                <Route path="/status-pemesanan" element={ <StatusPemesanan/> }/>
                 <Route path="*" element={<Navigate to ="/" />}/>
               </Routes>
             </div>
