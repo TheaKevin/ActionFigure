@@ -93,7 +93,6 @@ function Main() {
                   className={activeMenu == "pemesanan" ? "nav-active": ""}>
                     <FontAwesomeIcon icon={faBagShopping}/>Pemesanan
                 </Nav.Link>
-                <Nav.Link href="#/checkout"><FontAwesomeIcon icon={faBagShopping}/>Checkout - deleted soon</Nav.Link>
                 <Nav.Link 
                   onClick={() => handleShow()}>
                     <FontAwesomeIcon icon={faRightFromBracket}/>Log out
@@ -115,7 +114,7 @@ function Main() {
             <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
             <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
             <Route path="/checkout" element={ <Checkout setIdCheckout={setIdCheckout}/> }/>
-            <Route path="/AutoCheckout" element={ <AutoCheckout /> }/>
+            <Route path="/AutoCheckout" element={ <AutoCheckout setIdCheckout={setIdCheckout}/> }/>
             <Route path="/login" element={ <Login /> }/>
             <Route path={"/pilih-pembayaran/"+idCheckout} element={ <PilihPembayaran idCheckout={idCheckout} setImg={setImg} setNoRekening={setNoRekening}/> }/>
             <Route path={"/pembayaran/"+ idCheckout} element={ <Pembayaran idCheckout={idCheckout} img={img} noRekening={noRekening}/> }/>
