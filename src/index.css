@@ -76,7 +76,7 @@ body {
 .content {
   width: 100%;
   z-index: 1;
-  /* padding: 1rem 3rem; */
+  padding: 1rem 3rem;
 }
 
 .product-list {

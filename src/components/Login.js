@@ -35,17 +35,17 @@ export const Login = () => {
             </div>
             <div className="col-lg-12 d-flex justify-content-center">
               <form onSubmit={handleLogin} className="p-2">
-                  <div id="alertWrongInput" class="alert alert-danger d-none" role="alert">
+                  <div id="alertWrongInput" className="alert alert-danger d-none" role="alert">
                     Incorrect username or password.
                   </div>
-                  <div class="input-group mb-4 mt-4">
-                    <input type="email" class="input" name="email"/>
-                    <label class="placeholder">Email address</label>    
+                  <div className="input-group mb-4 mt-4">
+                    <input type="email" className="input" name="email"/>
+                    <label className="placeholder">Email address</label>    
                   </div>
 
-                  <div class="input-group mb-4">
-                    <input type="password" class="input" name="password"/>
-                    <label class="placeholder">Password</label>    
+                  <div className="input-group mb-4">
+                    <input type="password" className="input" name="password"/>
+                    <label className="placeholder">Password</label>    
                   </div>
 
                   <div className="text-center">
