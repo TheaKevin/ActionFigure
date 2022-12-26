@@ -121,6 +121,7 @@ function Main() {
                 <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
                 <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
                 <Route path="/checkout" element={ <Checkout/> }/>
+                <Route path="/AutoCheckout" element={ <AutoCheckout /> }/>
                 <Route path="/pilih-pembayaran" element={ <PilihPembayaran setImg={setImg} setNoRekening={setNoRekening}/> }/>
                 <Route path={"/pembayaran/"+img+"/"+noRekening} element={ <Pembayaran img={img} noRekening={noRekening}/> }/>
                 <Route path="/request-product" element={ <RequestProduct/> }/>
