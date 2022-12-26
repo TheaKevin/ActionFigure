@@ -49,6 +49,20 @@
       "gambar": "gokuVegetaSuperSaiyan.png"
     }
   ],
+  "autoCheckout": [
+    {
+      "id": 1,
+      "jumlahBarang": 3,
+      "product": {
+        "id": 3,
+        "nama": "Action Figure Sasuke",
+        "detail": "Ini adalah action figure sasuke asli dari jepang",
+        "harga": 150000,
+        "stok": 110,
+        "gambar": "sasuke.png"
+      }
+    }
+  ],
   "carts": [
     {
       "id": 1,
