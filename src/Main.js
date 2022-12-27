@@ -17,7 +17,8 @@ import {
   faEnvelope, 
   faBagShopping, 
   faUser,
-  faRightFromBracket
+  faRightFromBracket,
+  faHeart
 } from '@fortawesome/free-solid-svg-icons'
 import { Routes } from "react-router-dom";
 import RequestProduct from "./components/RequestProduct";
@@ -28,6 +29,7 @@ import PilihPembayaran from "./components/PilihPembayaran";
 import { Login } from "./components/Login";
 import Pembayaran from "./components/Pembayaran";
 import StatusPemesanan from "./components/StatusPemesanan";
+import Wishlist from "./components/Wishlist";
 
 function Main() {
   const [activeMenu, setActiveMenu] = useState("produk")
@@ -81,6 +83,12 @@ function Main() {
                         <FontAwesomeIcon icon={faList}/>Produk
                     </Nav.Link>
                     <Nav.Link 
+                      href="#/Wishlist" 
+                      onClick={() => setActiveMenu("wishlist")} 
+                      className={activeMenu == "wishlist" ? "nav-active": ""}>
+                        <FontAwesomeIcon icon={faHeart}/>Wishlist
+                    </Nav.Link>
+                    <Nav.Link 
                       href="#/shopping-cart" 
                       onClick={() => setActiveMenu("keranjang")}
                       className={activeMenu == "keranjang" ? "nav-active": ""}>
@@ -116,6 +124,7 @@ function Main() {
             <div className="content">
               <Routes>
                 <Route path="/" element={ <ProductList setIdProduk={setIdProduk} /> }/>
+                <Route path="/Wishlist" element={ <Wishlist setIdProduk={setIdProduk} /> }/>
                 <Route path="/shopping-cart" element={ <ShoppingCart/> }/>
                 <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
                 <Route path="/checkout" element={ <Checkout setIdCheckout={setIdCheckout}/> }/>

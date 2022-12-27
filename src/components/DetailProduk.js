@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap';
+import { ReactComponent as Wishlist } from '../assets/wishlist.svg'
 
 export default class DetailProduk extends Component {
     constructor(props) {
@@ -15,7 +16,8 @@ export default class DetailProduk extends Component {
             gambar: require("../assets/luffy.png"),
             gambarProductForAddCart: "",
             jumlahBarang: 0,
-            lastCartID: 0
+            lastCartID: 0,
+            wishlistID: 0
         };
     }
 
@@ -32,6 +34,19 @@ export default class DetailProduk extends Component {
                 gambar: require("../assets/"+json.gambar),
                 gambarProductForAddCart: json.gambar,
                 jumlahBarang: 1
+            });
+        })
+        .then(() => {
+            fetch("http://localhost:3001/wishlist/"+ this.state.id)
+            .then((response) => response.json())
+            .then((json) => {
+                if(json.id != undefined){
+                    this.setState({
+                        wishlistID: json.id
+                    });
+                }
+                console.log(json);
+                console.log(this.state.wishlistID);
             });
         });
 
@@ -148,6 +163,43 @@ export default class DetailProduk extends Component {
         .catch((err) => console.log(err));
     }
 
+    addWishlist = () => {
+        fetch('http://localhost:3001/wishlist', {
+            method: 'POST',
+            body: JSON.stringify({
+                id: this.state.id,
+                nama: this.state.nama,
+                detail: this.state.detail,
+                harga: this.state.harga,
+                stok: this.state.stok,
+                gambar: this.state.gambarProductForAddCart
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then(() => {
+            this.setState({
+                wishlistID : this.state.id
+            })
+        })
+        .then(() => {
+            alert("Barang berhasil dimasukkan kedalam wishlist!")
+        })
+    }
+
+    removeWishlist = () => {
+        axios.delete('http://localhost:3001/wishlist/'+this.state.id)
+        .then(() => {
+            this.setState({
+                wishlistID : 0
+            })
+        })
+        .then(() => {
+            alert("Barang berhasil dihapus dari wishlist!")
+        })
+    }
+
     render() {
         return (
             <div className='mx-5' style={{paddingBottom:"1rem"}}>
@@ -167,11 +219,20 @@ export default class DetailProduk extends Component {
                     </div>
                     <div className='d-flex flex-column justify-content-between'>
                         <div>
-                            <div className='mb-2' style={{
-                                fontWeight: "700",
-                                fontSize: "24px",
-                                lineHeight: "28px"
-                            }}>{this.state.nama}</div>
+                            <div className='d-flex flex-row justify-content-between'>
+                                <div className='mb-2' style={{
+                                    fontWeight: "700",
+                                    fontSize: "24px",
+                                    lineHeight: "28px"
+                                }}>{this.state.nama}</div>
+
+                                {this.state.wishlistID == 0
+                                ?<Wishlist style={{width:"25px"}} onClick={() => this.addWishlist()} />
+                                :<Wishlist style={{
+                                    width:"25px",
+                                    filter: "invert(21%) sepia(44%) saturate(4511%) hue-rotate(348deg) brightness(121%) contrast(103%)"
+                                }} onClick={() => this.removeWishlist()} />}
+                            </div>
                             <div style={{
                                 fontWeight: "400",
                                 fontSize: "14px",
