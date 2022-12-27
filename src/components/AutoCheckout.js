@@ -98,7 +98,9 @@ export default class Checkout extends Component {
       totalBarang: this.state.intTotalBarang,
       voucher: this.state.intHargaVoucher,
       finalTotal: this.state.intTotalHarga,
-      status: "pending pembayaran"
+      status: "Pesanan Dibuat. Menunggu bukti pembayaran diunggah oleh pembeli.",
+      statusSummary:"Menunggu Pembayaran",
+      statusFromCart:"N"
     })
     .then(function (response) {
     })
