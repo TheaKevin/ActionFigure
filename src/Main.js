@@ -131,7 +131,7 @@ function Main() {
                       href="#/Wishlist" 
                       onClick={() => setActiveMenu("wishlist")} 
                       className={activeMenu == "wishlist" ? "nav-active": ""}>
-                        <FontAwesomeIcon icon={faHeart}/>Wishlist
+                        <FontAwesomeIcon className="eventCollapse2" icon={faHeart}/><span className="eventCollapse">Wishlist</span>
                     </Nav.Link>
                     <Nav.Link 
                       href="#/shopping-cart" 
