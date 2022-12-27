@@ -104,7 +104,7 @@ export default class Checkout extends Component {
     })
     .then(()=>{
           this.props.setIdCheckout(this.state.lastCheckoutId);
-          window.location.href = "#/pilih-pembayaran/"+this.state.lastCheckoutId;
+          window.location.href = "#/PilihPembayaran/"+this.state.lastCheckoutId;
     })
     .catch(function (error) {
       alert("Request failed!")
@@ -112,7 +112,6 @@ export default class Checkout extends Component {
   }
 
   render(){
-    console.log(this.state.popupOpened)
     return (
       <div style={{paddingBottom:"1rem"}}>
       <h2>Detail Pembelian</h2>

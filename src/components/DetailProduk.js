@@ -175,7 +175,8 @@ export default class DetailProduk extends Component {
                             <div style={{
                                 fontWeight: "400",
                                 fontSize: "14px",
-                                lineHeight: "17px"
+                                lineHeight: "17px",
+                                whiteSpace: "pre-wrap"
                             }}>{this.state.detail}</div>
                         </div>
                         <div>
