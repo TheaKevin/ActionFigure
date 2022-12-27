@@ -24,34 +24,38 @@ export default class StatusPemesanan extends Component {
   render() {
     return (
         <>
-        <div className="header-status-pemesanan">
+        <div className="ps-4 pb-4">
           <h2>Status Pemesanan</h2>
         </div>
-        <div className="row justify-content-between align-items-center gap-2">
-        {
-          this.state.orders.map(order =>
-            <div key={order.id} className="col-lg-12 stats-order-product">
-              <div className="row">
-                <div className="col-lg-3 stats-order-product-thumbnail">
-                  <img src={require('../assets/'+order.cart[0].product.gambar)} alt="Tes"></img>
-                </div>
-                <div className="col-lg-5 stats-order-product-summary1">
-                  <h5>Order ID: {order.id}</h5>
-                  <p>Total Barang: {order.totalBarang}</p>
-                  <h5>Rp. {convertToRupiahFormat(order.finalTotal)}</h5>
-                </div>
-                <div className="col-lg-4 stats-order-product-summary2">
-                    <div className='stats-order-status'>
-                        <p>{order.status}</p>
-                        <img src={Arrow} alt="Arrow"></img>
+        <div className='container-fluid'>
+          <div className='status-container'>
+            <div className="row justify-content-between align-items-center gap-2">
+            {
+              this.state.orders.map(order =>
+                <div key={order.id} className="col-lg-12 stats-order-product">
+                  <div className="row">
+                    <div className="col-lg-3 stats-order-product-thumbnail">
+                      <img src={require('../assets/'+order.cart[0].product.gambar)} alt="Tes"></img>
                     </div>
-                    <hr></hr>
-                    <p className='stats-order-statusSummary'>{order.statusSummary}</p>
-                </div>
-              </div>
-              </div>
-          )
-        }
+                    <div className="col-lg-5 stats-order-product-summary1">
+                      <h5>Order ID: {order.id}</h5>
+                      <p>Total Barang: {order.totalBarang}</p>
+                      <h5>Rp. {convertToRupiahFormat(order.finalTotal)}</h5>
+                    </div>
+                    <div className="col-lg-4 stats-order-product-summary2">
+                        <div className='stats-order-status'>
+                            <p>{order.status}</p>
+                            <img src={Arrow} alt="Arrow"></img>
+                        </div>
+                        <hr></hr>
+                        <p className='stats-order-statusSummary'>{order.statusSummary}</p>
+                    </div>
+                  </div>
+                  </div>
+              )
+            }
+            </div>
+          </div>
         </div>
       </>
     )
