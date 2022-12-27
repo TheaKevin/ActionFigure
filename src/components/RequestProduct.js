@@ -8,6 +8,7 @@ class RequestProduct extends Component {
     this.state = {
       sumOfStock: 0,
       lastProductId: 0,
+      value: ""
     };
   }
   
@@ -39,9 +40,9 @@ class RequestProduct extends Component {
         id: this.state.lastProductId,
         nama: formData.get("product-name"),
         detail: formData.get("product-desc"),
-        harga: parseInt(formData.get("product-price")),
+        harga: parseInt(this.state.value),
         stok: parseInt(formData.get("product-stock")),
-        gambar: ""
+        gambar: "luffy.png"
       })
       .then(function (response) {
         alert("Product has been requested!")
@@ -51,42 +52,47 @@ class RequestProduct extends Component {
       });
     }
 
+    
+    const priceDelimiter = (event) => {
+      this.setState({value: addCommas(removeNonNumeric(event.target.value))})
+    }
+    const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "")
+
     return(
       <>
-        <h2 className="mb-3">Request Product</h2>
-        
-        <Form onSubmit={handleSubmitRequestProduct}>
-          <Form.Group className="mb-3" controlId="formProductName">
-            <Form.Label>Product Name</Form.Label>
-            <Form.Control name="product-name" type="text" placeholder="Enter product name" />
-          </Form.Group>
-  
-          <Form.Group className="mb-3" controlId="formProductDesc">
-            <Form.Label>Product Description</Form.Label>
-            <Form.Control name="product-desc" as="textarea" rows={5} placeholder="Enter product description"/>
-          </Form.Group>
+        <h2 className="ps-4 pb-4">Request Product</h2>
+        <div className="container-fluid">
+          <div className="request-container">
+            <Form onSubmit={handleSubmitRequestProduct}>
+              <Form.Group className="mb-3" controlId="formProductName">
+                <Form.Label>Product Name</Form.Label>
+                <Form.Control name="product-name" type="text" placeholder="Enter product name" />
+              </Form.Group>
+      
+              <Form.Group className="mb-3" controlId="formProductDesc">
+                <Form.Label>Product Description</Form.Label>
+                <Form.Control name="product-desc" as="textarea" rows={5} placeholder="Enter product description" style={{whiteSpace: "pre-wrap"}}/>
+              </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formProductPrice">
-            <Form.Label>Product Price</Form.Label>
-            <Form.Control name="product-price" type="number" placeholder="Enter product price" />
-          </Form.Group>
-  
-          <Form.Group className="mb-3" controlId="formProductDesc">
-            <Form.Label>Stock of Product</Form.Label>
-            <Button variant="outline-secondary ms-3" onClick = {()=> handleReduce()}>-</Button>
-            <Form.Control type="number" name="product-stock" min={1} value={this.state.sumOfStock} placeholder="Enter product stock" className="mb-2" readOnly required/>
-            <Button variant="outline-success" onClick = {() => handleAdd()}>+</Button>
-          </Form.Group>
-          
-          <Form.Group controlId="formFileMultiple" className="mb-3">
-            <Form.Label>Upload Product Image</Form.Label>
-            <Form.Control type="file" multiple />
-          </Form.Group>
-  
-          <Button className="mt-3" variant="primary" type="submit">
-            Submit Request Product
-          </Button>
-        </Form>
+              <Form.Group className="mb-3" controlId="formProductPrice">
+                <Form.Label>Product Price</Form.Label>
+                <Form.Control name="product-price" type="text" placeholder="Enter product price" onChange={priceDelimiter} value={"Rp " + this.state.value}/>
+              </Form.Group>
+      
+              <Form.Group className="mb-3" controlId="formProductDesc">
+                <Form.Label>Stock of Product</Form.Label>
+                <Button variant="outline-secondary ms-3" onClick = {()=> handleReduce()}>-</Button>
+                <Form.Control type="number" name="product-stock" min={1} value={this.state.sumOfStock} placeholder="Enter product stock" style={{textAlign: "center"}} className="mb-2" readOnly required/>
+                <Button variant="outline-success" onClick = {() => handleAdd()}>+</Button>
+              </Form.Group>
+      
+              <Button className="mt-3" variant="pertama" type="submit">
+                Submit
+              </Button>
+            </Form>
+          </div>
+        </div>
       </>
     )
   }

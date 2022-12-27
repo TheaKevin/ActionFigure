@@ -38,7 +38,8 @@ function Main() {
   const [img, setImg] = useState(0)
   const [noRekening, setNoRekening] = useState(0)
   const [isLoggedIn, setLogin] = useState()
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(true)
   
   const handleClose = () => setShow(false)
   const handleShow = () => {setShow(true)}
@@ -46,6 +47,50 @@ function Main() {
     localStorage.removeItem("info")
     localStorage.removeItem("email")
     window.location.href = "/"
+  }
+  const collapseNavbar = () => {
+    isCollapsed ? setIsCollapsed(false) : setIsCollapsed(true)
+    const navTrigger = document.getElementById("nav-trigger")
+    const triggerDiv = document.getElementsByClassName("eventCollapse")
+    const triggerSvg = document.getElementsByClassName("eventCollapse2")
+    const imageTrigger = document.getElementById("image-trigger")
+
+    if (isCollapsed) {
+      navTrigger.style.width = "110px"
+  
+      for (let i=0;i<triggerDiv.length;i+=1){
+        triggerDiv[i].style.display = 'none';
+      }
+  
+      for (let i=0;i<triggerSvg.length;i+=1){
+        triggerSvg[i].style.paddingRight = "0"
+        triggerSvg[i].style.textAlign = "center"
+        triggerSvg[i].style.width = "100%"
+      }
+      
+      imageTrigger.style.removeProperty("animation-name")
+      imageTrigger.style.removeProperty("animation-duration")
+      imageTrigger.style.animationName = "spin"
+      imageTrigger.style.animationDuration = "500ms"
+
+    } else {
+      navTrigger.style.width = "350px"
+  
+      for (let i=0;i<triggerDiv.length;i+=1){
+        triggerDiv[i].style.display = "inline-block"
+      }
+  
+      for (let i=0;i<triggerSvg.length;i+=1){
+        triggerSvg[i].style.removeProperty("width")
+        triggerSvg[i].style.paddingRight = "1rem"
+        triggerSvg[i].style.removeProperty("textAlign")
+      }
+
+      imageTrigger.style.removeProperty("animation-name")
+      imageTrigger.style.removeProperty("animation-duration")
+      imageTrigger.style.animationName = "spin2"
+      imageTrigger.style.animationDuration = "500ms"
+    }
   }
 
   useEffect(() => {
@@ -70,17 +115,17 @@ function Main() {
         <HashRouter>
           <div className="d-flex">
             <div>
-              <Nav className="flex-column">
+              <Nav className="flex-column" id="nav-trigger">
                 <div className="d-flex align-items-center menubar-brand">
-                  <img src={Logo}></img>
-                  <h2>Action Figure</h2>
+                  <img id="image-trigger" style={{cursor: "pointer"}} onClick={() => collapseNavbar()} src={Logo}></img>
+                  <h2 className="eventCollapse">Action Figure</h2>
                 </div>
                 <div className="menubar-list">
                     <Nav.Link 
                       href="#/" 
                       onClick={() => setActiveMenu("produk")} 
                       className={activeMenu == "produk" ? "nav-active": ""}>
-                        <FontAwesomeIcon icon={faList}/>Produk
+                        <FontAwesomeIcon className="eventCollapse2" icon={faList}/><span className="eventCollapse">Produk</span>
                     </Nav.Link>
                     <Nav.Link 
                       href="#/Wishlist" 
@@ -92,28 +137,28 @@ function Main() {
                       href="#/shopping-cart" 
                       onClick={() => setActiveMenu("keranjang")}
                       className={activeMenu == "keranjang" ? "nav-active": ""}>
-                        <FontAwesomeIcon icon={faCartShopping}/>Keranjang Belanja
+                        <FontAwesomeIcon className="eventCollapse2" icon={faCartShopping}/><span className="eventCollapse">Keranjang Belanja</span>
                     </Nav.Link>
                     <Nav.Link 
                       href="#/request-product"
                       onClick={() => setActiveMenu("request")}
                       className={activeMenu == "request" ? "nav-active": ""}>
-                        <FontAwesomeIcon icon={faEnvelope}/>Request Produk
+                        <FontAwesomeIcon className="eventCollapse2" icon={faEnvelope}/><span className="eventCollapse">Request Produk</span>
                     </Nav.Link>
                     <Nav.Link 
                       href="#/status-pemesanan"
                       onClick={() => setActiveMenu("pemesanan")}
                       className={activeMenu == "pemesanan" ? "nav-active": ""}>
-                        <FontAwesomeIcon icon={faBagShopping}/>Pemesanan
+                        <FontAwesomeIcon className="eventCollapse2" icon={faBagShopping}/><span className="eventCollapse">Pemesanan</span>
                     </Nav.Link>
                     <Nav.Link 
                       onClick={() => handleShow()}>
-                        <FontAwesomeIcon icon={faRightFromBracket}/>Log out
+                        <FontAwesomeIcon className="eventCollapse2" icon={faRightFromBracket}/><span className="eventCollapse">Log out</span>
                     </Nav.Link>
                 </div>
-                <div className="menubar-user">
+                <div className="menubar-user eventCollapse">
                   <div className="d-flex">
-                    <FontAwesomeIcon icon={faUser}/>
+                    <FontAwesomeIcon className="eventCollapse2" icon={faUser}/>
                     <div className="user-summary">
                       <h6 className="mb-0">{localStorage.getItem("email")}</h6>
                     </div>
@@ -129,10 +174,10 @@ function Main() {
                 <Route path={"/DetailProduk/"+idProduk} element={ <DetailProduk idProduk={idProduk} /> }/>
                 <Route path="/checkout" element={ <Checkout setIdCheckout={setIdCheckout}/> }/>
                 <Route path="/AutoCheckout" element={ <AutoCheckout setIdCheckout={setIdCheckout}/> }/>
-                <Route path={"/pilih-pembayaran/"+idCheckout} element={ <PilihPembayaran idCheckout={idCheckout} setImg={setImg} setNoRekening={setNoRekening}/> }/>
-                <Route path={"/pembayaran/"+ idCheckout} element={ <Pembayaran idCheckout={idCheckout} img={img} noRekening={noRekening}/> }/>
                 <Route path="/request-product" element={ <RequestProduct/> }/>
                 <Route path="/status-pemesanan" element={ <StatusPemesanan/> }/>
+                <Route path={"/PilihPembayaran/"+idCheckout} element={ <PilihPembayaran idCheckout={idCheckout} setImg={setImg} setNoRekening={setNoRekening}/> }/>
+                <Route path={"/pembayaran/"+ idCheckout} element={ <Pembayaran idCheckout={idCheckout} img={img} noRekening={noRekening}/> }/>
                 <Route path="*" element={<ProductList setIdProduk={setIdProduk} />}/>
               </Routes>
             </div>
