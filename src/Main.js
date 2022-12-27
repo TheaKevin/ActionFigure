@@ -169,7 +169,7 @@ function Main() {
                 <Route path="/status-pemesanan" element={ <StatusPemesanan/> }/>
                 <Route path={"/PilihPembayaran/"+idCheckout} element={ <PilihPembayaran idCheckout={idCheckout} setImg={setImg} setNoRekening={setNoRekening}/> }/>
                 <Route path={"/pembayaran/"+ idCheckout} element={ <Pembayaran idCheckout={idCheckout} img={img} noRekening={noRekening}/> }/>
-                {/* <Route path="/*" element={<Navigate to ="/" />}/> */}
+                <Route path="*" element={<ProductList setIdProduk={setIdProduk} />}/>
               </Routes>
             </div>
           </div>

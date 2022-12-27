@@ -1,7 +1,6 @@
 import React, { Component }  from 'react'
 import './pembayaran.css'
 import BSIM from '../assets/BSIM.png'
-import BSIMSyariah from '../assets/BSIMSyariah.png'
 import Mandiri from '../assets/Mandiri.png'
 import BCA from '../assets/BCA.png'
 import axios from 'axios'
@@ -41,22 +40,18 @@ render(){
                 <div className='onePageContainer'>
                     <div className='onePageContent'>
                         <br></br>
-                        <h5>Bank Transfer</h5>
+                        <h5>Virtual Account</h5>
                         <br></br>
                         <div className='ListTransferContent withPadding'>
-                            <img src={BSIM} alt="BSIM" onClick={() => this.changePagetoPembayaran(BSIM,"0052992389","Bank Sinarmas")}></img>
-                        </div>
-                        <br></br>
-                        <div className='ListTransferContent'>
-                            <img src={BSIMSyariah} alt="BSIMSyariah"  onClick={() => this.changePagetoPembayaran(BSIMSyariah,"0043219870","Bank Sinarmas Syariah")}></img>
+                            <img src={BSIM} alt="BSIM" onClick={() => this.changePagetoPembayaran(BSIM,"8528082114436410","Bank Sinarmas")}></img>
                         </div>
                         <br></br>
                         <div className='ListTransferContent withPadding'>
-                            <img src={Mandiri} alt="Mandiri"  onClick={() => this.changePagetoPembayaran(Mandiri,"1234567890","Bank Mandiri")}></img>
+                            <img src={Mandiri} alt="Mandiri"  onClick={() => this.changePagetoPembayaran(Mandiri,"89508082114436410","Bank Mandiri")}></img>
                         </div>
                         <br></br>
                         <div className='ListTransferContent withPadding'>
-                            <img src={BCA} alt="BCA"  onClick={() => this.changePagetoPembayaran(BCA,"6040875857","Bank BCA")}></img>
+                            <img src={BCA} alt="BCA"  onClick={() => this.changePagetoPembayaran(BCA,"3901082114436410","Bank BCA")}></img>
                         </div>
                         <br></br>
                     </div>
