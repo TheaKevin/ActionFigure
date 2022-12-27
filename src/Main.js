@@ -124,7 +124,7 @@ function Main() {
                 <Route path={"/pembayaran/"+ idCheckout} element={ <Pembayaran idCheckout={idCheckout} img={img} noRekening={noRekening}/> }/>
                 <Route path="/request-product" element={ <RequestProduct/> }/>
                 <Route path="/status-pemesanan" element={ <StatusPemesanan/> }/>
-                <Route path="*" element={<Navigate to ="/" />}/>
+                <Route path="*" element={<ProductList setIdProduk={setIdProduk} />}/>
               </Routes>
             </div>
           </div>
