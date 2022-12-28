@@ -68,9 +68,11 @@ class ShoppingCart extends Component {
         </div>
         <div className="container-fluid">
           <div className="cart-list">
-            <div className="row justify-content-left gap-3">
+            <div className="row justify-content-left gap-3 w-100">
               <div className="col-xl-7 col-lg-12 col-md-12 col-sm-12">
                 {
+                  this.state.carts.length == 0 ? 
+                  "You've not added product to cart!":
                   this.state.carts.map(cart =>
                     <div key={cart.id} className="chart-product">
                       <div className="container-fluid">
@@ -128,7 +130,7 @@ class ShoppingCart extends Component {
                   </tbody>
                 </Table>
                 <div className="d-flex justify-content-center">
-                  <Button className="w-50" variant="pertama" onClick={() => this.checkout()}>
+                  <Button disabled={this.state.carts.length == 0 ? true : false} className="w-50" variant="pertama" onClick={() => this.checkout()}>
                     Buy {this.state.totalBarang} items
                   </Button>      
                 </div>

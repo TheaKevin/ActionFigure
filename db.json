@@ -6,7 +6,9 @@
       "detail": "Action figure dari salah satu anime yang paling banyak ditonton saat ini yaitu one piece yang berkualitas tinggi. Feature : Karakter Anime One Piece dengan Style Masing-masing, Material High Quality Pvc, Padat, Lentur, Anti pecah. Finishing yang sempurna membuat pajangan ini seperti asli. Lekukan Pajangan terlihat seperti asli dan tidak polos/rata, Anti kusam dan kotor karena bahan kilat sehingga debu tidak gampang nempel.",
       "harga": 100000,
       "stok": 100,
-      "gambar": "luffy.png"
+      "rating": 5,
+      "gambar": "luffy.png",
+      "terjual": 100
     },
     {
       "id": 2,
@@ -14,7 +16,9 @@
       "detail": "Ini adalah action figure naruto asli dari jepang",
       "harga": 175000,
       "stok": 150,
-      "gambar": "naruto.png"
+      "rating": 4.8,
+      "gambar": "naruto.png",
+      "terjual": 100
     },
     {
       "id": 3,
@@ -22,7 +26,9 @@
       "detail": "Ini adalah action figure sasuke asli dari jepang",
       "harga": 150000,
       "stok": 110,
-      "gambar": "sasuke.png"
+      "rating": 3.8,
+      "gambar": "sasuke.png",
+      "terjual": 100
     },
     {
       "id": 4,
@@ -30,7 +36,9 @@
       "detail": "Ini adalah action figure boruto asli dari jepang",
       "harga": 200000,
       "stok": 10,
-      "gambar": "boruto.png"
+      "rating": 1,
+      "gambar": "boruto.png",
+      "terjual": 60
     },
     {
       "id": 5,
@@ -38,7 +46,9 @@
       "detail": "Ini adalah action figure zoro asli dari jepang",
       "harga": 130000,
       "stok": 50,
-      "gambar": "zoro.png"
+      "gambar": "zoro.png",
+      "rating": 2,
+      "terjual": 50
     },
     {
       "id": 6,
@@ -46,7 +56,69 @@
       "detail": "Ini adalah action figure goku vegeta mode super saiyan.",
       "harga": 190000,
       "stok": 25,
-      "gambar": "gokuVegetaSuperSaiyan.png"
+      "gambar": "gokuVegetaSuperSaiyan.png",
+      "rating": 5,
+      "terjual": 10
+    },
+    {
+      "id": 7,
+      "nama": "Pajangan Action Figure One Piece Luffy, Zoro, Sanji, Ace | Anime - Zoro",
+      "detail": "Pajangan One Piece dengan bahan berkualitas tingkat tinggi.\n\nFeature :\n♦ Karakter Anime One Piece dengan Style Masing-masing\n♦ Material High Quality Pvc, Padat, Lentur, Anti pecah.\n♦ Finishing yang sempurna membuat pajangan ini seperti asli.\n♦ Lekukan Pajangan terlihat seperti asli dan tidak polos/rata\n♦ Anti kusam dan kotor karena bahan kilat sehingga debu tidak gampang nempel\n\n\nSpesifikasi :\n♦ Material : Premium PVC\n♦ Tinggi Produk : ± 17cm\n♦ Packaging : Box Original\n\nTersedia 4 Karakter : Luffy, Zoro, Sanji Dan Ace",
+      "harga": 147500,
+      "stok": 20,
+      "gambar": "luffy.png",
+      "rating": 3,
+      "terjual": 900
+    },
+    {
+      "id": 8,
+      "nama": "Testing Rating",
+      "detail": "Packaging : Loose Pack\n\n+Detail Sangat Bagus (Sesuai Foto)\n+ Ukuran 6cm+- Medium Size\n+Material High Quality Pvc, Padat\n+Finishing halus warna cerah\n+Standar SNI\n+ Kualitas TERJAMIN\n+ Pengiriman AMAN (FREE BUBBLE WRAP + KARDUS PELAPIS)",
+      "harga": 82,
+      "stok": 4,
+      "gambar": "luffy.png",
+      "rating": 0.8,
+      "terjual": 0
+    },
+    {
+      "id": 9,
+      "nama": "Action Figure Plants vs Zombies Mainan Bisa Nembak - 10 Bola Peluru",
+      "detail": "Mainan unik tema Plants vs Zombies. Tanamannya bisa dimasukkan bola untuk menembak zombie dengan jarak hingga 2 meter.\n\nUkuran: 8-10 cm\nBahan: PVC\nIsi paket: 1 plant, 1 zombie, 3 bola\n\nHarap konfirimasi pilihan model via diskusi\n\nPilihan model (silahkan cek foto):\n1. Pea shooter - hijau\n2. Snow pea - biru\n3. Melon pult - hijau\n4. Winter melon - biru\n5. Chomper - ungu\n6. Mushroom - biru pink\n7. Sun Flower Bunga Matahari\n8. Cabe Jalapeno\n9. Cob Cannon Jagung\n10. Cherry Bomb\n11. Pea shooter bertopi\n12. Snow pea bersyal\n13. Terong Ungu\n14. Pesawat Biru\n15. Pesawat Hijau\n\nCATATAN:\n1. Harap konfirmasi model sebelum membeli.\n2. Harap cantumkan model yang diinginkan di kolom keterangan dan alternatifnya jika kosong.\n3. Jika kolom keterangan kosong akan kami kirim acak sesuai stok yang tersedia.",
+      "harga": 35,
+      "stok": 3,
+      "gambar": "luffy.png",
+      "rating": 2.8,
+      "terjual": 0
+    },
+    {
+      "id": 10,
+      "nama": "Action Figure Plants vs Zombies Mainan Bisa Nembak - 10 Bola Peluru",
+      "detail": "Mainan unik tema Plants vs Zombies. Tanamannya bisa dimasukkan bola untuk menembak zombie dengan jarak hingga 2 meter.\n\nUkuran: 8-10 cm\nBahan: PVC\nIsi paket: 1 plant, 1 zombie, 3 bola\n\nHarap konfirimasi pilihan model via diskusi\n\nPilihan model (silahkan cek foto):\n1. Pea shooter - hijau\n2. Snow pea - biru\n3. Melon pult - hijau\n4. Winter melon - biru\n5. Chomper - ungu\n6. Mushroom - biru pink\n7. Sun Flower Bunga Matahari\n8. Cabe Jalapeno\n9. Cob Cannon Jagung\n10. Cherry Bomb\n11. Pea shooter bertopi\n12. Snow pea bersyal\n13. Terong Ungu\n14. Pesawat Biru\n15. Pesawat Hijau\n\nCATATAN:\n1. Harap konfirmasi model sebelum membeli.\n2. Harap cantumkan model yang diinginkan di kolom keterangan dan alternatifnya jika kosong.\n3. Jika kolom keterangan kosong akan kami kirim acak sesuai stok yang tersedia.",
+      "harga": 320000,
+      "stok": 13,
+      "gambar": "luffy.png",
+      "rating": 1.8,
+      "terjual": 0
+    },
+    {
+      "id": 11,
+      "nama": "Action Figure Plants vs Zombies Mainan Bisa Nembak - 10 Bola Peluru",
+      "detail": "Mainan unik tema Plants vs Zombies. Tanamannya bisa dimasukkan bola untuk menembak zombie dengan jarak hingga 2 meter.\n\nUkuran: 8-10 cm\nBahan: PVC\nIsi paket: 1 plant, 1 zombie, 3 bola\n\nHarap konfirimasi pilihan model via diskusi\n\nPilihan model (silahkan cek foto):\n1. Pea shooter - hijau\n2. Snow pea - biru\n3. Melon pult - hijau\n4. Winter melon - biru\n5. Chomper - ungu\n6. Mushroom - biru pink\n7. Sun Flower Bunga Matahari\n8. Cabe Jalapeno\n9. Cob Cannon Jagung\n10. Cherry Bomb\n11. Pea shooter bertopi\n12. Snow pea bersyal\n13. Terong Ungu\n14. Pesawat Biru\n15. Pesawat Hijau\n\nCATATAN:\n1. Harap konfirmasi model sebelum membeli.\n2. Harap cantumkan model yang diinginkan di kolom keterangan dan alternatifnya jika kosong.\n3. Jika kolom keterangan kosong akan kami kirim acak sesuai stok yang tersedia.",
+      "harga": 1000000,
+      "stok": 7,
+      "gambar": "luffy.png",
+      "rating": 2.2,
+      "terjual": 22
+    },
+    {
+      "id": 12,
+      "nama": "Test Terjual",
+      "detail": "dsadasdasdasda",
+      "harga": 321312,
+      "stok": 6,
+      "gambar": "luffy.png",
+      "rating": 4,
+      "terjual": 59
     }
   ],
   "wishlist": [
@@ -65,6 +137,14 @@
       "harga": 175000,
       "stok": 150,
       "gambar": "naruto.png"
+    },
+    {
+      "id": 11,
+      "nama": "Action Figure Plants vs Zombies Mainan Bisa Nembak - 10 Bola Peluru",
+      "detail": "Mainan unik tema Plants vs Zombies. Tanamannya bisa dimasukkan bola untuk menembak zombie dengan jarak hingga 2 meter.\n\nUkuran: 8-10 cm\nBahan: PVC\nIsi paket: 1 plant, 1 zombie, 3 bola\n\nHarap konfirimasi pilihan model via diskusi\n\nPilihan model (silahkan cek foto):\n1. Pea shooter - hijau\n2. Snow pea - biru\n3. Melon pult - hijau\n4. Winter melon - biru\n5. Chomper - ungu\n6. Mushroom - biru pink\n7. Sun Flower Bunga Matahari\n8. Cabe Jalapeno\n9. Cob Cannon Jagung\n10. Cherry Bomb\n11. Pea shooter bertopi\n12. Snow pea bersyal\n13. Terong Ungu\n14. Pesawat Biru\n15. Pesawat Hijau\n\nCATATAN:\n1. Harap konfirmasi model sebelum membeli.\n2. Harap cantumkan model yang diinginkan di kolom keterangan dan alternatifnya jika kosong.\n3. Jika kolom keterangan kosong akan kami kirim acak sesuai stok yang tersedia.",
+      "harga": 1000000,
+      "stok": 7,
+      "gambar": "luffy.png"
     }
   ],
   "autoCheckout": [
@@ -72,11 +152,11 @@
       "id": 1,
       "jumlahBarang": 1,
       "product": {
-        "id": 1,
-        "nama": "Action Figure Luffy",
-        "detail": "Action figure dari salah satu anime yang paling banyak ditonton saat ini yaitu one piece yang berkualitas tinggi. Feature : Karakter Anime One Piece dengan Style Masing-masing, Material High Quality Pvc, Padat, Lentur, Anti pecah. Finishing yang sempurna membuat pajangan ini seperti asli. Lekukan Pajangan terlihat seperti asli dan tidak polos/rata, Anti kusam dan kotor karena bahan kilat sehingga debu tidak gampang nempel.",
-        "harga": 100000,
-        "stok": 100,
+        "id": 7,
+        "nama": "Pajangan Action Figure One Piece Luffy, Zoro, Sanji, Ace | Anime - Zoro",
+        "detail": "Pajangan One Piece dengan bahan berkualitas tingkat tinggi.\n\nFeature :\n♦ Karakter Anime One Piece dengan Style Masing-masing\n♦ Material High Quality Pvc, Padat, Lentur, Anti pecah.\n♦ Finishing yang sempurna membuat pajangan ini seperti asli.\n♦ Lekukan Pajangan terlihat seperti asli dan tidak polos/rata\n♦ Anti kusam dan kotor karena bahan kilat sehingga debu tidak gampang nempel\n\n\nSpesifikasi :\n♦ Material : Premium PVC\n♦ Tinggi Produk : ± 17cm\n♦ Packaging : Box Original\n\nTersedia 4 Karakter : Luffy, Zoro, Sanji Dan Ace",
+        "harga": 147500,
+        "stok": 20,
         "gambar": "luffy.png"
       }
     }
@@ -105,6 +185,30 @@
         "stok": 110,
         "gambar": "sasuke.png"
       }
+    },
+    {
+      "id": 5,
+      "jumlahBarang": 2,
+      "product": {
+        "id": 1,
+        "nama": "Action Figure Luffy",
+        "detail": "Action figure dari salah satu anime yang paling banyak ditonton saat ini yaitu one piece yang berkualitas tinggi. Feature : Karakter Anime One Piece dengan Style Masing-masing, Material High Quality Pvc, Padat, Lentur, Anti pecah. Finishing yang sempurna membuat pajangan ini seperti asli. Lekukan Pajangan terlihat seperti asli dan tidak polos/rata, Anti kusam dan kotor karena bahan kilat sehingga debu tidak gampang nempel.",
+        "harga": 100000,
+        "stok": 100,
+        "gambar": "luffy.png"
+      }
+    },
+    {
+      "id": 6,
+      "jumlahBarang": 1,
+      "product": {
+        "id": 7,
+        "nama": "Pajangan Action Figure One Piece Luffy, Zoro, Sanji, Ace | Anime - Zoro",
+        "detail": "Pajangan One Piece dengan bahan berkualitas tingkat tinggi.\n\nFeature :\n♦ Karakter Anime One Piece dengan Style Masing-masing\n♦ Material High Quality Pvc, Padat, Lentur, Anti pecah.\n♦ Finishing yang sempurna membuat pajangan ini seperti asli.\n♦ Lekukan Pajangan terlihat seperti asli dan tidak polos/rata\n♦ Anti kusam dan kotor karena bahan kilat sehingga debu tidak gampang nempel\n\n\nSpesifikasi :\n♦ Material : Premium PVC\n♦ Tinggi Produk : ± 17cm\n♦ Packaging : Box Original\n\nTersedia 4 Karakter : Luffy, Zoro, Sanji Dan Ace",
+        "harga": 147500,
+        "stok": 20,
+        "gambar": "luffy.png"
+      }
     }
   ],
   "checkouts": [
@@ -131,6 +235,31 @@
       "finalTotal": 417000,
       "status": "Pesanan Dibuat. Menunggu bukti pembayaran diunggah oleh pembeli.",
       "statusSummary": "Menunggu Pembayaran"
+    },
+    {
+      "id": 2,
+      "cart": [
+        {
+          "id": 1,
+          "jumlahBarang": 1,
+          "product": {
+            "id": 1,
+            "nama": "Action Figure Luffy",
+            "detail": "Action figure dari salah satu anime yang paling banyak ditonton saat ini yaitu one piece yang berkualitas tinggi. Feature : Karakter Anime One Piece dengan Style Masing-masing, Material High Quality Pvc, Padat, Lentur, Anti pecah. Finishing yang sempurna membuat pajangan ini seperti asli. Lekukan Pajangan terlihat seperti asli dan tidak polos/rata, Anti kusam dan kotor karena bahan kilat sehingga debu tidak gampang nempel.",
+            "harga": 100000,
+            "stok": 100,
+            "gambar": "luffy.png"
+          }
+        }
+      ],
+      "totalProduk": 100000,
+      "biayaKirim": 27000,
+      "totalBarang": 1,
+      "voucher": 10000,
+      "finalTotal": 117000,
+      "status": "Pesanan Dibuat. Menunggu bukti pembayaran diunggah oleh pembeli.",
+      "statusSummary": "Menunggu Pembayaran",
+      "statusFromCart": "N"
     }
   ]
 }

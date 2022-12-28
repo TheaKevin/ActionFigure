@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react"
 import axios from 'axios'
 import { InputGroup, Form, Button } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faStar } from '@fortawesome/free-solid-svg-icons'
 
 function ProductList({setIdProduk}) {
   const [products, setProducts] = useState([])
   const [searchInput, setSearchInput] = useState("")
   const [selectedSort, setSelectedSort] = useState("")
   const [isNewest, setIsNewest] = useState(false)
+  const [isBestSelling, setIsBestSelling] = useState(false)
 
   useEffect(() => {
     getAllProduct();
@@ -25,8 +26,21 @@ function ProductList({setIdProduk}) {
   const getNewestProduct = () => {
     setIsNewest(!isNewest)
     setSelectedSort("")
+    setIsBestSelling(false)
     isNewest ? getAllProduct() :
     axios.get(`http://localhost:3001/products?_sort=tanggal&_order=desc`)
+      .then(res => {
+        const product = res.data;
+        setProducts(product);
+      })
+  }
+
+  const getBestSelling = () => {
+    setIsBestSelling(!isBestSelling)
+    setSelectedSort("")
+    setIsNewest(false)
+    isBestSelling ? getAllProduct() :
+    axios.get(`http://localhost:3001/products?_sort=terjual&_order=desc`)
       .then(res => {
         const product = res.data;
         setProducts(product);
@@ -65,8 +79,25 @@ function ProductList({setIdProduk}) {
       })
   }
 
+  const getRatingHighToLow = () => {
+    axios.get(`http://localhost:3001/products?_sort=rating&_order=desc`)
+      .then(res => {
+        const product = res.data;
+        setProducts(product);
+      })
+  }
+
+  const getRatingLowToHigh = () => {
+    axios.get(`http://localhost:3001/products?_sort=rating&_order=asc`)
+      .then(res => {
+        const product = res.data;
+        setProducts(product);
+      })
+  }
+
   const applySort = (selectedSort) => {
     setIsNewest(false)
+    setIsBestSelling(false)
     setSelectedSort(selectedSort)
     if (selectedSort === "") {
       getAllProduct()
@@ -76,8 +107,12 @@ function ProductList({setIdProduk}) {
       getPriceLowToHigh()
     } else if (selectedSort === "3") {
       getProductAToZ()
-    } else {
+    } else if (selectedSort === "4"){
       getProductZToA()
+    } else if (selectedSort === "5"){
+      getRatingHighToLow()
+    } else {
+      getRatingLowToHigh()
     }
   }
 
@@ -109,12 +144,15 @@ function ProductList({setIdProduk}) {
         <div className="sort-container">
           <label>Sort</label>
           <Button variant={isNewest ? "active": "outline-pertama"} onClick={() => getNewestProduct()}>Newest</Button>
+          <Button variant={isBestSelling ? "active": "outline-pertama"} onClick={() => getBestSelling()}>Best Selling</Button>
           <Form.Select value={selectedSort} onChange={(e) => applySort(e.target.value)}>
             <option className="d-none">Please choose</option>
             <option value="1">Price (High to Low)</option>
             <option value="2">Price (Low to High)</option>
             <option value="3">Name (A-Z)</option>
             <option value="4">Name (Z-A)</option>
+            <option value="5">Rating (High to Low)</option>
+            <option value="6">Rating (Low to High)</option>
           </Form.Select>
         </div>
       </div>
@@ -132,6 +170,7 @@ function ProductList({setIdProduk}) {
                       <h3>{filteredNama.nama}</h3>
                       <p className="product-price"> Rp {convertToRupiahFormat(filteredNama.harga)}</p>
                       <p className="product-description">{filteredNama.detail}</p>
+                      <p style={{color: "#FFC107", fontSize: "smaller"}}><FontAwesomeIcon icon={faStar}/> {filteredNama.rating} <span style={{color: "#000"}}> <span style={{fontWeight: "200"}}>|</span> {filteredNama.terjual} sold</span></p>
                     </div>
                   </div>
                 </a>
