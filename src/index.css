@@ -51,6 +51,10 @@ body {
   padding: 1rem;
 }
 
+.menubar-list .nav-link {
+  margin-bottom: .5rem;
+}
+
 .nav .nav-link {
   color: #fff;
   padding: 1rem;
@@ -129,7 +133,7 @@ body {
   cursor: pointer;
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 915px) {
   .nav {
     width: 110px !important;
   }
@@ -199,7 +203,7 @@ body {
 
 @media screen and (min-width: 992px) and (max-width: 1199px){
   .product-card {
-    height: 310px;
+    height: 330px;
   }
   .product-card .product-thumbnail {
     height: 135px !important;
@@ -216,7 +220,7 @@ body {
 
 @media screen and (min-width: 1200px) and (max-width: 1399px){
   .product-card {
-    height: 330px;
+    height: 360px;
   }
   .product-card .product-thumbnail {
     height: 160px !important;
@@ -233,7 +237,7 @@ body {
 
 @media screen and (min-width: 1400px) {
   .product-card {
-    height: 350px;
+    height: 380px;
   }
   .product-card .product-thumbnail {
     height: 180px !important;
@@ -547,4 +551,26 @@ table {
 .status-container {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.breadcrumb {
+  background-color: #ededed !important;
+  padding: .3rem !important;
+  width: fit-content;
+  border-radius: 10px !important;
+}
+
+.breadcrumb ol {
+  margin-bottom: 0;
+}
+
+.detail-product-input {
+  background-color: #FFC107;
+  border-radius: 10px;
+  height: fit-content;
+  padding: 1rem !important;
+}
+
+.menubar-user .fa-circle-user {
+  font-size: 2rem !important;
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-import { Button, Form } from 'react-bootstrap';
+import { Breadcrumb, Button, Form } from 'react-bootstrap';
 
 export default class DetailProduk extends Component {
     constructor(props) {
@@ -151,108 +151,94 @@ export default class DetailProduk extends Component {
     render() {
         return (
             <div className='mx-5' style={{paddingBottom:"1rem"}}>
-                <h1 className='mb-3'>Detail Produk</h1>
+                <h2 className='mb-3'>Detail Produk</h2>
+                <Breadcrumb className='mb-5 breadcrumb'>
+                  <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                  <Breadcrumb.Item active>{this.state.nama}</Breadcrumb.Item>
+                </Breadcrumb>
+                <div className='d-flex'>
+                  <div className='container-fluid'>
+                    <div className='row justify-content-left gap-3'>
+                      <div className='col-xl-3 d-flex justify-content-center border'
+                      style={{
+                          height: "200px",
+                          backgroundColor: "#FFC107",
+                          borderRadius: "10px",
+                          overflow:'hidden'
+                      }}>
+                          <img src={this.state.gambar}
+                              alt={this.state.gambar}
+                              />
+                      </div>
+                      <div className='col-xl-5 d-flex flex-column justify-content-between'>
+                          <div>
+                              <div className='mb-2' style={{
+                                  fontWeight: "500",
+                                  fontSize: "18px",
+                                  lineHeight: "28px"
+                              }}>{this.state.nama}</div>
+                              <div style={{
+                                  fontWeight: "800", 
+                                  fontSize: "24px",
+                                  lineHeight: "44px",
+                                  marginBottom: "2rem"
+                                }}>Rp {convertToRupiahFormat(this.state.harga)}</div>
+                              <div style={{
+                                  fontWeight: "400",
+                                  fontSize: "14px",
+                                  lineHeight: "17px",
+                                  whiteSpace: "pre-wrap"
+                              }}>{this.state.detail}</div>
+                          </div>
+                      </div>
+                      <div className='col-xl-3 d-flex justify-content-center detail-product-input'>
+                        <Form onSubmit={(e) => this.submit(e)} className="w-100">
+                          <Form.Group className='w-100 d-flex flex-column justify-content-center' style={{color: "white"}}>
+                              <div>Total Barang : </div>
+                              <label className='mb-2' style={{fontWeight: "800"}}>{this.state.stok} stock left</label>
+                              <div className='d-flex gap-3 align-items-center'>
+                                  <button
+                                      type='button'
+                                      className={"btn btn-outline-light"}
+                                      onClick={() => this.minus()}>
+                                      -
+                                  </button>
 
-                <div className='d-flex flex-row mb-5'>
-                    <div className='me-4 d-flex justify-content-center'
-                    style={{
-                        width: "300px",
-                        height: "300px",
-                        backgroundColor: "#FFC107",
-                        borderRadius: "10px"
-                    }}>
-                        <img src={this.state.gambar}
-                            alt={this.state.gambar}
-                            style={{height: "300px"}} />
+                                  <Form.Control
+                                      type="number"
+                                      name='jumlahBarang'
+                                      min={1}
+                                      max={this.state.stok}
+                                      value={this.state.jumlahBarang}
+                                      readOnly
+                                      required
+                                      style={{textAlign: "center"}}
+                                  />
+
+                                  <button
+                                      type='button'
+                                      className={"btn btn-outline-light"}
+                                      onClick={() => this.plus()}>
+                                      +
+                                  </button>
+                              </div>
+                          </Form.Group>
+                          <Form.Group className='mt-3 w-100 d-flex flex-column justify-content-left gap-3'>
+                              <Button variant='outline-pertama' type='submit'>+ Keranjang</Button>
+
+                              <Button variant='pertama' type='button'
+                              onClick={() => this.beliLangsung()}>Beli Langsung</Button>
+                          </Form.Group>
+                        </Form>
+                      </div>
                     </div>
-                    <div className='d-flex flex-column justify-content-between'>
-                        <div>
-                            <div className='mb-2' style={{
-                                fontWeight: "700",
-                                fontSize: "24px",
-                                lineHeight: "28px"
-                            }}>{this.state.nama}</div>
-                            <div style={{
-                                fontWeight: "400",
-                                fontSize: "14px",
-                                lineHeight: "17px",
-                                whiteSpace: "pre-wrap"
-                            }}>{this.state.detail}</div>
-                        </div>
-                        <div>
-                            <div className='mb-1' style={{
-                                fontWeight: "400",
-                                fontSize: "14px",
-                                lineHeight: "17px"
-                            }}>Total Stok : {this.state.stok}</div>
-                            <div style={{
-                                fontWeight: "700", 
-                                fontSize: "36px",
-                                lineHeight: "44px"
-                            }}>Rp. {this.state.harga}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className='d-flex flex-row justify-content-center'>
-                    <Form onSubmit={(e) => this.submit(e)} className='d-flex flex-row justify-content-evenly' style={{
-                        backgroundColor: "#FFC107",
-                        borderRadius: "10px",
-                        width: "565px",
-                        height: "131px"
-                    }}>
-                        <Form.Group className='w-50 d-flex flex-column justify-content-center' style={{color: "white"}}>
-                            <div className='mb-2'>Total Barang : </div>
-                            <div className='w-100 d-flex'>
-                                <button
-                                    type='button'
-                                    className={"btn btn-outline-light w-25 mx-auto"}
-                                    onClick={() => this.minus()}>
-                                    -
-                                </button>
-
-                                <Form.Control
-                                    type="number"
-                                    name='jumlahBarang'
-                                    className='mx-3'
-                                    min={1}
-                                    max={this.state.stok}
-                                    value={this.state.jumlahBarang}
-                                    readOnly
-                                    required
-                                />
-
-                                <button
-                                    type='button'
-                                    className={"btn btn-outline-light w-25 mx-auto"}
-                                    onClick={() => this.plus()}>
-                                    +
-                                </button>
-                            </div>
-                        </Form.Group>
-                        <Form.Group className='w-25 h-100 d-flex flex-column justify-content-evenly'>
-                            <Button style={{
-                                backgroundColor: "#467FD0",
-                                boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                                borderRadius: "20px",
-                                textAlign: "center",
-                                border: "none",
-                                color: "white"
-                            }} type='submit'>+ Keranjang</Button>
-
-                            <Button style={{
-                                backgroundColor: "#467FD0",
-                                boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                                borderRadius: "20px",
-                                textAlign: "center",
-                                border: "none",
-                                color: "white"
-                            }} type='button'
-                            onClick={() => this.beliLangsung()}>Beli Langsung</Button>
-                        </Form.Group>
-                    </Form>
+                  </div>
                 </div>
             </div>
         )
     }
+}
+
+const convertToRupiahFormat = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }

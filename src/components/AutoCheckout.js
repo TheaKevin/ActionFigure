@@ -6,6 +6,9 @@ import Popup from 'reactjs-popup';
 import ModalPengiriman from './ModalPengiriman'
 import ModalVoucher from './ModalVoucher'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocationDot, faAddressBook } from '@fortawesome/free-solid-svg-icons'
+import { Breadcrumb } from 'react-bootstrap';
 
 export default class Checkout extends Component {
   constructor(props){
@@ -23,6 +26,8 @@ export default class Checkout extends Component {
       checkoutProducts: [],
       lastCheckoutId: 0,
       intTotalBarang: 0,
+      namaProduk: "",
+      idProduk: 0,
     }
   }
 
@@ -115,23 +120,28 @@ export default class Checkout extends Component {
 
   render(){
     return (
-      <div style={{paddingBottom:"1rem"}}>
-      <h2>Detail Pembelian</h2>
-      <br></br>
-      <div className='checkout'>
+      <div>
+        <h2 className='ps-4 pb-2'>Purchase Details</h2>
+        <Breadcrumb className='ms-4 breadcrumb'>
+          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+          <Breadcrumb.Item href={"#/DetailProduk/" + this.state.idProduk}>{this.state.namaProduk}</Breadcrumb.Item>
+          <Breadcrumb.Item active>Purchase Details</Breadcrumb.Item>
+        </Breadcrumb>
+      <div className='container-fluid checkout'>
         <div className='checkoutContainer'>
             <div>
-                <h5>Alamat Pengiriman</h5>
-                <p>Jane Doe | (+62) 888-8888-8888</p>
-                <p>Jl Merdeka 1 No.7, Serpong Utara</p>
-                <p>Tangerang Selatan, Banten</p>
+                <h3>Shipping Address</h3>
+                <p><FontAwesomeIcon className='px-3' icon={faLocationDot}/>Jl Merdeka 1 No.7, Serpong Utara, Tangerang Selatan, Banten</p>
+                <p><FontAwesomeIcon className='px-3' icon={faAddressBook}/>Jane Doe | (+62) 888-8888-8888</p>
+                <p></p>
                 <hr></hr>
-
-                <h5>Daftar Produk</h5>
+                <h5>Product list</h5>
                 {
                   this.state.autoCheckout.map( autocheckout => 
-                    <div key={autocheckout.id} className="daftarProduk my-3">
+                    <div key={autocheckout.id} className="container-fluid daftarProduk my-3">
+                      {this.setState({namaProduk: autocheckout.product.nama})}
                       <div className="row">
+                        {this.setState({idProduk: autocheckout.product.id})}
                         <div className="col-lg-5 daftarProduk-thumbnailProd">
                           <img src={require('../assets/'+autocheckout.product.gambar)} alt={autocheckout.product.gambar}></img>
                         </div>

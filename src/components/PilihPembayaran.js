@@ -33,7 +33,7 @@ export default class PilihPembayaran extends Component {
 render(){
     return (
         <div style={{paddingBottom:"1rem"}}>
-            <h2>Pilih Pembayaran {this.state.idCheckout}</h2>
+            <h2>Payment Method for ID Cart: {this.state.idCheckout}</h2>
             <br></br>
     
             <div className='onePage'>

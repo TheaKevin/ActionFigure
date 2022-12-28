@@ -16,8 +16,8 @@ import {
   faCartShopping, 
   faEnvelope, 
   faBagShopping, 
-  faUser,
-  faRightFromBracket
+  faRightFromBracket,
+  faCircleUser
 } from '@fortawesome/free-solid-svg-icons'
 import { Routes } from "react-router-dom";
 import RequestProduct from "./components/RequestProduct";
@@ -75,7 +75,7 @@ function Main() {
       navTrigger.style.width = "350px"
   
       for (let i=0;i<triggerDiv.length;i+=1){
-        triggerDiv[i].style.display = "inline-block"
+        triggerDiv[i].style.display = "inline"
       }
   
       for (let i=0;i<triggerSvg.length;i+=1){
@@ -93,7 +93,7 @@ function Main() {
 
   useEffect(() => {
     localStorage.getItem("info") != null ? setLogin(true) : setLogin(false);
-  })
+  }, [])
 
   if (!isLoggedIn) {
     return(
@@ -123,36 +123,38 @@ function Main() {
                       href="#/" 
                       onClick={() => setActiveMenu("produk")} 
                       className={activeMenu == "produk" ? "nav-active": ""}>
-                        <FontAwesomeIcon className="eventCollapse2" icon={faList}/><span className="eventCollapse">Produk</span>
+                        <FontAwesomeIcon className="eventCollapse2" icon={faList}/><span className="eventCollapse">Product</span>
                     </Nav.Link>
                     <Nav.Link 
                       href="#/shopping-cart" 
                       onClick={() => setActiveMenu("keranjang")}
                       className={activeMenu == "keranjang" ? "nav-active": ""}>
-                        <FontAwesomeIcon className="eventCollapse2" icon={faCartShopping}/><span className="eventCollapse">Keranjang Belanja</span>
+                        <FontAwesomeIcon className="eventCollapse2" icon={faCartShopping}/><span className="eventCollapse">Cart</span>
                     </Nav.Link>
                     <Nav.Link 
                       href="#/request-product"
                       onClick={() => setActiveMenu("request")}
                       className={activeMenu == "request" ? "nav-active": ""}>
-                        <FontAwesomeIcon className="eventCollapse2" icon={faEnvelope}/><span className="eventCollapse">Request Produk</span>
+                        <FontAwesomeIcon className="eventCollapse2" icon={faEnvelope}/><span className="eventCollapse">Request</span>
                     </Nav.Link>
                     <Nav.Link 
                       href="#/status-pemesanan"
                       onClick={() => setActiveMenu("pemesanan")}
                       className={activeMenu == "pemesanan" ? "nav-active": ""}>
-                        <FontAwesomeIcon className="eventCollapse2" icon={faBagShopping}/><span className="eventCollapse">Pemesanan</span>
+                        <FontAwesomeIcon className="eventCollapse2" icon={faBagShopping}/><span className="eventCollapse">Order</span>
                     </Nav.Link>
+                    <hr></hr>
                     <Nav.Link 
                       onClick={() => handleShow()}>
                         <FontAwesomeIcon className="eventCollapse2" icon={faRightFromBracket}/><span className="eventCollapse">Log out</span>
                     </Nav.Link>
+                    <hr></hr>
                 </div>
                 <div className="menubar-user eventCollapse">
                   <div className="d-flex">
-                    <FontAwesomeIcon className="eventCollapse2" icon={faUser}/>
+                    <FontAwesomeIcon className="eventCollapse2" icon={faCircleUser}/>
                     <div className="user-summary">
-                      <h6 className="mb-0">{localStorage.getItem("email")}</h6>
+                      <h6 className="mb-0">Hello, {localStorage.getItem("email")}</h6>
                     </div>
                   </div>
                 </div>
