@@ -8,7 +8,8 @@
       "stok": 100,
       "rating": 5,
       "gambar": "luffy.png",
-      "terjual": 100
+      "terjual": 100,
+      "tanggal": "2022-01-07"
     },
     {
       "id": 2,
@@ -18,7 +19,8 @@
       "stok": 150,
       "rating": 4.8,
       "gambar": "naruto.png",
-      "terjual": 100
+      "terjual": 100,
+      "tanggal": "2022-02-07"
     },
     {
       "id": 3,
@@ -28,7 +30,8 @@
       "stok": 110,
       "rating": 3.8,
       "gambar": "sasuke.png",
-      "terjual": 100
+      "terjual": 100,
+      "tanggal": "2022-03-07"
     },
     {
       "id": 4,
@@ -38,7 +41,8 @@
       "stok": 10,
       "rating": 1,
       "gambar": "boruto.png",
-      "terjual": 60
+      "terjual": 60,
+      "tanggal": "2022-04-07"
     },
     {
       "id": 5,
@@ -48,7 +52,8 @@
       "stok": 50,
       "gambar": "zoro.png",
       "rating": 2,
-      "terjual": 50
+      "terjual": 50,
+      "tanggal": "2022-03-07"
     },
     {
       "id": 6,
@@ -58,7 +63,8 @@
       "stok": 25,
       "gambar": "gokuVegetaSuperSaiyan.png",
       "rating": 5,
-      "terjual": 10
+      "terjual": 10,
+      "tanggal": "2022-01-01"
     },
     {
       "id": 7,
@@ -68,7 +74,8 @@
       "stok": 20,
       "gambar": "luffy.png",
       "rating": 3,
-      "terjual": 900
+      "terjual": 900,
+      "tanggal": "2022-11-07"
     },
     {
       "id": 8,
@@ -78,7 +85,8 @@
       "stok": 4,
       "gambar": "luffy.png",
       "rating": 0.8,
-      "terjual": 0
+      "terjual": 0,
+      "tanggal": "2022-11-01"
     },
     {
       "id": 9,
@@ -88,7 +96,8 @@
       "stok": 3,
       "gambar": "luffy.png",
       "rating": 2.8,
-      "terjual": 0
+      "terjual": 0,
+      "tanggal": "2022-12-07"
     },
     {
       "id": 10,
@@ -98,7 +107,8 @@
       "stok": 13,
       "gambar": "luffy.png",
       "rating": 1.8,
-      "terjual": 0
+      "terjual": 0,
+      "tanggal": "2022-01-02"
     },
     {
       "id": 11,
@@ -108,7 +118,8 @@
       "stok": 7,
       "gambar": "luffy.png",
       "rating": 2.2,
-      "terjual": 22
+      "terjual": 22,
+      "tanggal": "2022-01-03"
     },
     {
       "id": 12,
@@ -118,7 +129,8 @@
       "stok": 6,
       "gambar": "luffy.png",
       "rating": 4,
-      "terjual": 59
+      "terjual": 59,
+      "tanggal": "2022-01-27"
     }
   ],
   "wishlist": [

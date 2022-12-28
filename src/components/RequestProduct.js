@@ -38,6 +38,11 @@ class RequestProduct extends Component {
       const formData = new FormData(e.currentTarget);
       const rating = getRandomRating(1, 5, 1)
       const terjual = getRandomRating(10, 100, 0)
+      const date = new Date()
+      const year = date.getFullYear()
+      const month = date.getMonth()
+      const day = date.getDate()
+      const currentDate = `${year}-${month}-${day}` 
 
       axios.post('http://localhost:3001/products', {
         id: this.state.lastProductId,
@@ -47,8 +52,8 @@ class RequestProduct extends Component {
         stok: parseInt(formData.get("product-stock")),
         gambar: "luffy.png",
         rating: rating,
-        terjual: terjual
-
+        terjual: terjual,
+        tanggal: currentDate
       })
       .then(function (response) {
         alert("Product has been requested!")
