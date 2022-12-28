@@ -281,6 +281,7 @@ export default class DetailProduk extends Component {
                                     value={this.state.jumlahBarang}
                                     readOnly
                                     required
+                                    style={{textAlign:"center"}}
                                 />
 
                                 <button
