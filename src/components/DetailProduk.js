@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import { Breadcrumb, Button, Form } from 'react-bootstrap';
 import { ReactComponent as Wishlist } from '../assets/wishlist.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 export default class DetailProduk extends Component {
     constructor(props) {
@@ -17,7 +19,9 @@ export default class DetailProduk extends Component {
             gambarProductForAddCart: "",
             jumlahBarang: 0,
             lastCartID: 0,
-            wishlistID: 0
+            wishlistID: 0,
+            rating: 0,
+            terjual: 0
         };
     }
 
@@ -33,7 +37,9 @@ export default class DetailProduk extends Component {
                 id: json.id,
                 gambar: require("../assets/"+json.gambar),
                 gambarProductForAddCart: json.gambar,
-                jumlahBarang: 1
+                jumlahBarang: 1,
+                rating: json.rating,
+                terjual: json.terjual
             });
         })
         .then(() => {
@@ -229,7 +235,7 @@ export default class DetailProduk extends Component {
                                     fontWeight: "500",
                                     fontSize: "18px",
                                     lineHeight: "28px"
-                                }}>{this.state.nama}</div>
+                                }}>{this.state.nama} <br/><span style={{fontSize: "smaller", fontWeight: "300"}}><FontAwesomeIcon icon={faStar} style={{color: "rgb(255, 193, 7)"}}/> {this.state.rating} | {this.state.terjual} sold</span></div>
 
                                 {this.state.wishlistID == 0
                                 ?<Wishlist style={{width:"25px", transition: "all ease 1s",

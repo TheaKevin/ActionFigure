@@ -8,7 +8,8 @@ class RequestProduct extends Component {
     this.state = {
       sumOfStock: 0,
       lastProductId: 0,
-      value: ""
+      valueDisplay: "",
+      value:0
     };
   }
   
@@ -35,6 +36,8 @@ class RequestProduct extends Component {
         });
 
       const formData = new FormData(e.currentTarget);
+      const rating = getRandomRating(1, 5, 1)
+      const terjual = getRandomRating(10, 100, 0)
 
       axios.post('http://localhost:3001/products', {
         id: this.state.lastProductId,
@@ -42,7 +45,10 @@ class RequestProduct extends Component {
         detail: formData.get("product-desc"),
         harga: parseInt(this.state.value),
         stok: parseInt(formData.get("product-stock")),
-        gambar: "luffy.png"
+        gambar: "luffy.png",
+        rating: rating,
+        terjual: terjual
+
       })
       .then(function (response) {
         alert("Product has been requested!")
@@ -52,15 +58,32 @@ class RequestProduct extends Component {
       });
     }
 
+    const getRandomRating = (min, max, decimals) => {
+      const str = (Math.random() * (max - min) + min).toFixed(decimals);
+      if (decimals == 0 ){
+        return parseInt(str)
+      } else {
+        return parseFloat(str);
+      }
+    }
     
     const priceDelimiter = (event) => {
-      this.setState({value: addCommas(removeNonNumeric(event.target.value))})
+      this.setState({
+        valueDisplay: addCommas(removeNonNumeric(event.target.value)),
+        value: priceToInt(event.target.value)
+      })
     }
+
+    const priceToInt = (price) => {
+      return Number(price.replace(/[^0-9]+/g,""))
+    }
+
     const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
     const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "")
 
     return(
       <>
+      {console.log(this.state.value)}
         <h2 className="ps-4 pb-4">Request Product</h2>
         <div className="container-fluid">
           <div className="request-container">
@@ -77,7 +100,7 @@ class RequestProduct extends Component {
 
               <Form.Group className="mb-3" controlId="formProductPrice">
                 <Form.Label>Product Price</Form.Label>
-                <Form.Control name="product-price" type="text" placeholder="Enter product price" onChange={priceDelimiter} value={"Rp " + this.state.value}/>
+                <Form.Control name="product-price" type="text" placeholder="Enter product price" onChange={priceDelimiter} value={"Rp " + this.state.valueDisplay}/>
               </Form.Group>
       
               <Form.Group className="mb-3" controlId="formProductDesc">

@@ -69,6 +69,56 @@
       "gambar": "luffy.png",
       "rating": 3,
       "terjual": 900
+    },
+    {
+      "id": 8,
+      "nama": "Testing Rating",
+      "detail": "Packaging : Loose Pack\n\n+Detail Sangat Bagus (Sesuai Foto)\n+ Ukuran 6cm+- Medium Size\n+Material High Quality Pvc, Padat\n+Finishing halus warna cerah\n+Standar SNI\n+ Kualitas TERJAMIN\n+ Pengiriman AMAN (FREE BUBBLE WRAP + KARDUS PELAPIS)",
+      "harga": 82,
+      "stok": 4,
+      "gambar": "luffy.png",
+      "rating": 0.8,
+      "terjual": 0
+    },
+    {
+      "id": 9,
+      "nama": "Action Figure Plants vs Zombies Mainan Bisa Nembak - 10 Bola Peluru",
+      "detail": "Mainan unik tema Plants vs Zombies. Tanamannya bisa dimasukkan bola untuk menembak zombie dengan jarak hingga 2 meter.\n\nUkuran: 8-10 cm\nBahan: PVC\nIsi paket: 1 plant, 1 zombie, 3 bola\n\nHarap konfirimasi pilihan model via diskusi\n\nPilihan model (silahkan cek foto):\n1. Pea shooter - hijau\n2. Snow pea - biru\n3. Melon pult - hijau\n4. Winter melon - biru\n5. Chomper - ungu\n6. Mushroom - biru pink\n7. Sun Flower Bunga Matahari\n8. Cabe Jalapeno\n9. Cob Cannon Jagung\n10. Cherry Bomb\n11. Pea shooter bertopi\n12. Snow pea bersyal\n13. Terong Ungu\n14. Pesawat Biru\n15. Pesawat Hijau\n\nCATATAN:\n1. Harap konfirmasi model sebelum membeli.\n2. Harap cantumkan model yang diinginkan di kolom keterangan dan alternatifnya jika kosong.\n3. Jika kolom keterangan kosong akan kami kirim acak sesuai stok yang tersedia.",
+      "harga": 35,
+      "stok": 3,
+      "gambar": "luffy.png",
+      "rating": 2.8,
+      "terjual": 0
+    },
+    {
+      "id": 10,
+      "nama": "Action Figure Plants vs Zombies Mainan Bisa Nembak - 10 Bola Peluru",
+      "detail": "Mainan unik tema Plants vs Zombies. Tanamannya bisa dimasukkan bola untuk menembak zombie dengan jarak hingga 2 meter.\n\nUkuran: 8-10 cm\nBahan: PVC\nIsi paket: 1 plant, 1 zombie, 3 bola\n\nHarap konfirimasi pilihan model via diskusi\n\nPilihan model (silahkan cek foto):\n1. Pea shooter - hijau\n2. Snow pea - biru\n3. Melon pult - hijau\n4. Winter melon - biru\n5. Chomper - ungu\n6. Mushroom - biru pink\n7. Sun Flower Bunga Matahari\n8. Cabe Jalapeno\n9. Cob Cannon Jagung\n10. Cherry Bomb\n11. Pea shooter bertopi\n12. Snow pea bersyal\n13. Terong Ungu\n14. Pesawat Biru\n15. Pesawat Hijau\n\nCATATAN:\n1. Harap konfirmasi model sebelum membeli.\n2. Harap cantumkan model yang diinginkan di kolom keterangan dan alternatifnya jika kosong.\n3. Jika kolom keterangan kosong akan kami kirim acak sesuai stok yang tersedia.",
+      "harga": 320000,
+      "stok": 13,
+      "gambar": "luffy.png",
+      "rating": 1.8,
+      "terjual": 0
+    },
+    {
+      "id": 11,
+      "nama": "Action Figure Plants vs Zombies Mainan Bisa Nembak - 10 Bola Peluru",
+      "detail": "Mainan unik tema Plants vs Zombies. Tanamannya bisa dimasukkan bola untuk menembak zombie dengan jarak hingga 2 meter.\n\nUkuran: 8-10 cm\nBahan: PVC\nIsi paket: 1 plant, 1 zombie, 3 bola\n\nHarap konfirimasi pilihan model via diskusi\n\nPilihan model (silahkan cek foto):\n1. Pea shooter - hijau\n2. Snow pea - biru\n3. Melon pult - hijau\n4. Winter melon - biru\n5. Chomper - ungu\n6. Mushroom - biru pink\n7. Sun Flower Bunga Matahari\n8. Cabe Jalapeno\n9. Cob Cannon Jagung\n10. Cherry Bomb\n11. Pea shooter bertopi\n12. Snow pea bersyal\n13. Terong Ungu\n14. Pesawat Biru\n15. Pesawat Hijau\n\nCATATAN:\n1. Harap konfirmasi model sebelum membeli.\n2. Harap cantumkan model yang diinginkan di kolom keterangan dan alternatifnya jika kosong.\n3. Jika kolom keterangan kosong akan kami kirim acak sesuai stok yang tersedia.",
+      "harga": 1000000,
+      "stok": 7,
+      "gambar": "luffy.png",
+      "rating": 2.2,
+      "terjual": 22
+    },
+    {
+      "id": 12,
+      "nama": "Test Terjual",
+      "detail": "dsadasdasdasda",
+      "harga": 321312,
+      "stok": 6,
+      "gambar": "luffy.png",
+      "rating": 4,
+      "terjual": 59
     }
   ],
   "wishlist": [
@@ -87,6 +137,14 @@
       "harga": 175000,
       "stok": 150,
       "gambar": "naruto.png"
+    },
+    {
+      "id": 11,
+      "nama": "Action Figure Plants vs Zombies Mainan Bisa Nembak - 10 Bola Peluru",
+      "detail": "Mainan unik tema Plants vs Zombies. Tanamannya bisa dimasukkan bola untuk menembak zombie dengan jarak hingga 2 meter.\n\nUkuran: 8-10 cm\nBahan: PVC\nIsi paket: 1 plant, 1 zombie, 3 bola\n\nHarap konfirimasi pilihan model via diskusi\n\nPilihan model (silahkan cek foto):\n1. Pea shooter - hijau\n2. Snow pea - biru\n3. Melon pult - hijau\n4. Winter melon - biru\n5. Chomper - ungu\n6. Mushroom - biru pink\n7. Sun Flower Bunga Matahari\n8. Cabe Jalapeno\n9. Cob Cannon Jagung\n10. Cherry Bomb\n11. Pea shooter bertopi\n12. Snow pea bersyal\n13. Terong Ungu\n14. Pesawat Biru\n15. Pesawat Hijau\n\nCATATAN:\n1. Harap konfirmasi model sebelum membeli.\n2. Harap cantumkan model yang diinginkan di kolom keterangan dan alternatifnya jika kosong.\n3. Jika kolom keterangan kosong akan kami kirim acak sesuai stok yang tersedia.",
+      "harga": 1000000,
+      "stok": 7,
+      "gambar": "luffy.png"
     }
   ],
   "autoCheckout": [

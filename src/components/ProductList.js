@@ -87,6 +87,14 @@ function ProductList({setIdProduk}) {
       })
   }
 
+  const getRatingLowToHigh = () => {
+    axios.get(`http://localhost:3001/products?_sort=rating&_order=asc`)
+      .then(res => {
+        const product = res.data;
+        setProducts(product);
+      })
+  }
+
   const applySort = (selectedSort) => {
     setIsNewest(false)
     setIsBestSelling(false)
@@ -101,8 +109,10 @@ function ProductList({setIdProduk}) {
       getProductAToZ()
     } else if (selectedSort === "4"){
       getProductZToA()
-    } else {
+    } else if (selectedSort === "5"){
       getRatingHighToLow()
+    } else {
+      getRatingLowToHigh()
     }
   }
 
@@ -142,6 +152,7 @@ function ProductList({setIdProduk}) {
             <option value="3">Name (A-Z)</option>
             <option value="4">Name (Z-A)</option>
             <option value="5">Rating (High to Low)</option>
+            <option value="6">Rating (Low to High)</option>
           </Form.Select>
         </div>
       </div>
