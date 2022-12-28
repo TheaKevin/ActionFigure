@@ -164,7 +164,7 @@
   "carts": [
     {
       "id": 3,
-      "jumlahBarang": 1,
+      "jumlahBarang": 2,
       "product": {
         "id": 2,
         "nama": "Action Figure Naruto",
