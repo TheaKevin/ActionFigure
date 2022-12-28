@@ -3,7 +3,7 @@
   }
 
   .stats-order-product {
-    background-color: #d9d9d9;
+    background-color: rgba(0,0,0,.03);
     border-radius: 20px;
     align-items: center;
   }
@@ -19,12 +19,15 @@
   
   .stats-order-product .stats-order-product-thumbnail img {
     flex-shrink: 0;
-    width: 50%;
-    height: 75%;
+    width: 100%;
   }
   
   .stats-order-product .stats-order-product-summary1 {
-    padding: 1rem;
+    padding: 1.5rem;
+  }
+
+  .stats-order-product-summary1 .total-price {
+    
   }
   
   .stats-order-product .stats-order-product-summary2 {

@@ -51,7 +51,8 @@ function Wishlist({setIdProduk}) {
         <div className="product-list container-fluid">
             <div className="row w-100">
             {
-                wishlists.filter(wishlist => wishlist.nama.includes(searchInput)).map(filteredNama => (
+                wishlists.filter(wishlist => wishlist.nama.toLowerCase().includes(searchInput.toLowerCase
+                  ())).map(filteredNama => (
                 <a onClick={() => changePage(filteredNama.id)} key={filteredNama.id} className="product-card col-xl-3 col-lg-4 col-sm-12 col-md-8">
                     <div className="product-thumbnail">
                     <img src={require('../assets/'+filteredNama.gambar)} alt={filteredNama.gambar}></img>
