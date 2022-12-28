@@ -1,0 +1,61 @@
+.header-status-pemesanan {
+    padding: 1rem 0;
+  }
+
+  .stats-order-product {
+    background-color: rgba(0,0,0,.03);
+    border-radius: 20px;
+    align-items: center;
+  }
+  
+  .stats-order-product .stats-order-product-thumbnail {
+    background-color: #FFC107;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  
+  .stats-order-product .stats-order-product-thumbnail img {
+    flex-shrink: 0;
+    width: 100%;
+  }
+  
+  .stats-order-product .stats-order-product-summary1 {
+    padding: 1.5rem;
+  }
+
+  .stats-order-product-summary1 .total-price {
+    
+  }
+  
+  .stats-order-product .stats-order-product-summary2 {
+    border-left-width: thin;
+    border-left-style: solid;
+    padding: 1rem;
+  }
+  
+  .stats-order-product .stats-order-product-summary2 hr{
+    border-top-width: thin;
+    border-top-style: solid;
+  }
+
+  .stats-order-statusSummary{
+    text-align: center;
+    justify-content: center;
+    color: #467FD0;
+    font-weight: bold;
+  }
+
+  .stats-order-status{
+    display: flex;
+  }
+
+  .stats-order-status img{
+    width: 10%;
+    height: 10%;
+    margin-top: 3%;
+    justify-content: center;
+    cursor: pointer;
+  }
