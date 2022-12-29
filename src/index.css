@@ -398,12 +398,12 @@ input#formProductDesc {
 .or {
   overflow: hidden;
   text-align: center;
-  color: #000;
+  color: #fff;
 }
 
 .or:before,
 .or:after {
-  background-color: #000;
+  background-color: #fff;
   content: "";
   display: inline-block;
   height: 1px;

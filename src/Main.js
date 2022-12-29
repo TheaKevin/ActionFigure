@@ -30,6 +30,7 @@ import { Login } from "./components/Login";
 import Pembayaran from "./components/Pembayaran";
 import StatusPemesanan from "./components/StatusPemesanan";
 import Wishlist from "./components/Wishlist";
+import axios from "axios";
 
 function Main() {
   const [activeMenu, setActiveMenu] = useState("produk")
@@ -40,6 +41,7 @@ function Main() {
   const [isLoggedIn, setLogin] = useState()
   const [show, setShow] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(true)
+  const [userName, setUserName] = useState("")
   
   const handleClose = () => setShow(false)
   const handleShow = () => {setShow(true)}
@@ -47,6 +49,14 @@ function Main() {
     localStorage.removeItem("info")
     localStorage.removeItem("email")
     window.location.href = "/"
+  }
+  const getUsername = () => {
+    axios.get("http://localhost:3001/users?email=" + localStorage.getItem("email"))
+      .then((response) => {
+        setUserName(response.data[0].nama)
+      }). catch(function (error) {
+        alert("check your internet connection", error)
+      })
   }
   const collapseNavbar = () => {
     isCollapsed ? setIsCollapsed(false) : setIsCollapsed(true)
@@ -94,7 +104,8 @@ function Main() {
   }
 
   useEffect(() => {
-    localStorage.getItem("info") != null ? setLogin(true) : setLogin(false);
+    localStorage.getItem("info") != null ? setLogin(true) : setLogin(false)
+    getUsername()
   }, [])
 
   if (!isLoggedIn) {
@@ -118,7 +129,10 @@ function Main() {
               <Nav className="flex-column" id="nav-trigger">
                 <div className="d-flex align-items-center menubar-brand">
                   <img id="image-trigger" style={{cursor: "pointer"}} onClick={() => collapseNavbar()} src={Logo}></img>
-                  <h2 className="eventCollapse">Action Figure</h2>
+                  <div className="d-flex flex-column">
+                    <h2 className="eventCollapse">Action Figure</h2>
+                    <h6 className="text-white">Hello, {userName}</h6>
+                  </div>
                 </div>
                 <div className="menubar-list">
                     <Nav.Link 
@@ -162,7 +176,7 @@ function Main() {
                   <div className="d-flex">
                     <FontAwesomeIcon className="eventCollapse2" icon={faCircleUser}/>
                     <div className="user-summary">
-                      <h6 className="mb-0">Hello, {localStorage.getItem("email")}</h6>
+                      <h6 className="mb-0">{localStorage.getItem("email")}</h6>
                     </div>
                   </div>
                 </div>
