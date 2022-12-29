@@ -22,7 +22,7 @@ export const Login = () => {
           alertWrongInput.classList.remove("d-none");
         } 
       }). catch(function (error) {
-        alert("check your internet connection", error)
+        // alert("check your internet connection", error)
       })
     } else {
       fetch("http://localhost:3001/users?_sort=id&_order=desc&_limit=1")
