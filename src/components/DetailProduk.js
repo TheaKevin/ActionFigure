@@ -211,100 +211,100 @@ export default class DetailProduk extends Component {
             <div className='mx-5' style={{paddingBottom:"1rem"}}>
                 <h2 className='mb-3'>Detail Produk</h2>
                 <Breadcrumb className='mb-5 breadcrumb'>
-                  <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-                  <Breadcrumb.Item active>{this.state.nama}</Breadcrumb.Item>
+                    <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                    <Breadcrumb.Item active>{this.state.nama}</Breadcrumb.Item>
                 </Breadcrumb>
                 <div className='d-flex'>
-                  <div className='container-fluid'>
-                    <div className='row justify-content-left gap-3'>
-                      <div className='col-xl-3 d-flex justify-content-center border'
-                      style={{
-                          height: "200px",
-                          backgroundColor: "#FFC107",
-                          borderRadius: "10px",
-                          overflow:'hidden'
-                      }}>
-                          <img src={this.state.gambar}
-                              alt={this.state.gambar}
-                              />
-                      </div>
-                      <div className='col-xl-5 d-flex flex-column justify-content-between'>
-                          <div>
-                              <div className='d-flex flex-row justify-content-between'>
-                                <div className='mb-2' style={{
-                                    fontWeight: "500",
-                                    fontSize: "18px",
-                                    lineHeight: "28px"
-                                }}>{this.state.nama} <br/><span style={{fontSize: "smaller", fontWeight: "300"}}><FontAwesomeIcon icon={faStar} style={{color: "rgb(255, 193, 7)"}}/> {this.state.rating} | {this.state.terjual} sold</span></div>
+                    <div className='container-fluid'>
+                        <div className='row justify-content-left gap-3'>
+                        <div className='col-xl-3 d-flex justify-content-center border'
+                        style={{
+                            height: "200px",
+                            backgroundColor: "#FFC107",
+                            borderRadius: "10px",
+                            overflow:'hidden'
+                        }}>
+                            <img src={this.state.gambar}
+                                alt={this.state.gambar}
+                                />
+                        </div>
+                        <div className='col-xl-5 d-flex flex-column justify-content-between'>
+                            <div>
+                                <div className='d-flex flex-row justify-content-between'>
+                                    <div className='mb-2' style={{
+                                        fontWeight: "500",
+                                        fontSize: "18px",
+                                        lineHeight: "28px"
+                                    }}>{this.state.nama} <br/><span style={{fontSize: "smaller", fontWeight: "300"}}><FontAwesomeIcon icon={faStar} style={{color: "rgb(255, 193, 7)"}}/> {this.state.rating} | {this.state.terjual} sold</span></div>
 
-                                {this.state.wishlistID == 0
-                                ?<Wishlist style={{width:"25px", transition: "all ease 1s",
-                                cursor: "pointer"}} onClick={() => this.addWishlist()} />
-                                :<Wishlist style={{
-                                  width:"25px",
-                                  filter: "invert(21%) sepia(44%) saturate(4511%) hue-rotate(348deg) brightness(121%) contrast(103%)",
-                                  transition: "all ease 1s",
-                                  cursor: "pointer"
-                                }} onClick={() => this.removeWishlist()} />}
-                              </div>
+                                    {this.state.wishlistID == 0
+                                    ?<Wishlist style={{width:"25px", transition: "all ease 1s",
+                                    cursor: "pointer"}} onClick={() => this.addWishlist()} />
+                                    :<Wishlist style={{
+                                    width:"25px",
+                                    filter: "invert(21%) sepia(44%) saturate(4511%) hue-rotate(348deg) brightness(121%) contrast(103%)",
+                                    transition: "all ease 1s",
+                                    cursor: "pointer"
+                                    }} onClick={() => this.removeWishlist()} />}
+                                </div>
 
-                              <div style={{
-                                  fontWeight: "800", 
-                                  fontSize: "24px",
-                                  lineHeight: "44px",
-                                  marginBottom: "2rem"
-                                }}>Rp {convertToRupiahFormat(this.state.harga)}</div>
+                                <div style={{
+                                    fontWeight: "800", 
+                                    fontSize: "24px",
+                                    lineHeight: "44px",
+                                    marginBottom: "2rem"
+                                    }}>Rp {convertToRupiahFormat(this.state.harga)}</div>
 
-                              <div style={{
-                                  fontWeight: "400",
-                                  fontSize: "14px",
-                                  lineHeight: "17px",
-                                  whiteSpace: "pre-wrap"
-                              }}>{this.state.detail}</div>
-                          </div>
-                      </div>
-                      <div className='col-xl-3 d-flex justify-content-center detail-product-input'>
-                        <Form onSubmit={(e) => this.submit(e)} className="w-100">
-                          <Form.Group className='w-100 d-flex flex-column justify-content-center' style={{color: "white"}}>
-                              <div>Total Barang : </div>
-                              <label className='mb-2' style={{fontWeight: "800"}}>{this.state.stok} stock left</label>
-                              <div className='d-flex gap-3 align-items-center'>
-                                  <button
-                                      type='button'
-                                      className={"btn btn-outline-light"}
-                                      onClick={() => this.minus()}>
-                                      -
-                                  </button>
+                                <div style={{
+                                    fontWeight: "400",
+                                    fontSize: "14px",
+                                    lineHeight: "17px",
+                                    whiteSpace: "pre-wrap"
+                                }}>{this.state.detail}</div>
+                            </div>
+                        </div>
+                        <div className='col-xl-3 d-flex justify-content-center detail-product-input'>
+                            <Form onSubmit={(e) => this.submit(e)} className="w-100">
+                            <Form.Group className='w-100 d-flex flex-column justify-content-center' style={{color: "white"}}>
+                                <div>Total Barang : </div>
+                                <label className='mb-2' style={{fontWeight: "800"}}>{this.state.stok} stock left</label>
+                                <div className='d-flex gap-3 align-items-center'>
+                                    <button
+                                        type='button'
+                                        className={"btn btn-outline-light"}
+                                        onClick={() => this.minus()}>
+                                        -
+                                    </button>
 
-                                  <Form.Control
-                                      type="number"
-                                      name='jumlahBarang'
-                                      min={1}
-                                      max={this.state.stok}
-                                      value={this.state.jumlahBarang}
-                                      readOnly
-                                      required
-                                      style={{textAlign: "center"}}
-                                  />
+                                    <Form.Control
+                                        type="number"
+                                        name='jumlahBarang'
+                                        min={1}
+                                        max={this.state.stok}
+                                        value={this.state.jumlahBarang}
+                                        readOnly
+                                        required
+                                        style={{textAlign: "center"}}
+                                    />
 
-                                  <button
-                                      type='button'
-                                      className={"btn btn-outline-light"}
-                                      onClick={() => this.plus()}>
-                                      +
-                                  </button>
-                              </div>
-                          </Form.Group>
-                          <Form.Group className='mt-3 w-100 d-flex flex-column justify-content-left gap-3'>
-                              <Button variant='outline-pertama' type='submit'>+ Keranjang</Button>
+                                    <button
+                                        type='button'
+                                        className={"btn btn-outline-light"}
+                                        onClick={() => this.plus()}>
+                                        +
+                                    </button>
+                                </div>
+                            </Form.Group>
+                            <Form.Group className='mt-3 w-100 d-flex flex-column justify-content-left gap-3'>
+                                <Button variant='outline-pertama' type='submit'>+ Keranjang</Button>
 
-                              <Button variant='pertama' type='button'
-                              onClick={() => this.beliLangsung()}>Beli Langsung</Button>
-                          </Form.Group>
-                        </Form>
-                      </div>
+                                <Button variant='pertama' type='button'
+                                onClick={() => this.beliLangsung()}>Beli Langsung</Button>
+                            </Form.Group>
+                            </Form>
+                        </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
             </div>
         )
