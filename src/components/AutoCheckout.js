@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faAddressBook } from '@fortawesome/free-solid-svg-icons'
 import { Breadcrumb } from 'react-bootstrap';
 
-export default class Checkout extends Component {
+export default class AutoCheckout extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -53,7 +53,9 @@ export default class Checkout extends Component {
       this.setState({
         inthargaProduk: totalHargaProduk,
         intTotalHarga: totalHargaProduk - this.state.intHargaVoucher + this.state.inthargaPengiriman,
-        intTotalBarang: totalBarang
+        intTotalBarang: totalBarang,
+        namaProduk: autoCheckout[0].product.nama,
+        idProduk: autoCheckout[0].product.id
       })
     })
   }
@@ -93,29 +95,31 @@ export default class Checkout extends Component {
           this.setState({
               lastCheckoutId: json[0].id + 1
           });
-      });
-      
-    axios.post('http://localhost:3001/checkouts', {
-      id: this.state.lastCheckoutId,
-      cart: this.state.checkoutProducts,
-      totalProduk: this.state.inthargaProduk,
-      biayaKirim: this.state.inthargaPengiriman,
-      totalBarang: this.state.intTotalBarang,
-      voucher: this.state.intHargaVoucher,
-      finalTotal: this.state.intTotalHarga,
-      status: "Pesanan Dibuat. Menunggu bukti pembayaran diunggah oleh pembeli.",
-      statusSummary:"Menunggu Pembayaran",
-      statusFromCart:"N"
-    })
-    .then(function (response) {
-    })
-    .then(()=>{
-          this.props.setIdCheckout(this.state.lastCheckoutId);
-          window.location.href = "#/PilihPembayaran/"+this.state.lastCheckoutId;
-    })
-    .catch(function (error) {
-      alert("Request failed!")
-    });
+      })
+      .then(() => {
+        axios.post('http://localhost:3001/checkouts', {
+          id: this.state.lastCheckoutId,
+          cart: this.state.checkoutProducts,
+          totalProduk: this.state.inthargaProduk,
+          biayaKirim: this.state.inthargaPengiriman,
+          totalBarang: this.state.intTotalBarang,
+          voucher: this.state.intHargaVoucher,
+          finalTotal: this.state.intTotalHarga,
+          status: "Pesanan Dibuat. Menunggu bukti pembayaran diunggah oleh pembeli.",
+          statusSummary:"Menunggu Pembayaran",
+          statusFromCart:"N"
+        })
+        .then(function (response) {
+          console.log(response)
+        })
+        .then(()=>{
+              this.props.setIdCheckout(this.state.lastCheckoutId);
+              window.location.href = "#/PilihPembayaran/"+this.state.lastCheckoutId;
+        })
+        .catch(function (error) {
+          alert("Request failed!")
+        });
+      })
   }
 
   render(){
@@ -139,9 +143,7 @@ export default class Checkout extends Component {
                 {
                   this.state.autoCheckout.map( autocheckout => 
                     <div key={autocheckout.id} className="container-fluid daftarProduk my-3">
-                      {this.setState({namaProduk: autocheckout.product.nama})}
                       <div className="row">
-                        {this.setState({idProduk: autocheckout.product.id})}
                         <div className="col-lg-5 daftarProduk-thumbnailProd">
                           <img src={require('../assets/'+autocheckout.product.gambar)} alt={autocheckout.product.gambar}></img>
                         </div>
@@ -210,22 +212,24 @@ export default class Checkout extends Component {
             <div className='checkoutContentTotal'>
                 <h1  className="titleHeaderTotal">Total</h1>
                 <table>
-                <tr>
-                  <td><p>Total Produk</p></td>
-                  <td><p>Rp. {convertToRupiahFormat(this.state.inthargaProduk)}</p></td>
-                </tr>
-                <tr>
-                  <td><p>Biaya Pengiriman</p></td>
-                  <td><p>Rp. {convertToRupiahFormat(this.state.inthargaPengiriman)}</p></td>
-                </tr>
-                <tr>
-                  <td><p>Voucher</p></td>
-                  <td><p>- Rp {convertToRupiahFormat(this.state.intHargaVoucher)}</p></td>
-                </tr>
-                <tr>
-                  <td><b><p>Total Harga</p></b></td>
-                  <td><b><p>Rp. {convertToRupiahFormat(this.state.intTotalHarga)}</p></b></td>
-                </tr>
+                  <tbody>
+                    <tr>
+                      <td><p>Total Produk</p></td>
+                      <td><p>Rp. {convertToRupiahFormat(this.state.inthargaProduk)}</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>Biaya Pengiriman</p></td>
+                      <td><p>Rp. {convertToRupiahFormat(this.state.inthargaPengiriman)}</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>Voucher</p></td>
+                      <td><p>- Rp {convertToRupiahFormat(this.state.intHargaVoucher)}</p></td>
+                    </tr>
+                    <tr>
+                      <td><b><p>Total Harga</p></b></td>
+                      <td><b><p>Rp. {convertToRupiahFormat(this.state.intTotalHarga)}</p></b></td>
+                    </tr>
+                  </tbody>
                 </table>
                 <button className='buttonCheckout' onClick={() => this.changePagetoPilihPembayaran()}>Beli</button>
             </div>
