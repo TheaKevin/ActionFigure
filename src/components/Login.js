@@ -114,35 +114,35 @@ export const Login = () => {
             </div>
           </div>
         </div>
-        <div class="santa">
-          <ul class="santa__hat">
-            <li class="hat__pompon"></li>
-            <li class="hat__crown"></li>
-            <li class="hat__banding"></li>
+        <div className="santa">
+          <ul className="santa__hat">
+            <li className="hat__pompon"></li>
+            <li className="hat__crown"></li>
+            <li className="hat__banding"></li>
           </ul>
-          <ul class="santa__head">
-            <li class="head__hair"></li>
-            <li class="head__face"></li>
-            <li class="head__nose"></li>
-            <li class="head__left-eye"></li>
-            <li class="head__right-eye"></li>
-            <li class="head__left-ear"></li>
-            <li class="head__right-ear"></li>
-            <li class="head__left-cheek"></li>
-            <li class="head__right-cheek"></li>
-            <li class="head__mustache">
-              <ul class="mustache-wrap">
-                <li class="mustache__top-left"></li>
-                <li class="mustache__top-right"></li>
-                <li class="mustache__left"></li>
-                <li class="mustache__right"></li>
-                <li class="mustache__bottom-left"></li>
-                <li class="mustache__bottom-right"></li>
+          <ul className="santa__head">
+            <li className="head__hair"></li>
+            <li className="head__face"></li>
+            <li className="head__nose"></li>
+            <li className="head__left-eye"></li>
+            <li className="head__right-eye"></li>
+            <li className="head__left-ear"></li>
+            <li className="head__right-ear"></li>
+            <li className="head__left-cheek"></li>
+            <li className="head__right-cheek"></li>
+            <li className="head__mustache">
+              <ul className="mustache-wrap">
+                <li className="mustache__top-left"></li>
+                <li className="mustache__top-right"></li>
+                <li className="mustache__left"></li>
+                <li className="mustache__right"></li>
+                <li className="mustache__bottom-left"></li>
+                <li className="mustache__bottom-right"></li>
               </ul>
             </li>
           </ul>
-          <ul class="santa__body">
-            <li class="body__clothes"></li>
+          <ul className="santa__body">
+            <li className="body__clothes"></li>
           </ul>
         </div>
       </div>
