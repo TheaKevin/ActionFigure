@@ -1,8 +1,17 @@
 import logo from "../assets/logo.png"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
+import musicBackground from "../assets/background.mp3"
 
 export const Login = () => {
+  useEffect(() => {
+    document.getElementById("backgroundMusic").play().catch((error) => {
+      document.addEventListener('click', () => {
+        document.getElementById("backgroundMusic").play()
+      }, { once: true })
+    })
+    document.getElementById("backgroundMusic").volume = 0.005
+  })
   const [isLogin, setIsLogin] = useState(true)
   const [lastUserID, setLastUserID] = useState(0)
   const handleLogin = (e) => {
@@ -51,7 +60,10 @@ export const Login = () => {
     setIsLogin(!isLogin)
   }
   return (
-    <>
+    <div>
+      <audio id="backgroundMusic" loop autoPlay>
+          <source src={musicBackground} type="audio/mp3"/>
+      </audio>
       <div className="login-container">
         <div className="row justify-content-center">
           <div className="wrapper p-3">
@@ -94,16 +106,76 @@ export const Login = () => {
                   </div>
                   <p className='pt-3 or' data-testid="OR">OR</p>
                   <div className="d-flex justify-content-around">
-                    <a onClick={() => changeStatus()} className="btn btn-pertama w-50">
+                    <a onClick={() => changeStatus()} className="btn btn-outline-pertama w-50">
                     {isLogin ? "Sign up" : "Sign in"}
                     </a>
                   </div>
               </form>
             </div>
-
           </div>
         </div>
+        <div class="santa">
+          <ul class="santa__hat">
+            <li class="hat__pompon"></li>
+            <li class="hat__crown"></li>
+            <li class="hat__banding"></li>
+          </ul>
+          <ul class="santa__head">
+            <li class="head__hair"></li>
+            <li class="head__face"></li>
+            <li class="head__nose"></li>
+            <li class="head__left-eye"></li>
+            <li class="head__right-eye"></li>
+            <li class="head__left-ear"></li>
+            <li class="head__right-ear"></li>
+            <li class="head__left-cheek"></li>
+            <li class="head__right-cheek"></li>
+            <li class="head__mustache">
+              <ul class="mustache-wrap">
+                <li class="mustache__top-left"></li>
+                <li class="mustache__top-right"></li>
+                <li class="mustache__left"></li>
+                <li class="mustache__right"></li>
+                <li class="mustache__bottom-left"></li>
+                <li class="mustache__bottom-right"></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="santa__body">
+            <li class="body__clothes"></li>
+          </ul>
+        </div>
       </div>
-    </>
+      <div className="snowflake">
+          ❅
+      </div>
+      <div className="snowflake">
+        ❅
+      </div>
+      <div className="snowflake">
+        ❆
+      </div>
+      <div className="snowflake">
+        ❄
+      </div>
+      <div className="snowflake">
+        ❅
+      </div>
+      <div className="snowflake">
+        ❆
+      </div>
+      <div className="snowflake">
+        ❄
+      </div>
+      <div className="snowflake">
+        ❅
+      </div>
+      <div className="snowflake">
+        ❆
+      </div>
+      <div className="snowflake">
+        ❄
+      </div>
+    </div>
   )
 }

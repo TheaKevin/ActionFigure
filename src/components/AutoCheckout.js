@@ -137,7 +137,6 @@ export default class AutoCheckout extends Component {
                 <h3>Shipping Address</h3>
                 <p><FontAwesomeIcon className='px-3' icon={faLocationDot}/>Jl Merdeka 1 No.7, Serpong Utara, Tangerang Selatan, Banten</p>
                 <p><FontAwesomeIcon className='px-3' icon={faAddressBook}/>Jane Doe | (+62) 888-8888-8888</p>
-                <p></p>
                 <hr></hr>
                 <h5>Product list</h5>
                 {
