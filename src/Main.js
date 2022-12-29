@@ -55,7 +55,7 @@ function Main() {
       .then((response) => {
         setUserName(response.data[0].nama)
       }). catch(function (error) {
-        alert("check your internet connection", error)
+        // alert("check your internet connection", error)
       })
   }
   const collapseNavbar = () => {
@@ -131,7 +131,7 @@ function Main() {
                   <img id="image-trigger" style={{cursor: "pointer"}} onClick={() => collapseNavbar()} src={Logo}></img>
                   <div className="d-flex flex-column">
                     <h2 className="eventCollapse">Action Figure</h2>
-                    <h6 className="text-white">Hello, {userName}</h6>
+                    <h6 className="eventCollapse text-white">Hello, {userName}</h6>
                   </div>
                 </div>
                 <div className="menubar-list">
