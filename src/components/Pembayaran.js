@@ -72,7 +72,7 @@ render() {
         }
     }
 
-    return (<div style={{paddingBottom:"1rem"}}>
+    return (<div style={{paddingLeft: "3rem", paddingRight: "3rem"}}>
         <h2>Pembayaran</h2>
         <br></br>
         <div className='onePage'>
@@ -91,23 +91,24 @@ render() {
                         <b><p>Total Pembayaran: Rp. {convertToRupiahFormat(this.state.totalBayar)}</p></b>
                     </div>
                 </div>
-                
-                <div className='bottomContent'>
-                    <div>
-                        <p>Silahkan lakukan pembayaran ke nomor yang ada diatas sesuai dengan metode pembayaran yang telah dipilih</p>
-                        <hr></hr>
-                    </div>
-                    <div>
-                        <p>Anda sudah melakukan pembayaran? Silahkan input no transaksi/ref anda!</p>
-                        <Form onSubmit={handleSubmitPembayaran}>
-                            <Form.Group className="mb-3" controlId="formNoRef">
-                                <Form.Control name="trx-no-ref" type="text" placeholder="Enter transaction number" />
-                            </Form.Group>
-                              <Button className="buttonUpload" variant="primary" type="submit">
-                                Submit
-                            </Button>
-                        </Form>
-                    </div>
+                <div className='d-flex justify-content-center'>
+                  <div className='bottomContent w-50'>
+                      <div>
+                          <p>Silahkan lakukan pembayaran ke nomor yang ada diatas sesuai dengan metode pembayaran yang telah dipilih</p>
+                          <hr></hr>
+                      </div>
+                      <div>
+                          <p>Anda sudah melakukan pembayaran? Silahkan input no transaksi/ref anda!</p>
+                          <Form onSubmit={handleSubmitPembayaran}>
+                              <Form.Group className="mb-3 d-flex justify-content-center" controlId="formNoRef">
+                                  <Form.Control className='w-50 text-center' name="trx-no-ref" type="text" placeholder="Enter transaction number" />
+                              </Form.Group>
+                                <Button className="buttonUpload" variant="primary" type="submit">
+                                  Submit
+                              </Button>
+                          </Form>
+                      </div>
+                  </div>
                 </div>
             </div>
         </div>

@@ -32,15 +32,15 @@ export default class PilihPembayaran extends Component {
     
 render(){
     return (
-        <div style={{paddingBottom:"1rem"}}>
+        <div style={{paddingLeft:"3rem", paddingRight: "3rem"}}>
             <h2>Payment Method for ID Cart: {this.state.idCheckout}</h2>
             <br></br>
     
             <div className='onePage'>
                 <div className='onePageContainer'>
-                    <div className='onePageContent'>
+                    <div className='onePageContent d-flex justify-content-left p-4 gap-4 align-items-center'>
+                      <h5>Virtual Account</h5>
                         <br></br>
-                        <h5>Virtual Account</h5>
                         <br></br>
                         <div className='ListTransferContent withPadding'>
                             <img src={BSIM} alt="BSIM" onClick={() => this.changePagetoPembayaran(BSIM,"8528082114436410","Bank Sinarmas")}></img>

@@ -3,14 +3,12 @@
 }
 
 .onePageContainer{
-    flex: 6;
+    width: 100%;
     border: 10px;
 }
 
 .onePageContent{
     border-radius: 10px;
-    margin: auto;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 15px;
     background-color: #FFC107;
     text-align: center;
@@ -18,12 +16,12 @@
 
 .ListTransferContent{
     border-radius: 10px;
-    margin: auto;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: #ffffff;
     cursor: pointer;
     justify-content: center;
-    height: 65px;
+    height: fit-content;
+    width: fit-content;
 }
 
 .withPadding{

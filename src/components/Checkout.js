@@ -7,6 +7,8 @@ import ModalPengiriman from './ModalPengiriman'
 import ModalVoucher from './ModalVoucher'
 import axios from 'axios'
 import './checkout.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocationDot, faAddressBook } from '@fortawesome/free-solid-svg-icons'
 
 export default class Checkout extends Component {
   constructor(props){
@@ -119,22 +121,21 @@ export default class Checkout extends Component {
 
   render(){
     return (
-      <div style={{paddingBottom:"1rem"}}>
-      <h2>Detail Pembelian</h2>
+      <div>
+      <h2 className='ps-4 pb-2'>Detail Pembelian</h2>
       <br></br>
-      <div className='checkout'>
+      <div className='container-fluid checkout'>
         <div className='checkoutContainer'>
             <div>
-                <h5>Alamat Pengiriman</h5>
-                <p>Jane Doe | (+62) 888-8888-8888</p>
-                <p>Jl Merdeka 1 No.7, Serpong Utara</p>
-                <p>Tangerang Selatan, Banten</p>
+                <h3>Shipping Address</h3>
+                <p><FontAwesomeIcon className='px-3' icon={faLocationDot}/>Jl Merdeka 1 No.7, Serpong Utara, Tangerang Selatan, Banten</p>
+                <p><FontAwesomeIcon className='px-3' icon={faAddressBook}/>Jane Doe | (+62) 888-8888-8888</p>
                 <hr></hr>
 
                 <h5>Daftar Produk</h5>
                 {
                   this.state.carts.map( cart => 
-                    <div key={cart.id} className="daftarProduk my-3">
+                    <div key={cart.id} className="container-fluid daftarProduk my-3">
                       <div className="row">
                         <div className="col-lg-5 daftarProduk-thumbnailProd">
                           <img src={require('../assets/'+cart.product.gambar)} alt={cart.product.gambar}></img>
