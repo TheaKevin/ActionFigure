@@ -87,12 +87,19 @@ export default class Checkout extends Component {
   
   // get latest checkout id
   handleSubmitCheckout = () => {
+    let idCheckout = 0;
     fetch("http://localhost:3001/checkouts?_sort=id&_order=desc&_limit=1")
       .then((response) => response.json())
       .then((json) => {
+        if(json.length != 0){
           this.setState({
               lastCheckoutId: json[0].id + 1
           });
+        }else{
+          this.setState({
+            lastCheckoutId: idCheckout + 1
+          });
+        }
       })
       .then(() => {
         axios.post('http://localhost:3001/checkouts', {
