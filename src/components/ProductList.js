@@ -137,7 +137,7 @@ function ProductList({setIdProduk}) {
             name="search-input"
             onChange={(e) => filterProduct(e)}
           />
-          <Button variant="outline-secondary" id="button-addon2" className="me-5">
+          <Button variant="outline-secondary" id="button-addon2">
           <FontAwesomeIcon icon={faMagnifyingGlass}/>
           </Button>
         </InputGroup>
@@ -161,7 +161,7 @@ function ProductList({setIdProduk}) {
           <div className="row w-100">
             {
               products.filter(product => product.nama.toLowerCase().includes(searchInput.toLocaleLowerCase())).map(filteredNama => (
-                <a onClick={() => changePage(filteredNama.id)} key={filteredNama.id} className="product-card col-xl-3 col-lg-4 col-sm-12 col-md-8">
+                <a onClick={() => changePage(filteredNama.id)} key={filteredNama.id} className="product-card col-xl-3 col-lg-4 col-sm-12 col-md-12">
                   <div className="product-thumbnail">
                     <img src={require('../assets/'+filteredNama.gambar)} alt={filteredNama.gambar}></img>
                   </div>

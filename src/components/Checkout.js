@@ -7,6 +7,8 @@ import ModalPengiriman from './ModalPengiriman'
 import ModalVoucher from './ModalVoucher'
 import axios from 'axios'
 import './checkout.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocationDot, faAddressBook } from '@fortawesome/free-solid-svg-icons'
 
 export default class Checkout extends Component {
   constructor(props){
@@ -85,56 +87,62 @@ export default class Checkout extends Component {
   
   // get latest checkout id
   handleSubmitCheckout = () => {
+    let idCheckout = 0;
     fetch("http://localhost:3001/checkouts?_sort=id&_order=desc&_limit=1")
       .then((response) => response.json())
       .then((json) => {
+        if(json.length != 0){
           this.setState({
               lastCheckoutId: json[0].id + 1
           });
-      });
-      
-    axios.post('http://localhost:3001/checkouts', {
-      id: this.state.lastCheckoutId,
-      cart: this.state.checkoutProducts,
-      totalProduk: this.state.inthargaProduk,
-      biayaKirim: this.state.inthargaPengiriman,
-      totalBarang: this.state.intTotalBarang,
-      voucher: this.state.intHargaVoucher,
-      finalTotal: this.state.intTotalHarga,
-      status: "Pesanan Dibuat. Menunggu bukti pembayaran diunggah oleh pembeli.",
-      statusSummary:"Menunggu Pembayaran",
-      statusFromCart:"Y"
-
-    })
-    .then(function (response) {
-    })
-    .then(()=>{
-          this.props.setIdCheckout(this.state.lastCheckoutId);
-          window.location.href = "#/PilihPembayaran/"+this.state.lastCheckoutId;
-    })
-    .catch(function (error) {
-      alert("Request failed!")
-    });
+        }else{
+          this.setState({
+            lastCheckoutId: idCheckout + 1
+          });
+        }
+      })
+      .then(() => {
+        axios.post('http://localhost:3001/checkouts', {
+          id: this.state.lastCheckoutId,
+          cart: this.state.checkoutProducts,
+          totalProduk: this.state.inthargaProduk,
+          biayaKirim: this.state.inthargaPengiriman,
+          totalBarang: this.state.intTotalBarang,
+          voucher: this.state.intHargaVoucher,
+          finalTotal: this.state.intTotalHarga,
+          status: "Pesanan Dibuat. Menunggu bukti pembayaran diunggah oleh pembeli.",
+          statusSummary:"Menunggu Pembayaran",
+          statusFromCart:"Y"
+        })
+        .then(function (response) {
+        })
+        .then(()=>{
+              this.props.setIdCheckout(this.state.lastCheckoutId);
+              window.location.href = "#/PilihPembayaran/"+this.state.lastCheckoutId;
+        })
+        .catch(function (error) {
+          alert("Request failed!")
+        });
+      })
   }
 
   render(){
     return (
-      <div style={{paddingBottom:"1rem"}}>
-      <h2>Detail Pembelian</h2>
+      <div>
+      <h2 className='ps-4 pb-2'>Detail Pembelian</h2>
       <br></br>
-      <div className='checkout'>
+      <div className='container-fluid checkout'>
         <div className='checkoutContainer'>
             <div>
-                <h5>Alamat Pengiriman</h5>
-                <p>Jane Doe | (+62) 888-8888-8888</p>
-                <p>Jl Merdeka 1 No.7, Serpong Utara</p>
-                <p>Tangerang Selatan, Banten</p>
+                <h3>Shipping Address</h3>
+                <p><FontAwesomeIcon className='px-3' icon={faLocationDot}/>Jl Merdeka 1 No.7, Serpong Utara, Tangerang Selatan, Banten</p>
+                <p><FontAwesomeIcon className='px-3' icon={faAddressBook}/>Jane Doe | (+62) 888-8888-8888</p>
                 <hr></hr>
 
                 <h5>Daftar Produk</h5>
                 {
                   this.state.carts.map( cart => 
-                    <div key={cart.id} className="daftarProduk my-3">
+                    <div key={cart.id} className="container-fluid daftarProduk my-3">
                       <div className="row">
                         <div className="col-lg-5 daftarProduk-thumbnailProd">
                           <img src={require('../assets/'+cart.product.gambar)} alt={cart.product.gambar}></img>
