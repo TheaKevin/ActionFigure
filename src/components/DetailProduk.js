@@ -51,8 +51,6 @@ export default class DetailProduk extends Component {
                         wishlistID: json.id
                     });
                 }
-                console.log(json);
-                console.log(this.state.wishlistID);
             });
         });
 
