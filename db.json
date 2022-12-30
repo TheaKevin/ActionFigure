@@ -83,35 +83,7 @@
     }
   ],
   "carts": [],
-  "checkouts": [
-    {
-      "id": 1,
-      "cart": [
-        {
-          "id": 1,
-          "jumlahBarang": 1,
-          "product": {
-            "id": 6,
-            "nama": "Action Figure Goku Vegeta Super Saiyan",
-            "detail": "Ini adalah action figure goku vegeta mode super saiyan.",
-            "harga": 190000,
-            "stok": 25,
-            "gambar": "gokuVegetaSuperSaiyan.png"
-          }
-        }
-      ],
-      "totalProduk": 190000,
-      "biayaKirim": 27000,
-      "totalBarang": 1,
-      "voucher": 10000,
-      "finalTotal": 207000,
-      "status": "Bukti pembayaran diterima. Pembayaran sedang menunggu verifikasi oleh penjual",
-      "statusSummary": "Verifikasi Pembayaran",
-      "statusFromCart": "Y",
-      "bank": "Bank Sinarmas",
-      "noRef": "1241423"
-    }
-  ],
+  "checkouts": [],
   "users": [
     {
       "id": 1,
