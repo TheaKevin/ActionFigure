@@ -87,36 +87,43 @@ export default class Checkout extends Component {
   
   // get latest checkout id
   handleSubmitCheckout = () => {
+    let idCheckout = 0;
     fetch("http://localhost:3001/checkouts?_sort=id&_order=desc&_limit=1")
       .then((response) => response.json())
       .then((json) => {
+        if(json.length != 0){
           this.setState({
               lastCheckoutId: json[0].id + 1
           });
-      });
-      
-    axios.post('http://localhost:3001/checkouts', {
-      id: this.state.lastCheckoutId,
-      cart: this.state.checkoutProducts,
-      totalProduk: this.state.inthargaProduk,
-      biayaKirim: this.state.inthargaPengiriman,
-      totalBarang: this.state.intTotalBarang,
-      voucher: this.state.intHargaVoucher,
-      finalTotal: this.state.intTotalHarga,
-      status: "Pesanan Dibuat. Menunggu bukti pembayaran diunggah oleh pembeli.",
-      statusSummary:"Menunggu Pembayaran",
-      statusFromCart:"Y"
-
-    })
-    .then(function (response) {
-    })
-    .then(()=>{
-          this.props.setIdCheckout(this.state.lastCheckoutId);
-          window.location.href = "#/PilihPembayaran/"+this.state.lastCheckoutId;
-    })
-    .catch(function (error) {
-      alert("Request failed!")
-    });
+        }else{
+          this.setState({
+            lastCheckoutId: idCheckout + 1
+          });
+        }
+      })
+      .then(() => {
+        axios.post('http://localhost:3001/checkouts', {
+          id: this.state.lastCheckoutId,
+          cart: this.state.checkoutProducts,
+          totalProduk: this.state.inthargaProduk,
+          biayaKirim: this.state.inthargaPengiriman,
+          totalBarang: this.state.intTotalBarang,
+          voucher: this.state.intHargaVoucher,
+          finalTotal: this.state.intTotalHarga,
+          status: "Pesanan Dibuat. Menunggu bukti pembayaran diunggah oleh pembeli.",
+          statusSummary:"Menunggu Pembayaran",
+          statusFromCart:"Y"
+        })
+        .then(function (response) {
+        })
+        .then(()=>{
+              this.props.setIdCheckout(this.state.lastCheckoutId);
+              window.location.href = "#/PilihPembayaran/"+this.state.lastCheckoutId;
+        })
+        .catch(function (error) {
+          alert("Request failed!")
+        });
+      })
   }
 
   render(){
